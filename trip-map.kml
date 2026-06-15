@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>טיול משפחתי לאיטליה · 17–27.09.2026</name>
+    <description>מפה משותפת: לינה (כחול) · אטרקציות וטיולים (אדום) · תחבורה (אפור). 2 מבוגרים + 3 ילדים (13, 9, 3.5).</description>
+
+    <!-- ===== Styles ===== -->
+    <Style id="lodging">
+      <IconStyle>
+        <color>ffd18802</color>
+        <Icon><href>http://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="attraction">
+      <IconStyle>
+        <color>ff0000ff</color>
+        <Icon><href>http://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="transport">
+      <IconStyle>
+        <color>ff7f7f7f</color>
+        <Icon><href>http://maps.google.com/mapfiles/kml/pushpin/wht-pushpin.png</href></Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- ===== Folder 1: לינה ===== -->
+    <Folder>
+      <name>לינה</name>
+      <description>פין כחול · כל נכסי הלינה (מיקום מקורב לפי אזור/עיר). פרטים מלאים וקישורים בדשבורד.</description>
+
+      <Placemark>
+        <name>Hotel Martis Palace — רומא (מרכז)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, מרכז היסטורי (פנתאון/נבונה) · סוג: מלון 4★ · דירוג ~9.0 · חניה: לא רלוונטי (אין רכב ברומא) · בוקר: זמינה (חלק מהתעריפים כולל) · 17–19.09 (2 לילות). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Martis+Palace+Rome&checkin=2026-09-17&checkout=2026-09-19&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotelmartis.com]]></description>
+        <Point><coordinates>12.4720,41.8995,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Hotel Lunetta — רומא (מרכז)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, מרכז היסטורי (קמפו דה פיורי) · סוג: מלון+ספא · בוקר: כלולה (בופה) · חניה: לא רלוונטי · 17–19.09 (2 לילות). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Lunetta+Rome&checkin=2026-09-17&checkout=2026-09-19&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotellunetta.com]]></description>
+        <Point><coordinates>12.4730,41.8955,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Internazionale Domus — רומא (מרכז)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, מרכז היסטורי (כיכר ספרד) · סוג: דירות · דירוג 9.3 · חניה: לא רלוונטי · בוקר: לבדיקה בקישור · 17–19.09 (2 לילות) · קיבולת 5 סבירה (דירת 2 חדרים). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Internazionale+Domus+Rome&checkin=2026-09-17&checkout=2026-09-19&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.internazionaledomus.com · Airbnb: https://www.airbnb.com/s/Rome--Italy/homes?checkin=2026-09-17&checkout=2026-09-19&adults=2&children=3]]></description>
+        <Point><coordinates>12.4760,41.8990,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Arch Rome Suites — רומא (מרכז)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, מרכז היסטורי (לארגו ארג׳נטינה) · סוג: בית הארחה 4★ · דירוג 9.1 · חניה: לא רלוונטי · בוקר: כלולה · 17–19.09 (2 לילות) · חדר עד 4 (ל-5 ייתכן 2 חדרים). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Arch+Rome+Suites&checkin=2026-09-17&checkout=2026-09-19&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.archromesuites.it]]></description>
+        <Point><coordinates>12.4745,41.8970,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Hotel Max — רומא (טרמיני)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, ליד טרמיני · סוג: מלון · דירוג 6.2 (נמוך — לשים לב) · חניה: לא רלוונטי · בוקר: זמינה (בופה) · 26–27.09 (1 לילה). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Max+Rome&checkin=2026-09-26&checkout=2026-09-27&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.google.com/search?q=Hotel+Max+Roma+Via+Gioberti]]></description>
+        <Point><coordinates>12.5060,41.9020,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>The Rossi — רומא (טרמיני)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · רומא, ליד טרמיני · סוג: מלון-דירות (חלק מהחדרים מטבחון) · דירוג ~8.5 · חניה: לא רלוונטי · בוקר: זמינה · 26–27.09 (1 לילה). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=The+Rossi+Rome&checkin=2026-09-26&checkout=2026-09-27&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotelrossiroma.com]]></description>
+        <Point><coordinates>12.5045,41.8985,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Hotel Caesius Thermae &amp; Spa — ברדולינו (גארדה)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · ברדולינו, אגם גארדה · סוג: מלון תרמי/ספא 4★ · חניה: חינם בשטח המלון · בוקר: כלולה (לאמת) · 19–22.09 (3 לילות) · קיבולת 5: לבדיקה בקישור. מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Caesius+Thermae+Spa+Bardolino&checkin=2026-09-19&checkout=2026-09-22&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotelcaesiusterme.com]]></description>
+        <Point><coordinates>10.7210,45.5470,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Sisan Family Resort — ברדולינו (גארדה)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · ברדולינו (צ׳יזאנו), אגם גארדה · סוג: ריזורט 4★ חדרים+דירות · חניה: חינם בשטח · בוקר: בופה זמין · 19–22.09 (3 לילות) · קיבולת 5: כן (דירת 2 חדרים ~50 מ״ר ל-5). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Sisan+Family+Resort+Bardolino&checkin=2026-09-19&checkout=2026-09-22&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.sisanfamilyresort.com]]></description>
+        <Point><coordinates>10.7180,45.5430,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Quellenhof Luxury Resort — לאזיסה (גארדה)</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · לאזיסה, אגם גארדה · סוג: ריזורט יוקרה 5★ דירות/סוויטות · דירוג ~9.6 (לאמת) · חניה: חינם בשטח · בוקר: כלולה · 19–22.09 (3 לילות) · שים לב: ייתכן מינימום גיל 4 — לאמת לבן 3.5! קיבולת 2–6.
+Booking: https://www.booking.com/searchresults.html?ss=Quellenhof+Luxury+Resort+Lazise&checkin=2026-09-19&checkout=2026-09-22&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.quellenhof-lazise.it · Airbnb: https://www.airbnb.com/s/Lazise--Italy/homes?checkin=2026-09-19&checkout=2026-09-22&adults=2&children=3]]></description>
+        <Point><coordinates>10.7333,45.5083,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Hotel Bell'Arrivo — פסקיירה דל גארדה</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · פסקיירה דל גארדה (מרכז היסטורי) · סוג: מלון 3★ · חניה: ציבורית בתשלום מול המלון (לא חינם!) · בוקר: זמינה (לאמת אם כלולה) · 19–22.09 (3 לילות) · קיבולת 5: לבדיקה (ייתכן חדרים מחוברים). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Bell%27Arrivo+Peschiera+del+Garda&checkin=2026-09-19&checkout=2026-09-22&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotelbellarrivo.it]]></description>
+        <Point><coordinates>10.6893,45.4413,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Cavallino Bianco Family Resort &amp; Spa — אורטיזאי</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · אורטיזאי, ואל גרדנה · סוג: מלון פמילי 4★S (סוויטות משפחתיות) · חניה: חניון תת-קרקעי בשטח · בוקר: כלולה (חצי/מלא/All-In) · 22–26.09 (4 לילות) · קיבולת 5: כן (מלון למשפחות בלבד). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Cavallino+Bianco+Family+Resort+Ortisei&checkin=2026-09-22&checkout=2026-09-26&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.cavallino-bianco.com]]></description>
+        <Point><coordinates>11.6720,46.5770,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Hotel Garnì Gardena — אורטיזאי</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · ואל גרדנה · סוג: גארני/דירות · חניה: חינם (בדירת App Dolomites) · בוקר: לבדיקה · 22–26.09 (4 לילות) · שים לב: הנכס "Garni Gardena" נמצא בסנטה כריסטינה ולא באורטיזאי — לאמת שזה הנכס הנכון! מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Hotel+Garni+Gardena+Val+Gardena&checkin=2026-09-22&checkout=2026-09-26&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי (directBooking): https://www.hotelgardena.com]]></description>
+        <Point><coordinates>11.6700,46.5755,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Classic Hotel am Stetteneck — אורטיזאי</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · אורטיזאי (מרכז להולכי רגל), ואל גרדנה · סוג: מלון 4★ · דירוג 8.9 · חניה: בשטח בתשלום · בוקר: כלולה · 22–26.09 (4 לילות) · קיבולת 5: סבירה (חדרים מחוברים / ג׳וניור סוויט). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Classic+Hotel+am+Stetteneck+Ortisei&checkin=2026-09-22&checkout=2026-09-26&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי (directBooking): https://www.stetteneck.com]]></description>
+        <Point><coordinates>11.6730,46.5760,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Elvis Apartments — אורטיזאי</name>
+        <styleUrl>#lodging</styleUrl>
+        <description><![CDATA[קטגוריה: לינה · אורטיזאי (רונקדיצה ~1 ק״מ), ואל גרדנה · סוג: אפרטהוטל/דירות · דירוג 8.4 · חניה: חינם פרטית בשטח · בוקר: אופציונלי (~€25 לאדם) · 22–26.09 (4 לילות) · קיבולת 5: כן (דירת 2 חדרים 4–5/4–6 נפש). מיקום מקורב.
+Booking: https://www.booking.com/searchresults.html?ss=Elvis+Apartments+Ortisei&checkin=2026-09-22&checkout=2026-09-26&group_adults=2&group_children=3&age=13&age=9&age=3
+רשמי: https://www.hotel-elvis.com · Airbnb: https://www.airbnb.com/s/Ortisei--Italy/homes?checkin=2026-09-22&checkout=2026-09-26&adults=2&children=3]]></description>
+        <Point><coordinates>11.6710,46.5750,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <!-- ===== Folder 2: אטרקציות וטיולים ===== -->
+    <Folder>
+      <name>אטרקציות וטיולים</name>
+      <description>פין אדום · אתרים, פארקים והליכות.</description>
+
+      <Placemark><name>קולוסיאום + פורום + פלטינו</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא · יום 2. כרטיס בשעה מוזמן מראש.]]></description><Point><coordinates>12.4922,41.8902,0</coordinates></Point></Placemark>
+      <Placemark><name>פנתאון</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא · כניסה חינם.]]></description><Point><coordinates>12.4769,41.8986,0</coordinates></Point></Placemark>
+      <Placemark><name>מזרקת טרווי</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא.]]></description><Point><coordinates>12.4833,41.9009,0</coordinates></Point></Placemark>
+      <Placemark><name>פיאצה נבונה</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא.]]></description><Point><coordinates>12.4731,41.8992,0</coordinates></Point></Placemark>
+      <Placemark><name>גני וילה בורגזה</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא · מגרש משחקים, סירות, אופניים (חלופה רכה ליום 2).]]></description><Point><coordinates>12.4920,41.9145,0</coordinates></Point></Placemark>
+      <Placemark><name>טרסטוורה</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רומא · ארוחת ערב.]]></description><Point><coordinates>12.4694,41.8896,0</coordinates></Point></Placemark>
+      <Placemark><name>ארנה די ורונה</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · ורונה · אופציונלי בדרך/בחזרה (ארנה, מרפסת יוליה, גלידה).]]></description><Point><coordinates>10.9947,45.4390,0</coordinates></Point></Placemark>
+      <Placemark><name>סירמיונה (טירת סקליגרו + Grotte di Catullo)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · אגם גארדה · יום 4. טירה, חורבות, שייט קצר, שחייה.]]></description><Point><coordinates>10.6064,45.4956,0</coordinates></Point></Placemark>
+      <Placemark><name>גרדהלנד</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · אגם גארדה · יום 5. שאטל חינם מתחנת פסקיירה או נהיגה (חניה חינם).]]></description><Point><coordinates>10.7174,45.4604,0</coordinates></Point></Placemark>
+      <Placemark><name>Parco Natura Viva</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · אגם גארדה · חלופה ליום 5 (ספארי/גן חיות).]]></description><Point><coordinates>10.7553,45.4717,0</coordinates></Point></Placemark>
+      <Placemark><name>מוזיאון "אצי" (מומיית הקרח) — בולצאנו</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · בולצאנו · עצירה אופציונלית ביום 6.]]></description><Point><coordinates>11.3548,46.4983,0</coordinates></Point></Placemark>
+      <Placemark><name>רכבל סצ׳דה (תחנה תחתונה)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · אורטיזאי · יום 7.]]></description><Point><coordinates>11.6680,46.5790,0</coordinates></Point></Placemark>
+      <Placemark><name>פסגת סצ׳דה (2,500 מ׳)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · סצ׳דה · יום 7. קר ורוחי — שכבות חמות.]]></description><Point><coordinates>11.6480,46.6075,0</coordinates></Point></Placemark>
+      <Placemark><name>אלפה די סיוזי (Compatsch)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · רמת אלפה די סיוזי.]]></description><Point><coordinates>11.6175,46.5408,0</coordinates></Point></Placemark>
+      <Placemark><name>פארק חבלים Colfosco</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · קולפוסקו / אלטה באדיה · יום 8. מסלולים לפי גיל; טרמפולינות וגן חיות לקטן. לאמת תאריך סגירה 2026.]]></description><Point><coordinates>11.8800,46.5577,0</coordinates></Point></Placemark>
+      <Placemark><name>אגם קרצה (Lago di Carezza)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · יום בחירה (9) · הקפה ~20 דק׳.]]></description><Point><coordinates>11.5765,46.4093,0</coordinates></Point></Placemark>
+      <Placemark><name>סנטה מדלנה / ואל די פונס</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · יום בחירה (9).]]></description><Point><coordinates>11.7050,46.6417,0</coordinates></Point></Placemark>
+      <Placemark><name>עמק וואלונגה (Vallunga) — סלבה</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · יום בחירה (9) · שטוח, מתאים לעגלה.]]></description><Point><coordinates>11.7600,46.5547,0</coordinates></Point></Placemark>
+      <Placemark><name>אגם בראייס (Lago di Braies)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה · יום בחירה (9) · ~1.5 ש׳ נסיעה, סירות חתירה.]]></description><Point><coordinates>12.0855,46.6947,0</coordinates></Point></Placemark>
+      <Placemark><name>Passo Gardena (מעבר נופי)</name><styleUrl>#attraction</styleUrl><description><![CDATA[קטגוריה: אטרקציה / נוף · בדרך לקולפוסקו (יום 8).]]></description><Point><coordinates>11.8163,46.5469,0</coordinates></Point></Placemark>
+    </Folder>
+
+    <!-- ===== Folder 3: תחבורה ===== -->
+    <Folder>
+      <name>תחבורה</name>
+      <description>פין אפור · שדה תעופה / תחנות רכבת / איסוף-החזרת רכב.</description>
+
+      <Placemark><name>שדה תעופה רומא (FCO)</name><styleUrl>#transport</styleUrl><description><![CDATA[קטגוריה: תחבורה · נחיתה 17/9 21:00 · המראה 27/9 13:00. Leonardo Express לטרמיני 32 דק׳.]]></description><Point><coordinates>12.2389,41.8003,0</coordinates></Point></Placemark>
+      <Placemark><name>תחנת רומא טרמיני</name><styleUrl>#transport</styleUrl><description><![CDATA[קטגוריה: תחבורה · Frecciarossa רומא⇄ורונה · לינה אחרונה בקרבת מקום.]]></description><Point><coordinates>12.5018,41.9009,0</coordinates></Point></Placemark>
+      <Placemark><name>ורונה Porta Nuova — תחנת רכבת + איסוף/החזרת רכב</name><styleUrl>#transport</styleUrl><description><![CDATA[קטגוריה: תחבורה · איסוף רכב 19/9, החזרה 26/9 · גם לבדוק שדה VRN למבחר אוטומט/7-מושבים.]]></description><Point><coordinates>10.9817,45.4290,0</coordinates></Point></Placemark>
+    </Folder>
+
+  </Document>
+</kml>

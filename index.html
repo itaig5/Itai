@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>טיול משפחתי לאיטליה · 17–27 בספטמבר 2026</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#0e7490; --accent2:#155e75; --warm:#b45309;
+    --rome:#b91c1c; --garda:#0e7490; --dolo:#15803d; --transit:#6b7280;
+    --good:#15803d; --warn:#b45309; --bad:#b91c1c;
+    --shadow:0 1px 3px rgba(0,0,0,.08),0 6px 18px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Arial,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--accent2)}
+  header.hero{background:linear-gradient(135deg,#0e7490,#155e75 60%,#134e4a);color:#fff;padding:34px 20px 28px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  header.hero h1{margin:0 0 6px;font-size:30px}
+  header.hero .sub{font-size:16px;opacity:.95}
+  header.hero .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
+  header.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13.5px}
+  nav.toc{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;padding:8px 16px}
+  nav.toc a{color:var(--ink);text-decoration:none;font-size:14px;padding:7px 12px;border-radius:8px}
+  nav.toc a:hover{background:#ecfeff;color:var(--accent2)}
+  section{padding:30px 0 6px}
+  h2.sec{font-size:23px;margin:0 0 4px;color:var(--accent2);display:flex;align-items:center;gap:9px}
+  h2.sec .ico{font-size:24px}
+  .lead{color:var(--muted);margin:2px 0 18px;font-size:14.5px}
+
+  /* day tabs */
+  .daytabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .daytabs button{cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13.5px;color:var(--ink);transition:.15s}
+  .daytabs button .d{display:block;font-size:11.5px;color:var(--muted)}
+  .daytabs button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .daytabs button.active .d{color:#d6f3fb}
+  .daytabs button:hover:not(.active){background:#ecfeff}
+  .daypanel{display:none}
+  .daypanel.show{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .daycard{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+  .daycard .top{padding:16px 20px;border-bottom:1px solid var(--line);background:#f8fafc}
+  .daycard .top .date{font-size:13px;color:var(--muted)}
+  .daycard .top h3{margin:3px 0 0;font-size:20px}
+  .daycard .top .stay{margin-top:7px;font-size:13.5px;color:var(--accent2);background:#ecfeff;display:inline-block;padding:4px 10px;border-radius:8px}
+  .daycard .body{padding:16px 20px;display:grid;grid-template-columns:1fr;gap:14px}
+  .daycard h4{margin:0 0 6px;font-size:14px;color:var(--accent2);letter-spacing:.2px}
+  .daycard ul{margin:0;padding-inline-start:20px}
+  .daycard li{margin:3px 0}
+  .tipbox{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;font-size:13.5px}
+  .tipbox b{color:var(--warm)}
+
+  /* notes block */
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .note{background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--accent);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+  .note h4{margin:0 0 6px;font-size:15px}
+  .note p{margin:0;font-size:13.5px;color:#374151}
+
+  /* tables */
+  .tablecard{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:26px}
+  .tablecard .th{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
+  .tablecard .th h3{margin:0;font-size:18px}
+  .tablecard .th .dates{font-size:13px;color:var(--muted)}
+  .pickbar{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:10px 18px;font-size:13.5px}
+  .pickbar b{color:#047857}
+  .scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+  th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{background:#f8fafc;color:#374151;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none;position:relative}
+  thead th:hover{background:#eef2f7}
+  thead th .ar{opacity:.4;font-size:10px;margin-inline-start:3px}
+  tbody tr:hover{background:#f9fafb}
+  .nm{font-weight:600}
+  .rec td{background:#ecfdf5}
+  .rec .nm:after{content:"★ הבחירה שלי";font-size:11px;color:#047857;margin-inline-start:8px;background:#d1fae5;padding:2px 7px;border-radius:6px;font-weight:600}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:6px;white-space:nowrap}
+  .t-good{background:#dcfce7;color:#166534}
+  .t-warn{background:#fef3c7;color:#92400e}
+  .t-bad{background:#fee2e2;color:#991b1b}
+  .t-neutral{background:#f1f5f9;color:#475569}
+  .links{display:flex;flex-wrap:wrap;gap:5px}
+  .btnlink{font-size:12px;text-decoration:none;padding:4px 9px;border-radius:7px;border:1px solid var(--line);color:#1f2937;background:#fff;white-space:nowrap}
+  .btnlink:hover{background:#0e7490;color:#fff;border-color:#0e7490}
+  .btnlink.bk{background:#003580;color:#fff;border-color:#003580}
+  .btnlink.bk:hover{background:#00224f}
+  .note-sm{font-size:12px;color:var(--muted);margin-top:4px}
+
+  .mapbox{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px}
+  .mapbox ol{margin:8px 0 0;padding-inline-start:22px}
+  .mapbox li{margin:6px 0;font-size:14px}
+  .filechips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+  .filechips a{font-size:13px;text-decoration:none;background:#ecfeff;border:1px solid #a5f3fc;color:#155e75;padding:7px 12px;border-radius:9px}
+  .filechips a:hover{background:#155e75;color:#fff}
+  footer{padding:28px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}
+  .disclaim{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#7c2d12;margin-top:10px}
+  @media(max-width:640px){header.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>🇮🇹 טיול משפחתי לאיטליה</h1>
+    <div class="sub">רומא · אגם גארדה · הדולומיטים — 17–27 בספטמבר 2026 · 10 לילות</div>
+    <div class="meta">
+      <span class="pill">👨‍👩‍👧‍👦 2 מבוגרים + 3 ילדים (13, 9, 3.5)</span>
+      <span class="pill">✈️ נחיתה FCO 17/9 21:00</span>
+      <span class="pill">✈️ המראה FCO 27/9 13:00</span>
+      <span class="pill">🚄 רכבת רומא⇄ורונה</span>
+      <span class="pill">🚗 רכב שכור: גארדה+דולומיטים בלבד</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#itinerary">🗓️ מסלול יומי</a>
+  <a href="#notes">📌 הערות והזמנות</a>
+  <a href="#stay">🏨 השוואת לינה</a>
+  <a href="#car">🚗 השכרת רכב</a>
+  <a href="#map">🗺️ מפה משותפת</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ ITINERARY ============ -->
+<section id="itinerary">
+  <h2 class="sec"><span class="ico">🗓️</span> מסלול יומי מפורט</h2>
+  <p class="lead">לחצו על יום לצפייה בפרטים. הדגש: טיולים קלים/קצרים, מעט החלפות מלון, שילוב עיר וכפר.</p>
+  <div class="daytabs" id="daytabs"></div>
+  <div id="daypanels"></div>
+</section>
+
+<!-- ============ NOTES ============ -->
+<section id="notes">
+  <h2 class="sec"><span class="ico">📌</span> הערות והזמנות חשובות</h2>
+  <p class="lead">דברים שכדאי להזמין/לאמת מוקדם — חלקם אוזלים או מתייקרים מהר.</p>
+  <div class="notes">
+    <div class="note"><h4>🚄 רכבת Frecciarossa</h4><p>הכרטיסים נפתחים ~4 חודשים מראש. הזמנה מוקדמת = זול משמעותית. שני קטעים: רומא→ורונה (יום 3) וורונה→רומא (יום 10), ~3 שעות כל אחד.</p></div>
+    <div class="note"><h4>🏛️ קולוסיאום</h4><p>הזמנה מיידית עם פתיחת המכירה — נמכר מהר מאוד. כרטיס בשעה מוזמן מראש (כולל פורום + פלטינו).</p></div>
+    <div class="note"><h4>🚗 רכב שכור</h4><p>להזמין מראש איסוף/החזרה בוורונה. לוודא תיבת הילוכים <b>אוטומט</b> — באירופה ידני הוא ברירת המחדל, אוטומט יקר ונגמר מהר.</p></div>
+    <div class="note"><h4>🧗 פארק חבלים Colfosco</h4><p>פתוח בערך יוני–ספטמבר. סוף ספטמבר = קצה העונה — <b>לאמת תאריך סגירה מדויק ל-2026</b> מול אתר אלטה באדיה לפני התכנון.</p></div>
+    <div class="note"><h4>🧥 מזג אוויר בדולומיטים</h4><p>סוף ספטמבר: ימים 15–20°, לילות קרים, ייתכן שלג בגבהים. שכבות + מעיל חם, במיוחד לרכבל סצ׳דה (2,500 מ׳).</p></div>
+    <div class="note"><h4>👶 התאמות לבן 3.5</h4><p>מנוחות צהריים, מגרשי משחק (וילה בורגזה), עגלה לשבילים שטוחים (וואלונגה). שימו לב: Quellenhof בלאזיסה — ייתכן מינימום גיל 4, לאמת!</p></div>
+  </div>
+</section>
+
+<!-- ============ STAY ============ -->
+<section id="stay">
+  <h2 class="sec"><span class="ico">🏨</span> השוואת לינה לפי יעד</h2>
+  <p class="lead">לחצו על כותרת עמודה למיון. כל הקישורים ממולאים מראש לתאריכים ולתפוסה (2 מבוגרים + 3 ילדים: 13, 9, 3). מחירים חיים — לבדיקה בקישור; לא הומצאו מחירים.</p>
+  <div id="stay-tables"></div>
+  <div class="disclaim">ℹ️ דירוגים מבוססים על תקצירי חיפוש מ-Booking.com/TripAdvisor ונכונים למועד הבדיקה — מומלץ לאמת בקישור החי. "מיקום מקורב" בקבצי המפה = פין מוצב לפי אזור/עיר; המיקום המדויק ייקבע לפי הנכס שתבחרו.</div>
+</section>
+
+<!-- ============ CAR ============ -->
+<section id="car">
+  <h2 class="sec"><span class="ico">🚗</span> השכרת רכב — גארדה + דולומיטים</h2>
+  <p class="lead">איסוף: ורונה 19/9 · החזרה: ורונה 26/9 (7 ימים) · דרישה: 5 נוסעים + מטען ל-10 ימים → SUV גדול / 7 מקומות / מיניוואן · <b>אוטומט מועדף</b>.</p>
+  <div class="tablecard">
+    <div class="th"><h3>אפשרויות להשוואה</h3><span class="dates">ורונה · 19–26.09.2026</span></div>
+    <div class="scroll"><table id="cartable">
+      <thead><tr>
+        <th data-k="provider">ספק <span class="ar">↕</span></th>
+        <th data-k="model">דגם/קטגוריה <span class="ar">↕</span></th>
+        <th data-k="trans">תיבה <span class="ar">↕</span></th>
+        <th data-k="seats">מושבים <span class="ar">↕</span></th>
+        <th data-k="insurance">ביטוח <span class="ar">↕</span></th>
+        <th data-k="price">מחיר לתקופה <span class="ar">↕</span></th>
+        <th>הזמנה</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table></div>
+  </div>
+  <div class="notes">
+    <div class="note"><h4>📍 שני מיקומי איסוף</h4><p><b>שדה התעופה VRN</b> (Villafranca): המבחר הגדול ביותר של 7-מושבים ואוטומט. <b>תחנת Porta Nuova</b>: נוח לרכבת אך מבחר מצומצם יותר. כדאי לבדוק את שניהם.</p></div>
+    <div class="note"><h4>⚙️ אוטומט</h4><p>חובה לסנן "Automatic" בחיפוש — ברירת המחדל באיטליה ידני. אוטומט 7-מושבים אוזל מהר לספטמבר — להזמין מוקדם.</p></div>
+    <div class="note"><h4>🛡️ ביטוח</h4><p>הביטוח הכלול כמעט תמיד עם השתתפות עצמית גבוהה (פיקדון מוקפא בכרטיס אשראי). שקלו Full Protection / Full Coverage לראש שקט.</p></div>
+    <div class="note"><h4>🚙 דגמי 7-מושבים בוורונה</h4><p>Ford Galaxy · Peugeot 5008 · Citroën Grand C4 Picasso · VW Touran/Sharan · Opel Zafira. רכבי 8–9 מושבים: Citroën Jumper.</p></div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section id="map">
+  <h2 class="sec"><span class="ico">🗺️</span> מפה משותפת ל-Google My Maps</h2>
+  <p class="lead">קובץ KML מוכן לייבוא + גיבוי CSV (שכבה לכל קטגוריה). 3 שכבות: לינה (כחול) · אטרקציות וטיולים (אדום) · תחבורה (אפור).</p>
+  <div class="mapbox">
+    <div class="filechips">
+      <a href="trip-map.kml" download>⬇️ trip-map.kml (כל השכבות)</a>
+      <a href="lodging.csv" download>🔵 lodging.csv</a>
+      <a href="attractions.csv" download>🔴 attractions.csv</a>
+      <a href="transport.csv" download>⚪ transport.csv</a>
+    </div>
+    <h4 style="margin:14px 0 0;color:var(--accent2)">הוראות ייבוא ושיתוף</h4>
+    <ol>
+      <li>היכנסו ל-<a href="https://mymaps.google.com" target="_blank" rel="noopener">mymaps.google.com</a> ולחצו <b>"צור מפה חדשה"</b>.</li>
+      <li>לחצו <b>"ייבוא"</b> תחת שם השכבה והעלו את <b>trip-map.kml</b>. אם השכבות לא נשמרות — צרו 3 שכבות וייבאו כל CSV בנפרד (Latitude/Longitude כמיקום, Name ככותרת).</li>
+      <li>עצבו את צבע הפין לפי קטגוריה (כחול/אדום/אפור) ושנו את שם השכבה לפי הצורך.</li>
+      <li>לחצו <b>"שיתוף"</b> → <b>"כל מי שיש לו הקישור — צפייה"</b> → העתיקו את הקישור ושלחו למשפחה. ניתן לפתוח ב-Google Maps בנייד ולהדפיס.</li>
+    </ol>
+    <p class="note-sm">פיני הלינה ממוקמים לפי אזור/עיר ("מיקום מקורב"); לאחר בחירת נכס סופי כדאי לעדכן את הפין למיקום המדויק. כל המיקומים מקודדים ב-UTF-8 לתמיכה מלאה בעברית.</p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    תוכנן עבור משפחה בת 5 · 17–27.09.2026 · הנתונים נאספו ביוני 2026 — אמתו מחירים, זמינות ותאריכי פתיחה/סגירה בקישורים החיים לפני הזמנה.
+    <div class="disclaim" style="text-align:right">⚠️ אף מחיר לא הומצא. כל מחיר/זמינות שלא אומת מסומן "לבדיקה בקישור". דירוגים נכונים למועד האיסוף וייתכן שהשתנו.</div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- ITINERARY DATA ---------------- */
+const days = [
+  {n:1,date:"יום ה׳ · 17/9",title:"נחיתה ברומא",stay:"מלון במרכז ההיסטורי (פנתאון/נבונה) — לילה 1/2",
+   acts:["נחיתה ב-FCO ב-21:00.","הסעה מוזמנת מראש (ואן/מונית 5–6 מקומות) למרכז ההיסטורי.","צ׳ק-אין ולישון — יום קצר אחרי טיסה."],
+   tip:"להזמין הסעה מראש כדי לא להתעכב בערב עם ילדים עייפים."},
+  {n:2,date:"יום ו׳ · 18/9",title:"רומא — יום מלא",stay:"מלון במרכז ההיסטורי — לילה 2/2",
+   acts:["בוקר: קולוסיאום + פורום רומאנו + פלטינו (כרטיס בשעה מוזמן מראש).","צהריים: ארוחה + מנוחה (חשוב לבן 3.5).","אחה״צ: פנתאון (חינם), מזרקת טרווי, גלידה, פיאצה נבונה.","ערב: ארוחה בטרסטוורה."],
+   tip:"חלופה רכה לאחה״צ — גני וילה בורגזה: מגרש משחקים, סירות, אופניים."},
+  {n:3,date:"יום ש׳ · 19/9",title:"רומא ← ורונה ← אגם גארדה",stay:"בסיס באגם גארדה — לילה 1/3",
+   acts:["בוקר רגוע; רכבת Frecciarossa מרומא טרמיני לוורונה Porta Nuova (~3 ש׳).","איסוף רכב שכור בוורונה.","אופציונלי: 1–2 שעות בוורונה (ארנה, מרפסת יוליה, גלידה) — או לשמור לחזרה.","נסיעה 30–40 דק׳ לבסיס בגארדה. ערב ראשון על האגם + ארוחה."],
+   tip:"מתחילת היום מתחיל הרכב השכור — לוודא כיסא בטיחות לקטן בהזמנה."},
+  {n:4,date:"יום א׳ · 20/9",title:"יום אגם — סירמיונה",stay:"בסיס באגם גארדה — לילה 2/3",
+   acts:["סירמיונה: טירת סקליגרו, חורבות Grotte di Catullo, שייט קצר, שחייה, גלידה.","אחה״צ רגוע על האגם או בבריכת המלון."],
+   tip:"סירמיונה מתמלאת בצהריים — להגיע מוקדם או לקראת אחה״צ."},
+  {n:5,date:"יום ב׳ · 21/9",title:"גרדהלנד",stay:"בסיס באגם גארדה — לילה 3/3",
+   acts:["יום שלם בפארק (יום אמצע שבוע = פחות קהל).","שאטל חינם מתחנת פסקיירה או נהיגה (חניה חינם)."],
+   tip:"חלופה רגועה יותר: Parco Natura Viva (ספארי/גן חיות) + עיירת אגם."},
+  {n:6,date:"יום ג׳ · 22/9",title:"גארדה ← ואל גרדנה (אורטיזאי)",stay:"אורטיזאי / ואל גרדנה — לילה 1/4",
+   acts:["צ׳ק-אאוט ונסיעה נופית ~2.5 ש׳ צפונה.","עצירה אופציונלית בבולצאנו (מוזיאון 'אצי', מומיית הקרח).","הגעה לאורטיזאי אחה״צ, צ׳ק-אין, טיול קצר להתאקלמות."],
+   tip:"מוזיאון אצי קטן ומרתק — מתאים לעצירה של שעה בדרך."},
+  {n:7,date:"יום ד׳ · 23/9",title:"רכבל סצ׳דה",stay:"אורטיזאי / ואל גרדנה — לילה 2/4",
+   acts:["רכבל מאורטיזאי לפסגת סצ׳דה (2,500 מ׳); דקות הליכה לרכס המפורסם.","הליכות קלות למעלה, שוקו חם ברפוג׳ו."],
+   tip:"סוף ספטמבר קר ורוחי בגובה — שכבות חמות, וביקור קצר למעלה."},
+  {n:8,date:"יום ה׳ · 24/9",title:"פארק חבלים Colfosco + אלטה באדיה",stay:"אורטיזאי / ואל גרדנה — לילה 3/4",
+   acts:["נסיעה נופית מעל מעבר Passo Gardena (~45 דק׳) לקולפוסקו.","פארק חבלים: מסלול צהוב (3–4, לבן 3.5), כחול (מגיל 7, לבן 9), אדום (מגיל 11, לבן 13).","לקטן: טרמפולינות וגן חיות.","שילוב עם עצירה קלה באלטה באדיה (אגם הביוטופ בקורבארה / שביל קנייפ)."],
+   tip:"לאמת תאריך סגירה מדויק של הפארק ל-2026 (קצה העונה!) מול אתר אלטה באדיה."},
+  {n:9,date:"יום ו׳ · 25/9",title:"יום בחירה (קל, מעט נהיגה)",stay:"אורטיזאי / ואל גרדנה — לילה 4/4",
+   acts:["אגם קרצה (הקפה ~20 דק׳).","ואל די פונס–סנטה מדלנה.","עמק וואלונגה בסלבה (שטוח, מתאים לעגלה).","אגם בראייס (~1.5 ש׳ נסיעה, סירות חתירה)."],
+   tip:"בוחרים אופציה אחת לפי מזג האוויר והמצב רוח — לא לעמיס."},
+  {n:10,date:"יום ש׳ · 26/9",title:"דולומיטים ← רומא (יום מעבר)",stay:"מלון ליד טרמיני, רומא — לילה אחרון",
+   acts:["בוקר צ׳ק-אאוט, נסיעה נופית אורטיזאי→ורונה (~2.5–3 ש׳), החזרת רכב.","אופציונלי 1–2 ש׳ בוורונה / צהריים.","אחה״צ Frecciarossa ורונה→רומא (~3 ש׳).","הגעה בערב, צ׳ק-אין ליד טרמיני, ארוחה רגועה."],
+   tip:"לתזמן החזרת רכב מול הרכבת — להשאיר מרווח של שעה לפחות."},
+  {n:11,date:"יום א׳ · 27/9",title:"המראה",stay:"—",
+   acts:["ארוחת בוקר, גלידה אחרונה.","יציאה ~09:00 ל-FCO (Leonardo Express 32 דק׳ מטרמיני, או מונית).","טיסה 13:00."],
+   tip:"Leonardo Express יוצא בתדירות גבוהה מטרמיני — נוח עם מזוודות."}
+];
+
+const dt=document.getElementById('daytabs'), dp=document.getElementById('daypanels');
+days.forEach((d,i)=>{
+  const b=document.createElement('button');
+  b.className='tab'+(i===0?' active':'');
+  b.innerHTML=`<span class="d">${d.date}</span>יום ${d.n}`;
+  b.onclick=()=>{document.querySelectorAll('.daytabs button').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.daypanel').forEach(x=>x.classList.remove('show'));
+    b.classList.add('active');document.getElementById('day'+d.n).classList.add('show');};
+  dt.appendChild(b);
+
+  const p=document.createElement('div');
+  p.className='daypanel'+(i===0?' show':''); p.id='day'+d.n;
+  p.innerHTML=`<div class="daycard">
+    <div class="top"><div class="date">${d.date}</div><h3>יום ${d.n} · ${d.title}</h3>
+      <span class="stay">🛏️ לינה: ${d.stay}</span></div>
+    <div class="body">
+      <div><h4>פעילויות</h4><ul>${d.acts.map(a=>`<li>${a}</li>`).join('')}</ul></div>
+      <div class="tipbox"><b>💡 טיפ:</b> ${d.tip}</div>
+    </div></div>`;
+  dp.appendChild(p);
+});
+
+/* ---------------- LODGING DATA ---------------- */
+const AGES="&age=13&age=9&age=3";
+function bk(name,ci,co){return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(name)}&checkin=${ci}&checkout=${co}&group_adults=2&group_children=3${AGES}`;}
+function gh(name){return `https://www.google.com/travel/search?q=${encodeURIComponent(name)}`;}
+function abnb(city,ci,co){return `https://www.airbnb.com/s/${encodeURIComponent(city)}/homes?checkin=${ci}&checkout=${co}&adults=2&children=3`;}
+
+const stayGroups=[
+ {title:"רומא — מרכז היסטורי (פנתאון/נבונה)",dates:"צ׳ק-אין 17/9 · צ׳ק-אאוט 19/9 · 2 לילות",ci:"2026-09-17",co:"2026-09-19",
+  pick:"<b>Internazionale Domus</b> (דירוג 9.3) — דירת 2 חדרי שינה + מטבחון, הפתרון הנוח ביותר ל-5 נפשות במרכז.",
+  rows:[
+   {name:"Hotel Martis Palace",bkName:"Hotel Martis Palace Rome",type:"מלון 4★",area:"פנתאון/נבונה",rating:"~9.0",rsort:9.0,bf:["זמינה/בתעריף","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelmartis.com",note:"חדר משפחתי = 2 חדרים מחוברים (~40מ״ר); קיבולת 5 לאמת"},
+   {name:"Hotel Lunetta",bkName:"Hotel Lunetta Rome",type:"מלון+ספא",area:"קמפו דה פיורי",rating:"לבדיקה",rsort:0,bf:["כלולה (בופה)","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotellunetta.com",note:"Family Suite עד 4; ל-5 לאמת"},
+   {name:"Internazionale Domus",bkName:"Internazionale Domus Rome",type:"דירות",area:"כיכר ספרד",rating:"9.3",rsort:9.3,rec:true,bf:["לבדיקה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.internazionaledomus.com",airbnb:"Rome--Italy",note:"דירות 2 חדרי שינה + מטבחון; קיבולת 5 סבירה"},
+   {name:"Arch Rome Suites",bkName:"Arch Rome Suites",type:"בית הארחה 4★",area:"לארגו ארג׳נטינה",rating:"9.1",rsort:9.1,bf:["כלולה","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.archromesuites.it",note:"חדר עד 4; ל-5 שני חדרים"}
+  ]},
+ {title:"רומא — ליד טרמיני",dates:"צ׳ק-אין 26/9 · צ׳ק-אאוט 27/9 · 1 לילה",ci:"2026-09-26",co:"2026-09-27",
+  pick:"<b>The Rossi</b> (~8.5) — חדרים משפחתיים וחלקם עם מטבחון, עדיף בבירור על Hotel Max (דירוג 6.2).",
+  rows:[
+   {name:"Hotel Max",bkName:"Hotel Max Rome",type:"מלון",area:"ליד טרמיני",rating:"6.2",rsort:6.2,bf:["זמינה (בופה)","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.google.com/search?q=Hotel+Max+Roma+Via+Gioberti",note:"דירוג נמוך יחסית — לשקול"},
+   {name:"The Rossi",bkName:"The Rossi Rome",type:"מלון-דירות",area:"ליד טרמיני",rating:"~8.5",rsort:8.5,rec:true,bf:["זמינה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelrossiroma.com",note:"חדרים משפחתיים, חלקם מטבחון; ~250מ׳ מטרמיני"}
+  ]},
+ {title:"אגם גארדה — חובה חניה",dates:"צ׳ק-אין 19/9 · צ׳ק-אאוט 22/9 · 3 לילות",ci:"2026-09-19",co:"2026-09-22",
+  pick:"<b>Sisan Family Resort</b> (ברדולינו) — דירת 2 חדרים ~50מ״ר המאשרת 5 נפשות, חניה חינם, אופי משפחתי. שימו לב ל-Quellenhof (5★ מהמם) אך ייתכן מינ׳ גיל 4.",
+  rows:[
+   {name:"Hotel Caesius Thermae & Spa",bkName:"Hotel Caesius Thermae Spa Bardolino",type:"מלון תרמי 4★",area:"ברדולינו",rating:"לבדיקה (~9)",rsort:9.0,bf:["כלולה (לאמת)","t-good"],park:["חינם בשטח","t-good"],official:"https://www.hotelcaesiusterme.com",note:"ספא ובריכות תרמיות; קיבולת 5 לאמת"},
+   {name:"Sisan Family Resort",bkName:"Sisan Family Resort Bardolino",type:"ריזורט 4★",area:"ברדולינו (צ׳יזאנו)",rating:"לבדיקה",rsort:0,rec:true,bf:["בופה זמין","t-good"],park:["חינם בשטח","t-good"],official:"https://www.sisanfamilyresort.com",airbnb:"Bardolino--Italy",note:"דירת 2 חדרים ~50מ״ר ל-5 ✓"},
+   {name:"Quellenhof Luxury Resort",bkName:"Quellenhof Luxury Resort Lazise",type:"ריזורט 5★",area:"לאזיסה",rating:"~9.6",rsort:9.6,bf:["כלולה","t-good"],park:["חינם בשטח","t-good"],official:"https://www.quellenhof-lazise.it",airbnb:"Lazise--Italy",note:"⚠️ ייתכן מינ׳ גיל 4 — קריטי לאמת לבן 3.5! סוויטות 2–6"},
+   {name:"Hotel Bell'Arrivo",bkName:"Hotel Bell'Arrivo Peschiera del Garda",type:"מלון 3★",area:"פסקיירה דל גארדה",rating:"לבדיקה",rsort:0,bf:["זמינה (לאמת)","t-neutral"],park:["ציבורית בתשלום","t-warn"],official:"https://www.hotelbellarrivo.it",note:"חניה לא חינם; קיבולת 5 לאמת (חדרים מחוברים)"}
+  ]},
+ {title:"אורטיזאי / ואל גרדנה — חובה חניה",dates:"צ׳ק-אין 22/9 · צ׳ק-אאוט 26/9 · 4 לילות",ci:"2026-09-22",co:"2026-09-26",
+  pick:"<b>Cavallino Bianco Family Resort</b> — מלון למשפחות בלבד עם 'Family Queen Suite *5' ל-5 נפשות, All-In וחניון בשטח. חלופת ערך מצוינת: <b>Elvis Apartments</b> (8.4, דירה ל-5, חניה חינם).",
+  rows:[
+   {name:"Cavallino Bianco Family Resort & Spa",bkName:"Cavallino Bianco Family Resort Ortisei",type:"מלון פמילי 4★S",area:"אורטיזאי",rating:"לבדיקה",rsort:0,rec:true,bf:["כלולה (All-In)","t-good"],park:["חניון בשטח","t-good"],official:"https://www.cavallino-bianco.com",note:"Family Queen Suite *5 ל-5 ✓; מלון למשפחות בלבד"},
+   {name:"Hotel Garni Gardena",bkName:"Hotel Garni Gardena Val Gardena",type:"גארני/דירות",area:"ואל גרדנה",rating:"לבדיקה",rsort:0,bf:["לבדיקה","t-neutral"],park:["לבדיקה","t-neutral"],official:"https://www.hotelgardena.com",note:"⚠️ לאמת זהות — ייתכן בסנטה כריסטינה ולא אורטיזאי"},
+   {name:"Classic Hotel am Stetteneck",bkName:"Classic Hotel am Stetteneck Ortisei",type:"מלון 4★",area:"אורטיזאי (מרכז)",rating:"8.9",rsort:8.9,bf:["כלולה","t-good"],park:["בשטח בתשלום","t-warn"],official:"https://www.stetteneck.com",note:"חדרים מחוברים / ג׳וניור סוויט ל-5"},
+   {name:"Elvis Apartments",bkName:"Elvis Apartments Ortisei",type:"אפרטהוטל/דירות",area:"אורטיזאי (רונקדיצה)",rating:"8.4",rsort:8.4,bf:["אופציונלי €25","t-neutral"],park:["חינם פרטית","t-good"],official:"https://www.hotel-elvis.com",airbnb:"Ortisei--Italy",note:"דירת 2 חדרים ל-4–6 ✓; ערך טוב"}
+  ]}
+];
+
+const stc=document.getElementById('stay-tables');
+stayGroups.forEach((g,gi)=>{
+  const card=document.createElement('div'); card.className='tablecard';
+  card.innerHTML=`<div class="th"><h3>${g.title}</h3><span class="dates">${g.dates}</span></div>
+   <div class="pickbar">★ הבחירה שלי: ${g.pick}</div>
+   <div class="scroll"><table id="st${gi}">
+    <thead><tr>
+      <th data-k="name">שם <span class="ar">↕</span></th>
+      <th data-k="type">סוג <span class="ar">↕</span></th>
+      <th data-k="area">אזור <span class="ar">↕</span></th>
+      <th data-k="rsort">דירוג <span class="ar">↕</span></th>
+      <th data-k="bf">בוקר <span class="ar">↕</span></th>
+      <th data-k="park">חניה <span class="ar">↕</span></th>
+      <th>מחיר/לילה</th><th>סה״כ</th><th>קישורים</th>
+    </tr></thead><tbody></tbody></table></div>`;
+  stc.appendChild(card);
+  const tb=card.querySelector('tbody');
+  function render(rows){
+    tb.innerHTML='';
+    rows.forEach(r=>{
+      const links=[`<a class="btnlink bk" target="_blank" rel="noopener" href="${bk(r.bkName,g.ci,g.co)}">Booking</a>`,
+        `<a class="btnlink" target="_blank" rel="noopener" href="${r.official}">רשמי</a>`,
+        `<a class="btnlink" target="_blank" rel="noopener" href="${gh(r.bkName)}">Google</a>`];
+      if(r.airbnb) links.push(`<a class="btnlink" target="_blank" rel="noopener" href="${abnb(r.airbnb,g.ci,g.co)}">Airbnb</a>`);
+      const tr=document.createElement('tr'); if(r.rec) tr.className='rec';
+      tr.innerHTML=`<td class="nm">${r.name}<div class="note-sm">${r.note}</div></td>
+        <td>${r.type}</td><td>${r.area}</td>
+        <td>${r.rating}</td>
+        <td><span class="tag ${r.bf[1]}">${r.bf[0]}</span></td>
+        <td><span class="tag ${r.park[1]}">${r.park[0]}</span></td>
+        <td><span class="tag t-neutral">לבדיקה בקישור</span></td>
+        <td><span class="tag t-neutral">לבדיקה בקישור</span></td>
+        <td><div class="links">${links.join('')}</div></td>`;
+      tb.appendChild(tr);
+    });
+  }
+  render(g.rows);
+  let asc={};
+  card.querySelectorAll('thead th[data-k]').forEach(th=>{
+    th.onclick=()=>{const k=th.dataset.k; asc[k]=!asc[k];
+      const s=[...g.rows].sort((a,b)=>{let x=a[k],y=b[k];
+        if(typeof x==='number'){return asc[k]?x-y:y-x;}
+        x=(''+x);y=(''+y);return asc[k]?x.localeCompare(y,'he'):y.localeCompare(x,'he');});
+      render(s);};
+  });
+});
+
+/* ---------------- CAR DATA ---------------- */
+const cars=[
+ {provider:"Sixt — שדה VRN",model:"VW Sharan / Ford Galaxy או דומה",trans:"אוטומט (לסנן)",seats:"7",insurance:"CDW/TP בסיסי + שדרוג Full Protection",price:"לבדיקה בקישור",link:"https://www.sixt.com/car-rental/italy/verona/verona-airport/"},
+ {provider:"Europcar — שדה VRN",model:"Ford Galaxy / Peugeot 5008 או דומה",trans:"אוטומט (לסנן)",seats:"7",insurance:"CDW + Theft; אופציית Premium",price:"לבדיקה בקישור",link:"https://www.europcar.com/en-us/places/car-rental-italy/sommacampagna/verona-airport"},
+ {provider:"Rentalcars — השוואה (VRN)",model:"כל הספקים · People carrier 7+",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Protection משלים",price:"לבדיקה בקישור",link:"https://www.rentalcars.com/en/airport/it/vrn/"},
+ {provider:"DiscoverCars — השוואה",model:"מיניוואן / 7 מושבים (כולל ספקים מקומיים)",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Coverage משלים",price:"לבדיקה בקישור",link:"https://www.discovercars.com/italy/verona"}
+];
+const ctb=document.querySelector('#cartable tbody');
+function renderCars(rows){ctb.innerHTML='';rows.forEach(c=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="nm">${c.provider}</td><td>${c.model}</td>
+   <td><span class="tag t-good">${c.trans}</span></td><td>${c.seats}</td>
+   <td>${c.insurance}</td><td><span class="tag t-neutral">${c.price}</span></td>
+   <td><a class="btnlink bk" target="_blank" rel="noopener" href="${c.link}">להזמנה</a></td>`;
+  ctb.appendChild(tr);});}
+renderCars(cars);
+let casc={};
+document.querySelectorAll('#cartable thead th[data-k]').forEach(th=>{
+  th.onclick=()=>{const k=th.dataset.k;casc[k]=!casc[k];
+   const s=[...cars].sort((a,b)=>{const x=''+a[k],y=''+b[k];return casc[k]?x.localeCompare(y,'he'):y.localeCompare(x,'he');});
+   renderCars(s);};
+});
+</script>
+</body>
+</html>
