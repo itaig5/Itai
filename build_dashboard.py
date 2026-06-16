@@ -149,6 +149,27 @@ places = {
  "תחבורה":[("שדה תעופה FCO",41.8003,12.2389),("תחנת רומא טרמיני",41.9009,12.5018)],
 }
 
+# ---------------- WEATHER (typical September averages) ----------------
+# day_high, night_low, water/extra, clothing  — clearly labeled as typical norms, verify live forecast
+weather = [
+ ("🏛️ רומא","ים-תיכוני, נעים","יום ~26–28°C (סוף החודש ~24°C)","לילה ~15–17°C","בעיקר שמשי; ייתכן ממטר קצר",
+  "בגדי קיץ, שכבה דקה לערב, נעלי הליכה נוחות, מים+כובע ליום בעיר."),
+ ("🏖️ אגם גארדה","מתון, שמשי","יום ~24–26°C","לילה ~13–15°C","מי האגם ~22–23°C — עוד נעים לשחייה",
+  "בגדי קיץ + בגד ים, כפכפים, שכבה לערב על המים."),
+ ("🏔️ דולומיטים / אורטיזאי","אלפיני, משתנה מהר","יום בעמק ~15–20°C","לילה ~3–7°C (ייתכן קרוב ל-0)","בפסגות (סצ׳דה 2,500מ׳) ~0–8°C, רוח וייתכן שלג",
+  "שכבות! מעיל חם/רוח, כובע+כפפות לגובה, נעלי הליכה, שכבה תרמית לקטן."),
+]
+weather_cards = []
+for emoji_name, climate, day, night, extra, cloth in weather:
+    weather_cards.append(f'''<div class="wcard">
+  <div class="wtop"><span class="wname">{emoji_name}</span><span class="wclimate">{climate}</span></div>
+  <div class="wrow"><span>☀️ יום</span><b>{day.split("~")[1] if "~" in day else day}</b></div>
+  <div class="wrow"><span>🌙 לילה</span><b>{night.split("~")[1] if "~" in night else night}</b></div>
+  <div class="wextra">{extra}</div>
+  <div class="wcloth">🧳 {cloth}</div>
+</div>''')
+weather_html = "\n".join(weather_cards)
+
 # ================= BUILD HTML =================
 def esc(s): return s  # content is trusted/static
 
