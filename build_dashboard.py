@@ -14,6 +14,8 @@ def gmap(name): return f"https://www.google.com/maps/search/?api=1&query={quote_
 def gmapll(la,ln): return f"https://www.google.com/maps/search/?api=1&query={la},{ln}"
 def abnb(city,ci,co): return f"https://www.airbnb.com/s/{quote(city)}/homes?checkin={ci}&checkout={co}&adults=2&children=3"
 
+SITE_URL = "https://friendly-blancmange-f8b49f.netlify.app/"
+
 def night_str(lo,hi):
     if lo and hi: return f"€{lo}–{hi}"
     if lo: return f"€{lo}+"
@@ -410,7 +412,11 @@ HTML = f'''<!DOCTYPE html>
     <span class="pill">🚄 רכבת רומא⇄ורונה</span>
     <span class="pill">🚗 רכב: גארדה+דולומיטים</span>
   </div>
-  <button class="printbtn" onclick="window.print()">🖨️ הדפסה / שמירה כ-PDF</button>
+  <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+    <button class="printbtn" onclick="window.print()">🖨️ הדפסה / PDF</button>
+    <button class="printbtn" onclick="copyLink()">🔗 העתק קישור</button>
+  </div>
+  <div style="margin-top:8px;font-size:12.5px;opacity:.92">קישור לדף: <a href="{SITE_URL}" target="_blank" rel="noopener" style="color:#d6f3fb">{SITE_URL}</a></div>
 </div></header>
 
 <nav class="toc"><div class="row wrap">
@@ -530,6 +536,11 @@ HTML = f'''<!DOCTYPE html>
       <li>עצבו צבע פין לפי קטגוריה (כחול/אדום/אפור) ושנו שם שכבה.</li>
       <li>לחצו <b>"שיתוף"</b> → <b>"כל מי שיש לו הקישור — צפייה"</b> → העתיקו ושלחו למשפחה.</li>
     </ol>
+    <div style="text-align:center;margin-top:16px">
+      <h4 style="color:var(--accent2);margin:0 0 6px">📱 סרקו לפתיחה בנייד</h4>
+      <img src="trip-qr.png" alt="QR לדשבורד" style="width:158px;height:158px;border:1px solid var(--line);border-radius:12px;padding:6px;background:#fff">
+      <div class="note-sm">סריקה פותחת את הדף הזה בטלפון</div>
+    </div>
     <h4 style="margin:16px 0 0;color:var(--accent2)">📍 ניווט מהיר ב-Google Maps (נוח במובייל)</h4>
     <p class="note-sm">לחיצה פותחת את המיקום ב-Google Maps לניווט.</p>
     <div class="qlinks">
@@ -614,6 +625,14 @@ HTML = f'''<!DOCTYPE html>
     }})(items[i]);}}
     updProg();
   }}catch(e){{}}
+
+  // copy page link
+  window.copyLink=function(){{
+    var u='{SITE_URL}';
+    if(navigator.clipboard&&navigator.clipboard.writeText){{
+      navigator.clipboard.writeText(u).then(function(){{alert('הקישור הועתק! '+u);}},function(){{prompt('העתק את הקישור:',u);}});
+    }}else{{prompt('העתק את הקישור:',u);}}
+  }};
 
   // shared My Maps link
   window.saveMyMaps=function(){{
