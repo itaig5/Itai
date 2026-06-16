@@ -217,6 +217,43 @@ for gtitle, items in resto_groups:
     resto_html.append(f'<div class="tablecard"><div class="th"><h3>{gtitle}</h3></div>{"".join(rows)}</div>')
 resto_html = "\n".join(resto_html)
 
+# ---------------- TICKETS (verified official ticketing URLs) ----------------
+# group, list of dict(name, when, official, reseller, rlabel, note)
+ticket_groups = [
+ ("🏛️ רומא ותחבורה", [
+   dict(name="קולוסיאום + פורום רומאנו + פלטינו", when="יום 2", official="https://ticketing.colosseo.it/en/", reseller="https://www.getyourguide.com/colosseum-l719/", rlabel="חלופה (GetYourGuide)", note="⚠️ הזמינו מיד עם פתיחת המכירה — נמכר מהר מאוד. כרטיס בשעה מוזמן מראש."),
+   dict(name="רכבת Frecciarossa רומא⇄ורונה", when="ימים 3 ו-10", official="https://www.trenitalia.com/en.html", reseller="https://www.italotreno.com/en", rlabel="Italo (חלופה זהה)", note="⚠️ נפתח ~4 חודשים מראש — מוקדם = זול בהרבה."),
+   dict(name="Leonardo Express (טרמיני↔FCO)", when="יום 11", official="https://www.trenitalia.com/en/services/leonardo-express.html", reseller=None, rlabel=None, note="€17.90, כל ~15 דק׳, ~32 דק׳. אפשר גם לקנות בתחנה."),
+ ]),
+ ("🏖️ אגם גארדה וורונה", [
+   dict(name="גרדהלנד", when="יום 5", official="https://www.gardaland.it/en/tickets-season-passes/tickets/", reseller="https://www.tiqets.com/en/gardaland-amusement-park-tickets-l145735/", rlabel="חלופה (Tiqets)", note="כרטיס מקוון מראש זול יותר ומקצר תורים."),
+   dict(name="Parco Natura Viva (חלופה ליום 5)", when="יום 5", official="https://shop.parconaturaviva.it", reseller="https://www.tiqets.com/en/bussolengo-attractions-c71971/", rlabel="חלופה (Tiqets)", note=None),
+   dict(name="טירת סקליגרו + Grotte di Catullo (סירמיונה)", when="יום 4", official="https://www.museiitaliani.it", reseller="https://www.getyourguide.com/sirmione-l3990/", rlabel="חלופה (GetYourGuide)", note="מוזיאונים ממלכתיים — הכרטיס דרך הפלטפורמה הלאומית museiitaliani.it."),
+   dict(name="ארנה די ורונה (אופציונלי)", when="ימים 3 / 10", official="https://www.arena.it/en/arena-verona-opera-festival/tickets/", reseller="https://www.getyourguide.com/verona-l1029/", rlabel="חלופה (GetYourGuide)", note="ℹ️ פסטיבל האופרה מסתיים ~12/9 — בתאריכים שלכם אין מופעים, אך אפשר לבקר במבנה עצמו."),
+ ]),
+ ("🏔️ הדולומיטים", [
+   dict(name="רכבל סצ׳דה (Ortisei–Furnes–Seceda)", when="יום 7", official="https://www.seceda.it/en/tickets", reseller="https://www.getyourguide.com/-l103355/?q=seceda", rlabel="חלופה (GetYourGuide)", note="⚠️ מקיץ 2026 חובה הזמנת חלון-זמן (timed slot) מראש באתר הרשמי."),
+   dict(name="מוזיאון אצי (מומיית הקרח), בולצאנו", when="יום 6", official="https://www.iceman.it/en", reseller="https://www.tiqets.com/en/bolzano-attractions-c66172/", rlabel="חלופה (Tiqets)", note=None),
+   dict(name="פארק חבלים Colfosco (אלטה באדיה)", when="יום 8", official="https://www.alta-badia.org/en/leisure-activities/colfosco-adventure-park/", reseller=None, rlabel=None, note="⚠️ אין מכירה מקוונת נפרדת — מידע/קשר דרך לשכת התיירות. לאמת תאריך סגירה מדויק ל-2026 (קצה העונה)."),
+   dict(name="אגם בראייס — הזמנת חניה", when="יום 9 (חלופה)", official="https://www.pragsparking.com/en", reseller=None, rlabel=None, note="ℹ️ הזמנת חניה נדרשת רק 1/7–15/9. סוף ספטמבר ככל הנראה פטור — לאמת באתר לקראת הנסיעה."),
+ ]),
+]
+ticket_html = []
+for gtitle, items in ticket_groups:
+    rows = []
+    for it in items:
+        links = [f'<a class="btnlink bk" target="_blank" rel="noopener" href="{it["official"]}">🎟️ כרטיסים רשמיים</a>']
+        if it["reseller"]:
+            links.append(f'<a class="btnlink" target="_blank" rel="noopener" href="{it["reseller"]}">{it["rlabel"]}</a>')
+        note = f'<div class="rwhy">{it["note"]}</div>' if it["note"] else ""
+        rows.append(f'''<div class="ritem">
+   <div class="rh"><span class="rname" style="color:var(--ink)">{it["name"]}</span><span class="tag t-neutral">{it["when"]}</span></div>
+   {note}
+   <div class="links" style="margin-top:6px">{"".join(links)}</div>
+ </div>''')
+    ticket_html.append(f'<div class="tablecard"><div class="th"><h3>{gtitle}</h3></div>{"".join(rows)}</div>')
+ticket_html = "\n".join(ticket_html)
+
 # ================= BUILD HTML =================
 def esc(s): return s  # content is trusted/static
 
@@ -502,6 +539,7 @@ HTML = f'''<!DOCTYPE html>
 <nav class="toc"><div class="row wrap">
   <a href="#itinerary">🗓️ מסלול יומי</a>
   <a href="#notes">📌 הערות</a>
+  <a href="#tickets">🎟️ כרטיסים</a>
   <a href="#weather">🌤️ מזג אוויר</a>
   <a href="#stay">🏨 לינה</a>
   <a href="#food">🍝 מסעדות</a>
@@ -534,6 +572,13 @@ HTML = f'''<!DOCTYPE html>
     <div class="note"><h4>🧥 מזג אוויר בדולומיטים</h4><p>סוף ספטמבר: ימים 15–20°, לילות קרים, ייתכן שלג בגבהים. שכבות + מעיל חם, במיוחד לרכבל סצ׳דה (2,500 מ׳).</p></div>
     <div class="note"><h4>👶 התאמות לבן 3.5</h4><p>מנוחות צהריים, מגרשי משחק (וילה בורגזה), עגלה לשבילים שטוחים (וואלונגה). שימו לב: Quellenhof בלאזיסה — ייתכן מינימום גיל 4, לאמת!</p></div>
   </div>
+</section>
+
+<section id="tickets">
+  <h2 class="sec"><span class="ico">🎟️</span> כרטיסים והזמנות</h2>
+  <p class="lead">קישורים <b>רשמיים</b> לרכישה (ועוד חלופה מאומתת כמו GetYourGuide/Tiqets/Italo). תמיד עדיף האתר הרשמי. שימו לב לאזהרות — חלק נמכר מהר או דורש הזמנת חלון-זמן.</p>
+{ticket_html}
+  <div class="disclaim">🎟️ העדיפו את הקישור הרשמי. <b>קולוסיאום</b> ו-<b>רכבות</b> — להזמין מוקדם ככל האפשר. <b>רכבל סצ׳דה</b> — מ-2026 חובה הזמנת חלון-זמן מראש. <b>פארק Colfosco</b> — לאמת תאריך סגירה ל-2026. <b>בראייס</b> — חניה ללא הזמנה אחרי 15/9 (לאמת).</div>
 </section>
 
 <section id="weather">
