@@ -149,26 +149,73 @@ places = {
  "תחבורה":[("שדה תעופה FCO",41.8003,12.2389),("תחנת רומא טרמיני",41.9009,12.5018)],
 }
 
-# ---------------- WEATHER (typical September averages) ----------------
-# day_high, night_low, water/extra, clothing  — clearly labeled as typical norms, verify live forecast
+# ---------------- WEATHER (typical September norms — verify live forecast) ----------------
+# name, climate, day_high, night_low, extra, clothing
 weather = [
- ("🏛️ רומא","ים-תיכוני, נעים","יום ~26–28°C (סוף החודש ~24°C)","לילה ~15–17°C","בעיקר שמשי; ייתכן ממטר קצר",
-  "בגדי קיץ, שכבה דקה לערב, נעלי הליכה נוחות, מים+כובע ליום בעיר."),
- ("🏖️ אגם גארדה","מתון, שמשי","יום ~24–26°C","לילה ~13–15°C","מי האגם ~22–23°C — עוד נעים לשחייה",
-  "בגדי קיץ + בגד ים, כפכפים, שכבה לערב על המים."),
- ("🏔️ דולומיטים / אורטיזאי","אלפיני, משתנה מהר","יום בעמק ~15–20°C","לילה ~3–7°C (ייתכן קרוב ל-0)","בפסגות (סצ׳דה 2,500מ׳) ~0–8°C, רוח וייתכן שלג",
-  "שכבות! מעיל חם/רוח, כובע+כפפות לגובה, נעלי הליכה, שכבה תרמית לקטן."),
+ ("🏛️ רומא","ים-תיכוני, נעים","~26–28°C","~15–17°C","בעיקר שמשי; ייתכן ממטר קצר. בסוף החודש מעט מתקרר (~24°C ביום).",
+  "בגדי קיץ, שכבה דקה לערב, נעלי הליכה נוחות, כובע ובקבוק מים ליום בעיר."),
+ ("🏖️ אגם גארדה","מתון, שמשי","~24–26°C","~13–15°C","מי האגם ~22–23°C — עדיין נעים לשחייה.",
+  "בגדי קיץ + בגד ים, כפכפים, שכבה לערב על שפת המים."),
+ ("🏔️ דולומיטים / אורטיזאי","אלפיני, משתנה מהר","~15–20°C בעמק","~3–7°C (ייתכן קרוב ל-0)","בפסגות (סצ׳דה 2,500מ׳) ~0–8°C עם רוח, וייתכן שלג. הפרשים גדולים בין עמק לפסגה.",
+  "שכבות! מעיל חם/רוח, כובע וכפפות לגובה, נעלי הליכה, שכבה תרמית לקטן."),
 ]
 weather_cards = []
-for emoji_name, climate, day, night, extra, cloth in weather:
+for name,climate,day,night,extra,cloth in weather:
     weather_cards.append(f'''<div class="wcard">
-  <div class="wtop"><span class="wname">{emoji_name}</span><span class="wclimate">{climate}</span></div>
-  <div class="wrow"><span>☀️ יום</span><b>{day.split("~")[1] if "~" in day else day}</b></div>
-  <div class="wrow"><span>🌙 לילה</span><b>{night.split("~")[1] if "~" in night else night}</b></div>
+  <div class="wtop"><span class="wname">{name}</span><span class="wclimate">{climate}</span></div>
+  <div class="wtemps"><div class="wt"><span>☀️ יום</span><b>{day}</b></div><div class="wt"><span>🌙 לילה</span><b>{night}</b></div></div>
   <div class="wextra">{extra}</div>
-  <div class="wcloth">🧳 {cloth}</div>
+  <div class="wcloth">🧳 <b>לבוש:</b> {cloth}</div>
 </div>''')
 weather_html = "\n".join(weather_cards)
+
+# ---------------- RESTAURANTS (family-friendly; verified real places) ----------------
+# group title, list of (name, area, cuisine, why, price)
+resto_groups = [
+ ("🏛️ רומא — מרכז היסטורי", [
+   ("Armando al Pantheon","ליד הפנתאון","טרטוריה רומאית קלאסית","מוסד משפחתי ותיק, מנות מסורתיות (קרבונרה, קצ׳ו אה פפה). קטן — להזמין מראש","€€€"),
+   ("Tonnarello","טרסטוורה","פסטה/טרטוריה","תוסס, מנות גדולות (~€12.5), פופולרי למשפחות, התור זז מהר","€€"),
+   ("Da Enzo al 29","טרסטוורה","טרטוריה רומאית קטנה","אותנטי וזול, פסטה שילדים אוהבים. קטן — להגיע מוקדם","€€"),
+   ("Dar Poeta","טרסטוורה","פיצרייה","רגוע וידידותי לילדים, פיצה פשוטה לכולם","€€"),
+   ("Da Tonino","ליד פיאצה נבונה","טרטוריה פשוטה","זול, מהיר וקליל (קציצות מפורסמות)","€"),
+   ("La Renella","טרסטוורה","מאפייה / פיצה בחיתוך","פרוסות פריכות, מהיר וזול — מצוין לבן 3.5","€"),
+ ]),
+ ("🍦 רומא — גלידה", [
+   ("Giolitti","ליד הפנתאון","גלידרייה היסטורית","מ~1900, מוסד רומאי, מבחר טעמים ענק","€"),
+   ("Gelateria del Teatro","ליד פיאצה נבונה","גלידה אומנותית","טעמים מיוחדים (תאנה-שקד-ריקוטה), איכות מנה קטנה","€"),
+   ("Frigidarium","ליד פיאצה נבונה","גלידרייה פופולרית","גלידה בטבילת שוקולד — אהובה על ילדים","€"),
+ ]),
+ ("🏛️ רומא — ליד טרמיני", [
+   ("Mercato Centrale Roma","בתוך תחנת טרמיני","אולם אוכל (food hall)","~500 מקומות, 18 דוכנים (פיצת Bonci, Trapizzino, פסטה) — כל אחד בוחר. פתוח עד מאוחר","€/€€"),
+   ("Trattoria Monti","אסקווילינו (ליד טרמיני)","טרטוריה משפחתית, מטבח לה-מארקה","ביתי ורב-דורי, עדיף לגדולים — להזמין מראש","€€"),
+   ("Trattoria da Danilo","דרומית לטרמיני","קוצ׳ינה רומאנה","כפרי וידידותי, קלאסיקות רומיות (קרבונרה, גריצ׳ה)","€€"),
+ ]),
+ ("🏖️ אגם גארדה", [
+   ("Trattoria al Porticciolo","ברדולינו","איטלקי / פיצה / דגי אגם","על שפת האגם, פיצה ופסטה שילדים אוהבים","€€"),
+   ("Ristorante Alla Fassa","לאזיסה","איטלקי / דגי אגם","טרסה גדולה על המים — קליל וקרוב למים לילדים","€€"),
+   ("Pizzeria La Roccia","סירמיונה","פיצה נפוליטנית","פיצה מהירה בטאבון, ישיבה פנים + חוץ מקורה","€€"),
+   ("Ristorante Risorgimento","סירמיונה","איטלקי מסורתי","ותיק (100+ שנים), תפריט רחב לשולחן רב-גילאי","€€€"),
+   ("Trattoria Bella Italia","פסקיירה דל גארדה","פסטה/בשר ורונזי","כפרי עם טרסה, בישול מקומי טרי","€€"),
+ ]),
+ ("🏔️ אורטיזאי / ואל גרדנה", [
+   ("Mauriz Keller","אורטיזאי (מרכז)","דרום-טירולי + פיצה בטאבון","מרכזי, מנות גדולות, פיצה/פסטה + מקומי. דירוג גבוה בטריפאדוויזר","€€"),
+   ("Restaurant Four","אורטיזאי (מרכז)","טירולי / ים-תיכוני / פיצה","קליל ומרכזי, פיצות אותנטיות + טייקאווי","€€"),
+   ("Gostner Schwaige","אלפה די סיוזי","בקתת הרים דרום-טירולית","רכבל + ~30 דק׳ הליכה קלה (הכי קלה לקטן!). מרק פרחי-חציר בקערת לחם","€€"),
+   ("Rifugio Firenze (Regensburgerhütte)","מרחבי סצ׳דה","טירולי / לדיני","בקתה משפחתית פופולרית, נוף Odle, אופציות צמחוני/טבעוני/ללא גלוטן","€€"),
+   ("Rifugio Sasso Piatto","אזור סאסולונגו","בקתה דרום-טירולית","Schlutzkrapfen ביתי, חיות קטנות. הליכה ארוכה יותר — לשקול עם הקטן","€€"),
+ ]),
+]
+resto_html = []
+for gtitle, items in resto_groups:
+    rows = []
+    for name, area, cuisine, why, price in items:
+        rows.append(f'''<div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="{gmap(name+' '+area)}">📍 {name}</a><span class="tag t-neutral">{price}</span></div>
+   <div class="rmeta">{area} · {cuisine}</div>
+   <div class="rwhy">{why}</div>
+ </div>''')
+    resto_html.append(f'<div class="tablecard"><div class="th"><h3>{gtitle}</h3></div>{"".join(rows)}</div>')
+resto_html = "\n".join(resto_html)
 
 # ================= BUILD HTML =================
 def esc(s): return s  # content is trusted/static
@@ -396,6 +443,18 @@ HTML = f'''<!DOCTYPE html>
   .qlgrid a:active,.qlgrid a:hover{{background:#0e7490;color:#fff;border-color:#0e7490}}
   footer{{padding:26px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}}
   .disclaim{{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#7c2d12;margin-top:10px;text-align:right}}
+  .wgrid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}}
+  .wcard{{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:15px 17px}}
+  .wtop{{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}}
+  .wname{{font-size:17px;font-weight:700}} .wclimate{{font-size:12.5px;color:var(--muted)}}
+  .wtemps{{display:flex;gap:10px;margin:10px 0}}
+  .wt{{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-align:center}}
+  .wt span{{display:block;font-size:12px;color:var(--muted)}} .wt b{{font-size:16px}}
+  .wextra{{font-size:13px;color:#374151}} .wcloth{{font-size:13px;margin-top:8px;background:#ecfeff;border-radius:8px;padding:8px 10px}}
+  .ritem{{padding:12px 16px;border-bottom:1px solid var(--line)}} .ritem:last-child{{border-bottom:0}}
+  .rh{{display:flex;justify-content:space-between;align-items:baseline;gap:10px}}
+  .rname{{font-weight:700;text-decoration:none;color:var(--accent2)}} .rname:hover{{text-decoration:underline}}
+  .rmeta{{font-size:12.5px;color:var(--muted);margin-top:2px}} .rwhy{{font-size:13.5px;margin-top:3px}}
 
   /* ---- MOBILE: stack tables into cards ---- */
   @media(max-width:760px){{
@@ -443,7 +502,9 @@ HTML = f'''<!DOCTYPE html>
 <nav class="toc"><div class="row wrap">
   <a href="#itinerary">🗓️ מסלול יומי</a>
   <a href="#notes">📌 הערות</a>
+  <a href="#weather">🌤️ מזג אוויר</a>
   <a href="#stay">🏨 לינה</a>
+  <a href="#food">🍝 מסעדות</a>
   <a href="#budget">💶 תקציב</a>
   <a href="#car">🚗 רכב</a>
   <a href="#checklist">✅ צ׳ק-ליסט</a>
@@ -475,11 +536,27 @@ HTML = f'''<!DOCTYPE html>
   </div>
 </section>
 
+<section id="weather">
+  <h2 class="sec"><span class="ico">🌤️</span> מזג אוויר צפוי וטיפי לבוש</h2>
+  <p class="lead">ממוצעים עונתיים טיפוסיים לספטמבר — לא תחזית. בדקו תחזית חיה כשבוע לפני הנסיעה.</p>
+  <div class="wgrid">
+{weather_html}
+  </div>
+  <div class="disclaim">🌡️ הערכים הם נורמות אקלים טיפוסיות לסוף ספטמבר, לא תחזית. בדולומיטים מזג האוויר משתנה מהר והגובה קובע — תמיד שכבה חמה בתיק.</div>
+</section>
+
 <section id="stay">
   <h2 class="sec"><span class="ico">🏨</span> השוואת לינה לפי יעד</h2>
   <p class="lead">קישורים ממולאים מראש לתאריכים ולתפוסה (2 מבוגרים + 3 ילדים: 13, 9, 3). <b>המחירים אינדיקטיביים</b> ("מ-" של אגרגטורים) — תמיד לאמת בקישור. במחשב אפשר ללחוץ על כותרת עמודה למיון.</p>
   {stay_html}
   <div class="disclaim">ℹ️ כל המחירים ב-<b>€</b> ואינדיקטיביים בלבד (מקור: תקצירי חיפוש, יוני 2026). חדר/דירה ל-5 נפשות עשוי להיות בקצה הגבוה. מס עירוני (~€3–7 לאדם/לילה) לרוב בנפרד.</div>
+</section>
+
+<section id="food">
+  <h2 class="sec"><span class="ico">🍝</span> מסעדות מומלצות (ידידותיות למשפחות)</h2>
+  <p class="lead">מקומות אמיתיים, ותיקים ומדורגים, מתאימים לילדים (פיצה/פסטה/גלידה/בקתות הרים). 📍 לחיצה פותחת ב-Google Maps. מחירים: € זול · €€ בינוני · €€€ יקר. כדאי לאמת כיסא תינוק ולהזמין מראש במקומות הקטנים/בקתות.</p>
+{resto_html}
+  <div class="disclaim">🍽️ המחירים הם רמות מנחות בלבד. בקתות ההרים (Gostner, Rifugio Firenze) — מומלץ להזמין מראש; Gostner Schwaige היא הקלה ביותר להגעה עם הקטן.</div>
 </section>
 
 <section id="budget">

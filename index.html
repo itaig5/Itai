@@ -104,6 +104,18 @@
   .qlgrid a:active,.qlgrid a:hover{background:#0e7490;color:#fff;border-color:#0e7490}
   footer{padding:26px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}
   .disclaim{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#7c2d12;margin-top:10px;text-align:right}
+  .wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .wcard{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:15px 17px}
+  .wtop{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .wname{font-size:17px;font-weight:700} .wclimate{font-size:12.5px;color:var(--muted)}
+  .wtemps{display:flex;gap:10px;margin:10px 0}
+  .wt{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-align:center}
+  .wt span{display:block;font-size:12px;color:var(--muted)} .wt b{font-size:16px}
+  .wextra{font-size:13px;color:#374151} .wcloth{font-size:13px;margin-top:8px;background:#ecfeff;border-radius:8px;padding:8px 10px}
+  .ritem{padding:12px 16px;border-bottom:1px solid var(--line)} .ritem:last-child{border-bottom:0}
+  .rh{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .rname{font-weight:700;text-decoration:none;color:var(--accent2)} .rname:hover{text-decoration:underline}
+  .rmeta{font-size:12.5px;color:var(--muted);margin-top:2px} .rwhy{font-size:13.5px;margin-top:3px}
 
   /* ---- MOBILE: stack tables into cards ---- */
   @media(max-width:760px){
@@ -151,7 +163,9 @@
 <nav class="toc"><div class="row wrap">
   <a href="#itinerary">🗓️ מסלול יומי</a>
   <a href="#notes">📌 הערות</a>
+  <a href="#weather">🌤️ מזג אוויר</a>
   <a href="#stay">🏨 לינה</a>
+  <a href="#food">🍝 מסעדות</a>
   <a href="#budget">💶 תקציב</a>
   <a href="#car">🚗 רכב</a>
   <a href="#checklist">✅ צ׳ק-ליסט</a>
@@ -296,6 +310,32 @@
     <div class="note"><h4>🧥 מזג אוויר בדולומיטים</h4><p>סוף ספטמבר: ימים 15–20°, לילות קרים, ייתכן שלג בגבהים. שכבות + מעיל חם, במיוחד לרכבל סצ׳דה (2,500 מ׳).</p></div>
     <div class="note"><h4>👶 התאמות לבן 3.5</h4><p>מנוחות צהריים, מגרשי משחק (וילה בורגזה), עגלה לשבילים שטוחים (וואלונגה). שימו לב: Quellenhof בלאזיסה — ייתכן מינימום גיל 4, לאמת!</p></div>
   </div>
+</section>
+
+<section id="weather">
+  <h2 class="sec"><span class="ico">🌤️</span> מזג אוויר צפוי וטיפי לבוש</h2>
+  <p class="lead">ממוצעים עונתיים טיפוסיים לספטמבר — לא תחזית. בדקו תחזית חיה כשבוע לפני הנסיעה.</p>
+  <div class="wgrid">
+<div class="wcard">
+  <div class="wtop"><span class="wname">🏛️ רומא</span><span class="wclimate">ים-תיכוני, נעים</span></div>
+  <div class="wtemps"><div class="wt"><span>☀️ יום</span><b>~26–28°C</b></div><div class="wt"><span>🌙 לילה</span><b>~15–17°C</b></div></div>
+  <div class="wextra">בעיקר שמשי; ייתכן ממטר קצר. בסוף החודש מעט מתקרר (~24°C ביום).</div>
+  <div class="wcloth">🧳 <b>לבוש:</b> בגדי קיץ, שכבה דקה לערב, נעלי הליכה נוחות, כובע ובקבוק מים ליום בעיר.</div>
+</div>
+<div class="wcard">
+  <div class="wtop"><span class="wname">🏖️ אגם גארדה</span><span class="wclimate">מתון, שמשי</span></div>
+  <div class="wtemps"><div class="wt"><span>☀️ יום</span><b>~24–26°C</b></div><div class="wt"><span>🌙 לילה</span><b>~13–15°C</b></div></div>
+  <div class="wextra">מי האגם ~22–23°C — עדיין נעים לשחייה.</div>
+  <div class="wcloth">🧳 <b>לבוש:</b> בגדי קיץ + בגד ים, כפכפים, שכבה לערב על שפת המים.</div>
+</div>
+<div class="wcard">
+  <div class="wtop"><span class="wname">🏔️ דולומיטים / אורטיזאי</span><span class="wclimate">אלפיני, משתנה מהר</span></div>
+  <div class="wtemps"><div class="wt"><span>☀️ יום</span><b>~15–20°C בעמק</b></div><div class="wt"><span>🌙 לילה</span><b>~3–7°C (ייתכן קרוב ל-0)</b></div></div>
+  <div class="wextra">בפסגות (סצ׳דה 2,500מ׳) ~0–8°C עם רוח, וייתכן שלג. הפרשים גדולים בין עמק לפסגה.</div>
+  <div class="wcloth">🧳 <b>לבוש:</b> שכבות! מעיל חם/רוח, כובע וכפפות לגובה, נעלי הליכה, שכבה תרמית לקטן.</div>
+</div>
+  </div>
+  <div class="disclaim">🌡️ הערכים הם נורמות אקלים טיפוסיות לסוף ספטמבר, לא תחזית. בדולומיטים מזג האוויר משתנה מהר והגובה קובע — תמיד שכבה חמה בתיק.</div>
 </section>
 
 <section id="stay">
@@ -522,6 +562,105 @@
   </table></div>
 </div>
   <div class="disclaim">ℹ️ כל המחירים ב-<b>€</b> ואינדיקטיביים בלבד (מקור: תקצירי חיפוש, יוני 2026). חדר/דירה ל-5 נפשות עשוי להיות בקצה הגבוה. מס עירוני (~€3–7 לאדם/לילה) לרוב בנפרד.</div>
+</section>
+
+<section id="food">
+  <h2 class="sec"><span class="ico">🍝</span> מסעדות מומלצות (ידידותיות למשפחות)</h2>
+  <p class="lead">מקומות אמיתיים, ותיקים ומדורגים, מתאימים לילדים (פיצה/פסטה/גלידה/בקתות הרים). 📍 לחיצה פותחת ב-Google Maps. מחירים: € זול · €€ בינוני · €€€ יקר. כדאי לאמת כיסא תינוק ולהזמין מראש במקומות הקטנים/בקתות.</p>
+<div class="tablecard"><div class="th"><h3>🏛️ רומא — מרכז היסטורי</h3></div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Armando+al+Pantheon+%D7%9C%D7%99%D7%93+%D7%94%D7%A4%D7%A0%D7%AA%D7%90%D7%95%D7%9F">📍 Armando al Pantheon</a><span class="tag t-neutral">€€€</span></div>
+   <div class="rmeta">ליד הפנתאון · טרטוריה רומאית קלאסית</div>
+   <div class="rwhy">מוסד משפחתי ותיק, מנות מסורתיות (קרבונרה, קצ׳ו אה פפה). קטן — להזמין מראש</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tonnarello+%D7%98%D7%A8%D7%A1%D7%98%D7%95%D7%95%D7%A8%D7%94">📍 Tonnarello</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">טרסטוורה · פסטה/טרטוריה</div>
+   <div class="rwhy">תוסס, מנות גדולות (~€12.5), פופולרי למשפחות, התור זז מהר</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Da+Enzo+al+29+%D7%98%D7%A8%D7%A1%D7%98%D7%95%D7%95%D7%A8%D7%94">📍 Da Enzo al 29</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">טרסטוורה · טרטוריה רומאית קטנה</div>
+   <div class="rwhy">אותנטי וזול, פסטה שילדים אוהבים. קטן — להגיע מוקדם</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dar+Poeta+%D7%98%D7%A8%D7%A1%D7%98%D7%95%D7%95%D7%A8%D7%94">📍 Dar Poeta</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">טרסטוורה · פיצרייה</div>
+   <div class="rwhy">רגוע וידידותי לילדים, פיצה פשוטה לכולם</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Da+Tonino+%D7%9C%D7%99%D7%93+%D7%A4%D7%99%D7%90%D7%A6%D7%94+%D7%A0%D7%91%D7%95%D7%A0%D7%94">📍 Da Tonino</a><span class="tag t-neutral">€</span></div>
+   <div class="rmeta">ליד פיאצה נבונה · טרטוריה פשוטה</div>
+   <div class="rwhy">זול, מהיר וקליל (קציצות מפורסמות)</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+Renella+%D7%98%D7%A8%D7%A1%D7%98%D7%95%D7%95%D7%A8%D7%94">📍 La Renella</a><span class="tag t-neutral">€</span></div>
+   <div class="rmeta">טרסטוורה · מאפייה / פיצה בחיתוך</div>
+   <div class="rwhy">פרוסות פריכות, מהיר וזול — מצוין לבן 3.5</div>
+ </div></div>
+<div class="tablecard"><div class="th"><h3>🍦 רומא — גלידה</h3></div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Giolitti+%D7%9C%D7%99%D7%93+%D7%94%D7%A4%D7%A0%D7%AA%D7%90%D7%95%D7%9F">📍 Giolitti</a><span class="tag t-neutral">€</span></div>
+   <div class="rmeta">ליד הפנתאון · גלידרייה היסטורית</div>
+   <div class="rwhy">מ~1900, מוסד רומאי, מבחר טעמים ענק</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Gelateria+del+Teatro+%D7%9C%D7%99%D7%93+%D7%A4%D7%99%D7%90%D7%A6%D7%94+%D7%A0%D7%91%D7%95%D7%A0%D7%94">📍 Gelateria del Teatro</a><span class="tag t-neutral">€</span></div>
+   <div class="rmeta">ליד פיאצה נבונה · גלידה אומנותית</div>
+   <div class="rwhy">טעמים מיוחדים (תאנה-שקד-ריקוטה), איכות מנה קטנה</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Frigidarium+%D7%9C%D7%99%D7%93+%D7%A4%D7%99%D7%90%D7%A6%D7%94+%D7%A0%D7%91%D7%95%D7%A0%D7%94">📍 Frigidarium</a><span class="tag t-neutral">€</span></div>
+   <div class="rmeta">ליד פיאצה נבונה · גלידרייה פופולרית</div>
+   <div class="rwhy">גלידה בטבילת שוקולד — אהובה על ילדים</div>
+ </div></div>
+<div class="tablecard"><div class="th"><h3>🏛️ רומא — ליד טרמיני</h3></div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Roma+%D7%91%D7%AA%D7%95%D7%9A+%D7%AA%D7%97%D7%A0%D7%AA+%D7%98%D7%A8%D7%9E%D7%99%D7%A0%D7%99">📍 Mercato Centrale Roma</a><span class="tag t-neutral">€/€€</span></div>
+   <div class="rmeta">בתוך תחנת טרמיני · אולם אוכל (food hall)</div>
+   <div class="rwhy">~500 מקומות, 18 דוכנים (פיצת Bonci, Trapizzino, פסטה) — כל אחד בוחר. פתוח עד מאוחר</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Monti+%D7%90%D7%A1%D7%A7%D7%95%D7%95%D7%99%D7%9C%D7%99%D7%A0%D7%95+%28%D7%9C%D7%99%D7%93+%D7%98%D7%A8%D7%9E%D7%99%D7%A0%D7%99%29">📍 Trattoria Monti</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">אסקווילינו (ליד טרמיני) · טרטוריה משפחתית, מטבח לה-מארקה</div>
+   <div class="rwhy">ביתי ורב-דורי, עדיף לגדולים — להזמין מראש</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trattoria+da+Danilo+%D7%93%D7%A8%D7%95%D7%9E%D7%99%D7%AA+%D7%9C%D7%98%D7%A8%D7%9E%D7%99%D7%A0%D7%99">📍 Trattoria da Danilo</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">דרומית לטרמיני · קוצ׳ינה רומאנה</div>
+   <div class="rwhy">כפרי וידידותי, קלאסיקות רומיות (קרבונרה, גריצ׳ה)</div>
+ </div></div>
+<div class="tablecard"><div class="th"><h3>🏖️ אגם גארדה</h3></div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trattoria+al+Porticciolo+%D7%91%D7%A8%D7%93%D7%95%D7%9C%D7%99%D7%A0%D7%95">📍 Trattoria al Porticciolo</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">ברדולינו · איטלקי / פיצה / דגי אגם</div>
+   <div class="rwhy">על שפת האגם, פיצה ופסטה שילדים אוהבים</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Alla+Fassa+%D7%9C%D7%90%D7%96%D7%99%D7%A1%D7%94">📍 Ristorante Alla Fassa</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">לאזיסה · איטלקי / דגי אגם</div>
+   <div class="rwhy">טרסה גדולה על המים — קליל וקרוב למים לילדים</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Pizzeria+La+Roccia+%D7%A1%D7%99%D7%A8%D7%9E%D7%99%D7%95%D7%A0%D7%94">📍 Pizzeria La Roccia</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">סירמיונה · פיצה נפוליטנית</div>
+   <div class="rwhy">פיצה מהירה בטאבון, ישיבה פנים + חוץ מקורה</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Ristorante+Risorgimento+%D7%A1%D7%99%D7%A8%D7%9E%D7%99%D7%95%D7%A0%D7%94">📍 Ristorante Risorgimento</a><span class="tag t-neutral">€€€</span></div>
+   <div class="rmeta">סירמיונה · איטלקי מסורתי</div>
+   <div class="rwhy">ותיק (100+ שנים), תפריט רחב לשולחן רב-גילאי</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Trattoria+Bella+Italia+%D7%A4%D7%A1%D7%A7%D7%99%D7%99%D7%A8%D7%94+%D7%93%D7%9C+%D7%92%D7%90%D7%A8%D7%93%D7%94">📍 Trattoria Bella Italia</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">פסקיירה דל גארדה · פסטה/בשר ורונזי</div>
+   <div class="rwhy">כפרי עם טרסה, בישול מקומי טרי</div>
+ </div></div>
+<div class="tablecard"><div class="th"><h3>🏔️ אורטיזאי / ואל גרדנה</h3></div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mauriz+Keller+%D7%90%D7%95%D7%A8%D7%98%D7%99%D7%96%D7%90%D7%99+%28%D7%9E%D7%A8%D7%9B%D7%96%29">📍 Mauriz Keller</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">אורטיזאי (מרכז) · דרום-טירולי + פיצה בטאבון</div>
+   <div class="rwhy">מרכזי, מנות גדולות, פיצה/פסטה + מקומי. דירוג גבוה בטריפאדוויזר</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Restaurant+Four+%D7%90%D7%95%D7%A8%D7%98%D7%99%D7%96%D7%90%D7%99+%28%D7%9E%D7%A8%D7%9B%D7%96%29">📍 Restaurant Four</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">אורטיזאי (מרכז) · טירולי / ים-תיכוני / פיצה</div>
+   <div class="rwhy">קליל ומרכזי, פיצות אותנטיות + טייקאווי</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Gostner+Schwaige+%D7%90%D7%9C%D7%A4%D7%94+%D7%93%D7%99+%D7%A1%D7%99%D7%95%D7%96%D7%99">📍 Gostner Schwaige</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">אלפה די סיוזי · בקתת הרים דרום-טירולית</div>
+   <div class="rwhy">רכבל + ~30 דק׳ הליכה קלה (הכי קלה לקטן!). מרק פרחי-חציר בקערת לחם</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rifugio+Firenze+%28Regensburgerh%C3%BCtte%29+%D7%9E%D7%A8%D7%97%D7%91%D7%99+%D7%A1%D7%A6%D7%B3%D7%93%D7%94">📍 Rifugio Firenze (Regensburgerhütte)</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">מרחבי סצ׳דה · טירולי / לדיני</div>
+   <div class="rwhy">בקתה משפחתית פופולרית, נוף Odle, אופציות צמחוני/טבעוני/ללא גלוטן</div>
+ </div><div class="ritem">
+   <div class="rh"><a class="rname" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rifugio+Sasso+Piatto+%D7%90%D7%96%D7%95%D7%A8+%D7%A1%D7%90%D7%A1%D7%95%D7%9C%D7%95%D7%A0%D7%92%D7%95">📍 Rifugio Sasso Piatto</a><span class="tag t-neutral">€€</span></div>
+   <div class="rmeta">אזור סאסולונגו · בקתה דרום-טירולית</div>
+   <div class="rwhy">Schlutzkrapfen ביתי, חיות קטנות. הליכה ארוכה יותר — לשקול עם הקטן</div>
+ </div></div>
+  <div class="disclaim">🍽️ המחירים הם רמות מנחות בלבד. בקתות ההרים (Gostner, Rifugio Firenze) — מומלץ להזמין מראש; Gostner Schwaige היא הקלה ביותר להגעה עם הקטן.</div>
 </section>
 
 <section id="budget">
