@@ -1,0 +1,10 @@
+# Netlify config — static site served from repo root (no build step)
+[build]
+  publish = "."
+  command = "echo 'static site — nothing to build'"
+
+# Pretty default headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
