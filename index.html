@@ -8,19 +8,20 @@
   :root{
     --bg:#f4f6fb; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
     --line:#e5e7eb; --accent:#0e7490; --accent2:#155e75; --warm:#b45309;
-    --rome:#b91c1c; --garda:#0e7490; --dolo:#15803d; --transit:#6b7280;
     --good:#15803d; --warn:#b45309; --bad:#b91c1c;
     --shadow:0 1px 3px rgba(0,0,0,.08),0 6px 18px rgba(0,0,0,.06);
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:"Segoe UI",Arial,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
   a{color:var(--accent2)}
-  header.hero{background:linear-gradient(135deg,#0e7490,#155e75 60%,#134e4a);color:#fff;padding:34px 20px 28px}
+  header.hero{background:linear-gradient(135deg,#0e7490,#155e75 60%,#134e4a);color:#fff;padding:34px 20px 28px;position:relative}
   .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
   header.hero h1{margin:0 0 6px;font-size:30px}
   header.hero .sub{font-size:16px;opacity:.95}
   header.hero .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px}
   header.hero .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13.5px}
+  .printbtn{position:absolute;inset-inline-end:20px;top:20px;background:#fff;color:#155e75;border:0;border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+  .printbtn:hover{background:#ecfeff}
   nav.toc{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.05)}
   nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;padding:8px 16px}
   nav.toc a{color:var(--ink);text-decoration:none;font-size:14px;padding:7px 12px;border-radius:8px}
@@ -29,6 +30,17 @@
   h2.sec{font-size:23px;margin:0 0 4px;color:var(--accent2);display:flex;align-items:center;gap:9px}
   h2.sec .ico{font-size:24px}
   .lead{color:var(--muted);margin:2px 0 18px;font-size:14.5px}
+
+  /* route overview */
+  .route{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin-bottom:22px}
+  .leg{flex:1 1 150px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px;text-align:center;min-width:140px}
+  .leg .ic{font-size:24px}
+  .leg .nm{font-weight:700;margin-top:4px}
+  .leg .ni{font-size:12.5px;color:var(--muted)}
+  .leg .badge{display:inline-block;margin-top:6px;background:#ecfeff;color:#155e75;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
+  .arrow{display:flex;align-items:center;color:#94a3b8;font-size:22px;padding:0 2px}
+  .arrow span{font-size:11px;color:var(--muted);writing-mode:horizontal-tb}
+  .arrowwrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:64px}
 
   /* day tabs */
   .daytabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
@@ -52,13 +64,11 @@
   .tipbox{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:10px 14px;font-size:13.5px}
   .tipbox b{color:var(--warm)}
 
-  /* notes block */
   .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
   .note{background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--accent);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
   .note h4{margin:0 0 6px;font-size:15px}
   .note p{margin:0;font-size:13.5px;color:#374151}
 
-  /* tables */
   .tablecard{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:26px}
   .tablecard .th{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
   .tablecard .th h3{margin:0;font-size:18px}
@@ -66,10 +76,11 @@
   .pickbar{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;padding:10px 18px;font-size:13.5px}
   .pickbar b{color:#047857}
   .scroll{overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
   th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
-  thead th{background:#f8fafc;color:#374151;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none;position:relative}
-  thead th:hover{background:#eef2f7}
+  thead th{background:#f8fafc;color:#374151;font-weight:600;cursor:pointer;white-space:nowrap;user-select:none}
+  thead th.nosort{cursor:default}
+  thead th:hover:not(.nosort){background:#eef2f7}
   thead th .ar{opacity:.4;font-size:10px;margin-inline-start:3px}
   tbody tr:hover{background:#f9fafb}
   .nm{font-weight:600}
@@ -80,12 +91,34 @@
   .t-warn{background:#fef3c7;color:#92400e}
   .t-bad{background:#fee2e2;color:#991b1b}
   .t-neutral{background:#f1f5f9;color:#475569}
+  .price{font-weight:700;color:#0f172a}
   .links{display:flex;flex-wrap:wrap;gap:5px}
   .btnlink{font-size:12px;text-decoration:none;padding:4px 9px;border-radius:7px;border:1px solid var(--line);color:#1f2937;background:#fff;white-space:nowrap}
   .btnlink:hover{background:#0e7490;color:#fff;border-color:#0e7490}
   .btnlink.bk{background:#003580;color:#fff;border-color:#003580}
   .btnlink.bk:hover{background:#00224f}
   .note-sm{font-size:12px;color:var(--muted);margin-top:4px}
+
+  /* budget */
+  .budget{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .budget table{min-width:560px}
+  .budget tfoot td{font-weight:700;background:#f0fdfa;border-top:2px solid #99f6e4}
+  .grandtotal{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px}
+  .gt{flex:1 1 200px;background:linear-gradient(135deg,#0e7490,#155e75);color:#fff;border-radius:14px;padding:16px 20px;box-shadow:var(--shadow)}
+  .gt .lbl{font-size:13px;opacity:.9}
+  .gt .val{font-size:26px;font-weight:800;margin-top:2px}
+
+  /* checklist */
+  .checklist{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px 6px}
+  .chk{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line)}
+  .chk:last-child{border-bottom:0}
+  .chk input{width:19px;height:19px;margin-top:2px;cursor:pointer;accent-color:#0e7490;flex-shrink:0}
+  .chk label{cursor:pointer;font-size:14px}
+  .chk .pri{font-size:11px;border-radius:6px;padding:1px 7px;margin-inline-start:6px}
+  .chk.done label{text-decoration:line-through;color:var(--muted)}
+  .progress{height:9px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:6px 14px 12px}
+  .progress>i{display:block;height:100%;background:linear-gradient(90deg,#10b981,#0e7490);width:0;transition:width .25s}
+  .progtxt{font-size:13px;color:var(--muted);padding:8px 14px 2px}
 
   .mapbox{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 20px}
   .mapbox ol{margin:8px 0 0;padding-inline-start:22px}
@@ -95,13 +128,21 @@
   .filechips a:hover{background:#155e75;color:#fff}
   footer{padding:28px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}
   .disclaim{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#7c2d12;margin-top:10px}
-  @media(max-width:640px){header.hero h1{font-size:24px}}
+  @media(max-width:640px){header.hero h1{font-size:24px}.printbtn{position:static;margin-top:14px}}
+  @media print{
+    nav.toc,.printbtn,.daytabs{display:none!important}
+    .daypanel{display:block!important;page-break-inside:avoid}
+    body{background:#fff}
+    .tablecard,.daycard,.note,.budget,.checklist{box-shadow:none}
+    a[href]:after{content:""}
+  }
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
+    <button class="printbtn" onclick="window.print()">🖨️ הדפסה / שמירה כ-PDF</button>
     <h1>🇮🇹 טיול משפחתי לאיטליה</h1>
     <div class="sub">רומא · אגם גארדה · הדולומיטים — 17–27 בספטמבר 2026 · 10 לילות</div>
     <div class="meta">
@@ -118,21 +159,24 @@
   <a href="#itinerary">🗓️ מסלול יומי</a>
   <a href="#notes">📌 הערות והזמנות</a>
   <a href="#stay">🏨 השוואת לינה</a>
+  <a href="#budget">💶 תקציב</a>
   <a href="#car">🚗 השכרת רכב</a>
-  <a href="#map">🗺️ מפה משותפת</a>
+  <a href="#checklist">✅ צ׳ק-ליסט</a>
+  <a href="#map">🗺️ מפה</a>
 </div></nav>
 
 <div class="wrap">
 
-<!-- ============ ITINERARY ============ -->
+<!-- ROUTE OVERVIEW -->
 <section id="itinerary">
   <h2 class="sec"><span class="ico">🗓️</span> מסלול יומי מפורט</h2>
-  <p class="lead">לחצו על יום לצפייה בפרטים. הדגש: טיולים קלים/קצרים, מעט החלפות מלון, שילוב עיר וכפר.</p>
+  <p class="lead">סקירת מסלול ולחיצה על יום לפרטים. הדגש: טיולים קלים/קצרים, מעט החלפות מלון, שילוב עיר וכפר.</p>
+  <div class="route" id="route"></div>
   <div class="daytabs" id="daytabs"></div>
   <div id="daypanels"></div>
 </section>
 
-<!-- ============ NOTES ============ -->
+<!-- NOTES -->
 <section id="notes">
   <h2 class="sec"><span class="ico">📌</span> הערות והזמנות חשובות</h2>
   <p class="lead">דברים שכדאי להזמין/לאמת מוקדם — חלקם אוזלים או מתייקרים מהר.</p>
@@ -146,18 +190,36 @@
   </div>
 </section>
 
-<!-- ============ STAY ============ -->
+<!-- STAY -->
 <section id="stay">
   <h2 class="sec"><span class="ico">🏨</span> השוואת לינה לפי יעד</h2>
-  <p class="lead">לחצו על כותרת עמודה למיון. כל הקישורים ממולאים מראש לתאריכים ולתפוסה (2 מבוגרים + 3 ילדים: 13, 9, 3). מחירים חיים — לבדיקה בקישור; לא הומצאו מחירים.</p>
+  <p class="lead">לחצו על כותרת עמודה למיון. קישורים ממולאים מראש לתאריכים ולתפוסה (2 מבוגרים + 3 ילדים: 13, 9, 3). <b>המחירים אינדיקטיביים</b> ("מ-" של אגרגטורים, לא הצעה חיה) — תמיד לאמת בקישור.</p>
   <div id="stay-tables"></div>
-  <div class="disclaim">ℹ️ דירוגים מבוססים על תקצירי חיפוש מ-Booking.com/TripAdvisor ונכונים למועד הבדיקה — מומלץ לאמת בקישור החי. "מיקום מקורב" בקבצי המפה = פין מוצב לפי אזור/עיר; המיקום המדויק ייקבע לפי הנכס שתבחרו.</div>
+  <div class="disclaim">ℹ️ מחירים בש״ח? לא — כל המחירים ב-<b>€</b> ואינדיקטיביים בלבד (מקור: תקצירי חיפוש מ-momondo/Hotels.com/HotelsCombined וכו׳, יוני 2026). מחיר לחדר/דירה שמאשרים 5 נפשות עשוי להיות בקצה הגבוה של הטווח. מס עירוני (~€3–7 לאדם/לילה) לרוב בנפרד. דירוגים נכונים למועד הבדיקה.</div>
 </section>
 
-<!-- ============ CAR ============ -->
+<!-- BUDGET -->
+<section id="budget">
+  <h2 class="sec"><span class="ico">💶</span> אומדן תקציב (מנחה)</h2>
+  <p class="lead">אומדן לפי "הבחירה שלי" בכל יעד (נכסים שמאשרים 5 נפשות). טווח רחב כי המחירים אינדיקטיביים — לאמת בהזמנה.</p>
+  <div class="budget">
+    <div class="scroll"><table id="budgettable">
+      <thead><tr>
+        <th class="nosort">רכיב</th><th class="nosort">פרטים</th>
+        <th class="nosort">לילות/כמות</th><th class="nosort">אומדן (€)</th>
+      </tr></thead>
+      <tbody></tbody>
+      <tfoot></tfoot>
+    </table></div>
+  </div>
+  <div class="grandtotal" id="grandtotal"></div>
+  <div class="disclaim">⚠️ אומדן מנחה רחב בלבד. לא כולל טיסות בינ״ל, ארוחות, כרטיסי אטרקציות (קולוסיאום/גרדהלנד/רכבלים), דלק, חניות יומיות ומס עירוני. הקצה הגבוה משקף תעריפי שיא של אגרגטורים; הזמנה מוקדמת מורידה משמעותית.</div>
+</section>
+
+<!-- CAR -->
 <section id="car">
   <h2 class="sec"><span class="ico">🚗</span> השכרת רכב — גארדה + דולומיטים</h2>
-  <p class="lead">איסוף: ורונה 19/9 · החזרה: ורונה 26/9 (7 ימים) · דרישה: 5 נוסעים + מטען ל-10 ימים → SUV גדול / 7 מקומות / מיניוואן · <b>אוטומט מועדף</b>.</p>
+  <p class="lead">איסוף: ורונה 19/9 · החזרה: ורונה 26/9 (7 ימים) · דרישה: 5 נוסעים + מטען ל-10 ימים → SUV גדול / 7 מקומות / מיניוואן · <b>אוטומט מועדף</b>. אומדן מנחה: <b>~€550–900</b> לתקופה (אוטומט 7-מושבים, סוף ספטמבר).</p>
   <div class="tablecard">
     <div class="th"><h3>אפשרויות להשוואה</h3><span class="dates">ורונה · 19–26.09.2026</span></div>
     <div class="scroll"><table id="cartable">
@@ -167,8 +229,8 @@
         <th data-k="trans">תיבה <span class="ar">↕</span></th>
         <th data-k="seats">מושבים <span class="ar">↕</span></th>
         <th data-k="insurance">ביטוח <span class="ar">↕</span></th>
-        <th data-k="price">מחיר לתקופה <span class="ar">↕</span></th>
-        <th>הזמנה</th>
+        <th class="nosort">מחיר (7 ימים)</th>
+        <th class="nosort">הזמנה</th>
       </tr></thead>
       <tbody></tbody>
     </table></div>
@@ -181,7 +243,16 @@
   </div>
 </section>
 
-<!-- ============ MAP ============ -->
+<!-- CHECKLIST -->
+<section id="checklist">
+  <h2 class="sec"><span class="ico">✅</span> צ׳ק-ליסט הזמנות</h2>
+  <p class="lead">סימון נשמר אוטומטית בדפדפן שלך (localStorage) — נשאר גם אחרי סגירה.</p>
+  <div class="progtxt" id="progtxt"></div>
+  <div class="progress"><i id="progbar"></i></div>
+  <div class="checklist" id="checklist"></div>
+</section>
+
+<!-- MAP -->
 <section id="map">
   <h2 class="sec"><span class="ico">🗺️</span> מפה משותפת ל-Google My Maps</h2>
   <p class="lead">קובץ KML מוכן לייבוא + גיבוי CSV (שכבה לכל קטגוריה). 3 שכבות: לינה (כחול) · אטרקציות וטיולים (אדום) · תחבורה (אפור).</p>
@@ -208,13 +279,29 @@
 <footer>
   <div class="wrap">
     תוכנן עבור משפחה בת 5 · 17–27.09.2026 · הנתונים נאספו ביוני 2026 — אמתו מחירים, זמינות ותאריכי פתיחה/סגירה בקישורים החיים לפני הזמנה.
-    <div class="disclaim" style="text-align:right">⚠️ אף מחיר לא הומצא. כל מחיר/זמינות שלא אומת מסומן "לבדיקה בקישור". דירוגים נכונים למועד האיסוף וייתכן שהשתנו.</div>
+    <div class="disclaim" style="text-align:right">⚠️ אף מחיר לא הומצא. המחירים אינדיקטיביים ("מ-" של אגרגטורים), מסומנים "מנחה"; מה שלא נשלף — "לבדיקה בקישור". דירוגים נכונים למועד האיסוף.</div>
   </div>
 </footer>
 
 <script>
-/* ---------------- ITINERARY DATA ---------------- */
-const days = [
+/* ============ ROUTE ============ */
+const route=[
+ {ic:"🏛️",nm:"רומא",ni:"מרכז היסטורי",nights:2},
+ {t:"🚄 רכבת ~3ש׳"},
+ {ic:"🏖️",nm:"אגם גארדה",ni:"ברדולינו/לאזיסה",nights:3},
+ {t:"🚗 נסיעה ~2.5ש׳"},
+ {ic:"🏔️",nm:"אורטיזאי",ni:"ואל גרדנה",nights:4},
+ {t:"🚗+🚄 חזרה"},
+ {ic:"🏛️",nm:"רומא",ni:"טרמיני",nights:1}
+];
+const rEl=document.getElementById('route');
+route.forEach(r=>{
+  if(r.t){rEl.insertAdjacentHTML('beforeend',`<div class="arrowwrap"><span style="font-size:18px;color:#94a3b8">‹</span><span style="font-size:11px;color:#6b7280">${r.t}</span></div>`);}
+  else{rEl.insertAdjacentHTML('beforeend',`<div class="leg"><div class="ic">${r.ic}</div><div class="nm">${r.nm}</div><div class="ni">${r.ni}</div><div class="badge">${r.nights} ${r.nights===1?'לילה':'לילות'}</div></div>`);}
+});
+
+/* ============ ITINERARY ============ */
+const days=[
   {n:1,date:"יום ה׳ · 17/9",title:"נחיתה ברומא",stay:"מלון במרכז ההיסטורי (פנתאון/נבונה) — לילה 1/2",
    acts:["נחיתה ב-FCO ב-21:00.","הסעה מוזמנת מראש (ואן/מונית 5–6 מקומות) למרכז ההיסטורי.","צ׳ק-אין ולישון — יום קצר אחרי טיסה."],
    tip:"להזמין הסעה מראש כדי לא להתעכב בערב עם ילדים עייפים."},
@@ -249,17 +336,15 @@ const days = [
    acts:["ארוחת בוקר, גלידה אחרונה.","יציאה ~09:00 ל-FCO (Leonardo Express 32 דק׳ מטרמיני, או מונית).","טיסה 13:00."],
    tip:"Leonardo Express יוצא בתדירות גבוהה מטרמיני — נוח עם מזוודות."}
 ];
-
 const dt=document.getElementById('daytabs'), dp=document.getElementById('daypanels');
 days.forEach((d,i)=>{
   const b=document.createElement('button');
-  b.className='tab'+(i===0?' active':'');
+  b.className=i===0?'active':'';
   b.innerHTML=`<span class="d">${d.date}</span>יום ${d.n}`;
   b.onclick=()=>{document.querySelectorAll('.daytabs button').forEach(x=>x.classList.remove('active'));
     document.querySelectorAll('.daypanel').forEach(x=>x.classList.remove('show'));
     b.classList.add('active');document.getElementById('day'+d.n).classList.add('show');};
   dt.appendChild(b);
-
   const p=document.createElement('div');
   p.className='daypanel'+(i===0?' show':''); p.id='day'+d.n;
   p.innerHTML=`<div class="daycard">
@@ -272,45 +357,46 @@ days.forEach((d,i)=>{
   dp.appendChild(p);
 });
 
-/* ---------------- LODGING DATA ---------------- */
+/* ============ LODGING ============ */
 const AGES="&age=13&age=9&age=3";
 function bk(name,ci,co){return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(name)}&checkin=${ci}&checkout=${co}&group_adults=2&group_children=3${AGES}`;}
 function gh(name){return `https://www.google.com/travel/search?q=${encodeURIComponent(name)}`;}
 function abnb(city,ci,co){return `https://www.airbnb.com/s/${encodeURIComponent(city)}/homes?checkin=${ci}&checkout=${co}&adults=2&children=3`;}
+function nightStr(lo,hi){if(lo&&hi)return `€${lo}–${hi}`;if(lo)return `€${lo}+`;return "לבדיקה בקישור";}
+function totalStr(lo,hi,n){if(lo&&hi)return `€${lo*n}–${(hi*n).toLocaleString()}`;if(lo)return `≥€${lo*n}`;return "לבדיקה בקישור";}
 
 const stayGroups=[
- {title:"רומא — מרכז היסטורי (פנתאון/נבונה)",dates:"צ׳ק-אין 17/9 · צ׳ק-אאוט 19/9 · 2 לילות",ci:"2026-09-17",co:"2026-09-19",
-  pick:"<b>Internazionale Domus</b> (דירוג 9.3) — דירת 2 חדרי שינה + מטבחון, הפתרון הנוח ביותר ל-5 נפשות במרכז.",
+ {title:"רומא — מרכז היסטורי (פנתאון/נבונה)",dates:"צ׳ק-אין 17/9 · צ׳ק-אאוט 19/9 · 2 לילות",ci:"2026-09-17",co:"2026-09-19",nights:2,
+  pick:"<b>Internazionale Domus</b> (9.3) — דירת 2 חדרי שינה + מטבחון, הנוח ביותר ל-5 במרכז. שימו לב: ייתכן בלי מיטות נוספות → אולי 2 יחידות.",
   rows:[
-   {name:"Hotel Martis Palace",bkName:"Hotel Martis Palace Rome",type:"מלון 4★",area:"פנתאון/נבונה",rating:"~9.0",rsort:9.0,bf:["זמינה/בתעריף","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelmartis.com",note:"חדר משפחתי = 2 חדרים מחוברים (~40מ״ר); קיבולת 5 לאמת"},
-   {name:"Hotel Lunetta",bkName:"Hotel Lunetta Rome",type:"מלון+ספא",area:"קמפו דה פיורי",rating:"לבדיקה",rsort:0,bf:["כלולה (בופה)","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotellunetta.com",note:"Family Suite עד 4; ל-5 לאמת"},
-   {name:"Internazionale Domus",bkName:"Internazionale Domus Rome",type:"דירות",area:"כיכר ספרד",rating:"9.3",rsort:9.3,rec:true,bf:["לבדיקה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.internazionaledomus.com",airbnb:"Rome--Italy",note:"דירות 2 חדרי שינה + מטבחון; קיבולת 5 סבירה"},
-   {name:"Arch Rome Suites",bkName:"Arch Rome Suites",type:"בית הארחה 4★",area:"לארגו ארג׳נטינה",rating:"9.1",rsort:9.1,bf:["כלולה","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.archromesuites.it",note:"חדר עד 4; ל-5 שני חדרים"}
+   {name:"Hotel Martis Palace",bkName:"Hotel Martis Palace Rome",type:"מלון 4★",area:"פנתאון/נבונה",rating:"~9.0",rsort:9.0,lo:185,hi:530,bf:["זמינה/בתעריף","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelmartis.com",note:"Family Suite (2 חדרים מחוברים ~40מ״ר) ל-5 ✓ · מקור: momondo/Hotels.com"},
+   {name:"Hotel Lunetta",bkName:"Hotel Lunetta Rome",type:"מלון+ספא",area:"קמפו דה פיורי",rating:"לבדיקה",rsort:0,lo:140,hi:390,bf:["כלולה (בופה)","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotellunetta.com",note:"ל-5 צריך Luxury Family Suite (עד 5) — בקצה הגבוה · מקור: HotelsCombined"},
+   {name:"Internazionale Domus",bkName:"Internazionale Domus Rome",type:"דירות",area:"כיכר ספרד",rating:"9.3",rsort:9.3,rec:true,lo:180,hi:405,bf:["לבדיקה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.internazionaledomus.com",airbnb:"Rome--Italy",note:"דירות 2 חדרי שינה+מטבחון · ללא מיטות נוספות → ייתכן 2 יחידות · מקור: momondo"},
+   {name:"Arch Rome Suites",bkName:"Arch Rome Suites",type:"בית הארחה 4★",area:"לארגו ארג׳נטינה",rating:"9.1",rsort:9.1,lo:100,hi:230,bf:["כלולה","t-good"],park:["לא רלוונטי","t-neutral"],official:"https://www.archromesuites.it",note:"חדר עד 4 (ל-5 שני חדרים) · ילדים 4–17: €20/לילה · מקור: planetofhotels"}
   ]},
- {title:"רומא — ליד טרמיני",dates:"צ׳ק-אין 26/9 · צ׳ק-אאוט 27/9 · 1 לילה",ci:"2026-09-26",co:"2026-09-27",
-  pick:"<b>The Rossi</b> (~8.5) — חדרים משפחתיים וחלקם עם מטבחון, עדיף בבירור על Hotel Max (דירוג 6.2).",
+ {title:"רומא — ליד טרמיני",dates:"צ׳ק-אין 26/9 · צ׳ק-אאוט 27/9 · 1 לילה",ci:"2026-09-26",co:"2026-09-27",nights:1,
+  pick:"<b>The Rossi</b> (~8.5) — חדרים משפחתיים וחלקם עם מטבחון, ומחיר נמוך. עדיף בבירור על Hotel Max (דירוג 6.2).",
   rows:[
-   {name:"Hotel Max",bkName:"Hotel Max Rome",type:"מלון",area:"ליד טרמיני",rating:"6.2",rsort:6.2,bf:["זמינה (בופה)","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.google.com/search?q=Hotel+Max+Roma+Via+Gioberti",note:"דירוג נמוך יחסית — לשקול"},
-   {name:"The Rossi",bkName:"The Rossi Rome",type:"מלון-דירות",area:"ליד טרמיני",rating:"~8.5",rsort:8.5,rec:true,bf:["זמינה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelrossiroma.com",note:"חדרים משפחתיים, חלקם מטבחון; ~250מ׳ מטרמיני"}
+   {name:"Hotel Max",bkName:"Hotel Max Rome",type:"מלון",area:"ליד טרמיני",rating:"6.2",rsort:6.2,lo:102,hi:180,bf:["זמינה (בופה)","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.google.com/search?q=Hotel+Max+Roma+Via+Gioberti",note:"דירוג נמוך · חדר ל-5 לאמת · מקור: bedandbreakfast-rome/trip.com"},
+   {name:"The Rossi",bkName:"The Rossi Rome",type:"מלון-דירות",area:"ליד טרמיני",rating:"~8.5",rsort:8.5,rec:true,lo:52,hi:100,bf:["זמינה","t-neutral"],park:["לא רלוונטי","t-neutral"],official:"https://www.hotelrossiroma.com",note:"חדרים משפחתיים, חלקם מטבחון · חדר ל-5 לאמת · מקור: romeitaly-hotels"}
   ]},
- {title:"אגם גארדה — חובה חניה",dates:"צ׳ק-אין 19/9 · צ׳ק-אאוט 22/9 · 3 לילות",ci:"2026-09-19",co:"2026-09-22",
-  pick:"<b>Sisan Family Resort</b> (ברדולינו) — דירת 2 חדרים ~50מ״ר המאשרת 5 נפשות, חניה חינם, אופי משפחתי. שימו לב ל-Quellenhof (5★ מהמם) אך ייתכן מינ׳ גיל 4.",
+ {title:"אגם גארדה — חובה חניה",dates:"צ׳ק-אין 19/9 · צ׳ק-אאוט 22/9 · 3 לילות",ci:"2026-09-19",co:"2026-09-22",nights:3,
+  pick:"<b>Sisan Family Resort</b> (ברדולינו) — דירת 2 חדרים ~50מ״ר ל-5 ✓, חניה חינם, מחיר טוב. שימו לב ל-Quellenhof (5★) אך ייתכן מינ׳ גיל 4.",
   rows:[
-   {name:"Hotel Caesius Thermae & Spa",bkName:"Hotel Caesius Thermae Spa Bardolino",type:"מלון תרמי 4★",area:"ברדולינו",rating:"לבדיקה (~9)",rsort:9.0,bf:["כלולה (לאמת)","t-good"],park:["חינם בשטח","t-good"],official:"https://www.hotelcaesiusterme.com",note:"ספא ובריכות תרמיות; קיבולת 5 לאמת"},
-   {name:"Sisan Family Resort",bkName:"Sisan Family Resort Bardolino",type:"ריזורט 4★",area:"ברדולינו (צ׳יזאנו)",rating:"לבדיקה",rsort:0,rec:true,bf:["בופה זמין","t-good"],park:["חינם בשטח","t-good"],official:"https://www.sisanfamilyresort.com",airbnb:"Bardolino--Italy",note:"דירת 2 חדרים ~50מ״ר ל-5 ✓"},
-   {name:"Quellenhof Luxury Resort",bkName:"Quellenhof Luxury Resort Lazise",type:"ריזורט 5★",area:"לאזיסה",rating:"~9.6",rsort:9.6,bf:["כלולה","t-good"],park:["חינם בשטח","t-good"],official:"https://www.quellenhof-lazise.it",airbnb:"Lazise--Italy",note:"⚠️ ייתכן מינ׳ גיל 4 — קריטי לאמת לבן 3.5! סוויטות 2–6"},
-   {name:"Hotel Bell'Arrivo",bkName:"Hotel Bell'Arrivo Peschiera del Garda",type:"מלון 3★",area:"פסקיירה דל גארדה",rating:"לבדיקה",rsort:0,bf:["זמינה (לאמת)","t-neutral"],park:["ציבורית בתשלום","t-warn"],official:"https://www.hotelbellarrivo.it",note:"חניה לא חינם; קיבולת 5 לאמת (חדרים מחוברים)"}
+   {name:"Hotel Caesius Thermae & Spa",bkName:"Hotel Caesius Thermae Spa Bardolino",type:"מלון תרמי 4★",area:"ברדולינו",rating:"לבדיקה (~9)",rsort:9.0,lo:170,hi:200,bf:["כלולה","t-good"],park:["חינם בשטח","t-good"],official:"https://www.hotelcaesiusterme.com",note:"ספא ובריכות תרמיות · חדר ל-5 לאמת · מקור: momondo"},
+   {name:"Sisan Family Resort",bkName:"Sisan Family Resort Bardolino",type:"ריזורט 4★",area:"ברדולינו (צ׳יזאנו)",rating:"לבדיקה",rsort:0,rec:true,lo:131,hi:179,bf:["בופה זמין","t-good"],park:["חינם בשטח","t-good"],official:"https://www.sisanfamilyresort.com",airbnb:"Bardolino--Italy",note:"דירת 2 חדרים ~50מ״ר ל-5 ✓ · מקור: Hotels.com/FamilyResort.net"},
+   {name:"Quellenhof Luxury Resort",bkName:"Quellenhof Luxury Resort Lazise",type:"ריזורט 5★",area:"לאזיסה",rating:"~9.6",rsort:9.6,lo:255,hi:null,bf:["כלולה (חצי פנסיון)","t-good"],park:["חינם בשטח","t-good"],official:"https://www.quellenhof-lazise.it",airbnb:"Lazise--Italy",note:"⚠️ ייתכן מינ׳ גיל 4 — קריטי לאמת לבן 3.5! €255+ עם חצי פנסיון · מקור: garda-see.com"},
+   {name:"Hotel Bell'Arrivo",bkName:"Hotel Bell'Arrivo Peschiera del Garda",type:"מלון 3★",area:"פסקיירה דל גארדה",rating:"לבדיקה",rsort:0,lo:98,hi:210,bf:["זמינה (לאמת)","t-neutral"],park:["ציבורית בתשלום","t-warn"],official:"https://www.hotelbellarrivo.it",note:"חניה לא חינם · חדר ל-5 לאמת (מחוברים) · מקור: momondo"}
   ]},
- {title:"אורטיזאי / ואל גרדנה — חובה חניה",dates:"צ׳ק-אין 22/9 · צ׳ק-אאוט 26/9 · 4 לילות",ci:"2026-09-22",co:"2026-09-26",
-  pick:"<b>Cavallino Bianco Family Resort</b> — מלון למשפחות בלבד עם 'Family Queen Suite *5' ל-5 נפשות, All-In וחניון בשטח. חלופת ערך מצוינת: <b>Elvis Apartments</b> (8.4, דירה ל-5, חניה חינם).",
+ {title:"אורטיזאי / ואל גרדנה — חובה חניה",dates:"צ׳ק-אין 22/9 · צ׳ק-אאוט 26/9 · 4 לילות",ci:"2026-09-22",co:"2026-09-26",nights:4,
+  pick:"<b>Cavallino Bianco Family Resort</b> — מלון למשפחות עם Family Queen Suite *5 ל-5, All-In וחניון. תמחור פנסיון מלא לאדם — לבדוק ישירות. חלופת ערך: <b>Elvis Apartments</b> (8.4, דירה ל-5, חניה חינם).",
   rows:[
-   {name:"Cavallino Bianco Family Resort & Spa",bkName:"Cavallino Bianco Family Resort Ortisei",type:"מלון פמילי 4★S",area:"אורטיזאי",rating:"לבדיקה",rsort:0,rec:true,bf:["כלולה (All-In)","t-good"],park:["חניון בשטח","t-good"],official:"https://www.cavallino-bianco.com",note:"Family Queen Suite *5 ל-5 ✓; מלון למשפחות בלבד"},
-   {name:"Hotel Garni Gardena",bkName:"Hotel Garni Gardena Val Gardena",type:"גארני/דירות",area:"ואל גרדנה",rating:"לבדיקה",rsort:0,bf:["לבדיקה","t-neutral"],park:["לבדיקה","t-neutral"],official:"https://www.hotelgardena.com",note:"⚠️ לאמת זהות — ייתכן בסנטה כריסטינה ולא אורטיזאי"},
-   {name:"Classic Hotel am Stetteneck",bkName:"Classic Hotel am Stetteneck Ortisei",type:"מלון 4★",area:"אורטיזאי (מרכז)",rating:"8.9",rsort:8.9,bf:["כלולה","t-good"],park:["בשטח בתשלום","t-warn"],official:"https://www.stetteneck.com",note:"חדרים מחוברים / ג׳וניור סוויט ל-5"},
-   {name:"Elvis Apartments",bkName:"Elvis Apartments Ortisei",type:"אפרטהוטל/דירות",area:"אורטיזאי (רונקדיצה)",rating:"8.4",rsort:8.4,bf:["אופציונלי €25","t-neutral"],park:["חינם פרטית","t-good"],official:"https://www.hotel-elvis.com",airbnb:"Ortisei--Italy",note:"דירת 2 חדרים ל-4–6 ✓; ערך טוב"}
+   {name:"Cavallino Bianco Family Resort & Spa",bkName:"Cavallino Bianco Family Resort Ortisei",type:"מלון פמילי 4★S",area:"אורטיזאי",rating:"לבדיקה",rsort:0,rec:true,lo:null,hi:null,bf:["כלולה (All-In)","t-good"],park:["חניון בשטח","t-good"],official:"https://www.cavallino-bianco.com",note:"Family Queen Suite *5 ל-5 ✓ · פנסיון מלא לאדם/לילה — מחיר ישירות באתר"},
+   {name:"Hotel Garni Gardena",bkName:"Hotel Garni Gardena Val Gardena",type:"גארני/דירות",area:"ואל גרדנה",rating:"לבדיקה",rsort:0,lo:184,hi:null,bf:["כלולה","t-good"],park:["לבדיקה","t-neutral"],official:"https://www.hotelgardena.com",note:"⚠️ לאמת זהות — ייתכן בסנטה כריסטינה · €184+ · מקור: hotels-in-it.com"},
+   {name:"Classic Hotel am Stetteneck",bkName:"Classic Hotel am Stetteneck Ortisei",type:"מלון 4★",area:"אורטיזאי (מרכז)",rating:"8.9",rsort:8.9,lo:130,hi:460,bf:["כלולה","t-good"],park:["בשטח בתשלום","t-warn"],official:"https://www.stetteneck.com",note:"חדרים מחוברים / ג׳וניור סוויט ל-5 · מקור: Tripadvisor"},
+   {name:"Elvis Apartments",bkName:"Elvis Apartments Ortisei",type:"אפרטהוטל/דירות",area:"אורטיזאי (רונקדיצה)",rating:"8.4",rsort:8.4,lo:208,hi:461,bf:["אופציונלי €25","t-neutral"],park:["חינם פרטית","t-good"],official:"https://www.hotel-elvis.com",airbnb:"Ortisei--Italy",note:"דירת 2 חדרים ל-4–6 ✓ · מס €3/אדם 14+ · מקור: HotelsCombined"}
   ]}
 ];
-
 const stc=document.getElementById('stay-tables');
 stayGroups.forEach((g,gi)=>{
   const card=document.createElement('div'); card.className='tablecard';
@@ -324,7 +410,8 @@ stayGroups.forEach((g,gi)=>{
       <th data-k="rsort">דירוג <span class="ar">↕</span></th>
       <th data-k="bf">בוקר <span class="ar">↕</span></th>
       <th data-k="park">חניה <span class="ar">↕</span></th>
-      <th>מחיר/לילה</th><th>סה״כ</th><th>קישורים</th>
+      <th data-k="lo">מחיר/לילה <span class="ar">↕</span></th>
+      <th class="nosort">סה״כ (${g.nights}ל׳)</th><th class="nosort">קישורים</th>
     </tr></thead><tbody></tbody></table></div>`;
   stc.appendChild(card);
   const tb=card.querySelector('tbody');
@@ -341,8 +428,8 @@ stayGroups.forEach((g,gi)=>{
         <td>${r.rating}</td>
         <td><span class="tag ${r.bf[1]}">${r.bf[0]}</span></td>
         <td><span class="tag ${r.park[1]}">${r.park[0]}</span></td>
-        <td><span class="tag t-neutral">לבדיקה בקישור</span></td>
-        <td><span class="tag t-neutral">לבדיקה בקישור</span></td>
+        <td><span class="price">${nightStr(r.lo,r.hi)}</span><div class="note-sm">מנחה</div></td>
+        <td><span class="price">${totalStr(r.lo,r.hi,g.nights)}</span></td>
         <td><div class="links">${links.join('')}</div></td>`;
       tb.appendChild(tr);
     });
@@ -352,27 +439,47 @@ stayGroups.forEach((g,gi)=>{
   card.querySelectorAll('thead th[data-k]').forEach(th=>{
     th.onclick=()=>{const k=th.dataset.k; asc[k]=!asc[k];
       const s=[...g.rows].sort((a,b)=>{let x=a[k],y=b[k];
+        if(k==='lo'){x=x||1e9;y=y||1e9;return asc[k]?x-y:y-x;}
         if(typeof x==='number'){return asc[k]?x-y:y-x;}
         x=(''+x);y=(''+y);return asc[k]?x.localeCompare(y,'he'):y.localeCompare(x,'he');});
       render(s);};
   });
 });
 
-/* ---------------- CAR DATA ---------------- */
+/* ============ BUDGET ============ */
+const budgetRows=[
+ {comp:"לינה · רומא מרכז",det:"Internazionale Domus (דירה)",qty:"2 לילות",lo:180*2,hi:405*2},
+ {comp:"לינה · אגם גארדה",det:"Sisan Family Resort (דירה)",qty:"3 לילות",lo:131*3,hi:179*3},
+ {comp:"לינה · אורטיזאי",det:"Elvis Apartments (דירה)*",qty:"4 לילות",lo:208*4,hi:461*4},
+ {comp:"לינה · רומא טרמיני",det:"The Rossi",qty:"1 לילה",lo:52,hi:100},
+ {comp:"רכב שכור",det:"7-מושבים אוטומט, ורונה",qty:"7 ימים",lo:550,hi:900},
+ {comp:"רכבות Frecciarossa",det:"רומא⇄ורונה, 5 נפשות, 2 קטעים",qty:"מנחה (הזמנה מוקדמת)",lo:300,hi:600},
+ {comp:"Leonardo Express",det:"טרמיני↔FCO, €14×5",qty:"כיוון אחד",lo:70,hi:70},
+ {comp:"הסעה משדה (נחיתה)",det:"ואן 5–6 מקומות",qty:"מנחה",lo:60,hi:80}
+];
+const btb=document.querySelector('#budgettable tbody');
+let sumLo=0,sumHi=0;
+budgetRows.forEach(r=>{sumLo+=r.lo;sumHi+=r.hi;
+  btb.insertAdjacentHTML('beforeend',`<tr><td class="nm">${r.comp}</td><td>${r.det}</td><td>${r.qty}</td><td class="price">€${r.lo.toLocaleString()}–${r.hi.toLocaleString()}</td></tr>`);});
+document.querySelector('#budgettable tfoot').innerHTML=`<tr><td colspan="3">סה״כ אומדן (לינה + תחבורה יבשתית)</td><td class="price">€${sumLo.toLocaleString()}–${sumHi.toLocaleString()}</td></tr>`;
+document.getElementById('grandtotal').innerHTML=
+ `<div class="gt"><div class="lbl">אומדן כולל (מנחה)</div><div class="val">€${sumLo.toLocaleString()}–${sumHi.toLocaleString()}</div></div>
+  <div class="gt" style="background:linear-gradient(135deg,#b45309,#92400e)"><div class="lbl">לא כלול</div><div class="val" style="font-size:15px;line-height:1.5">טיסות · ארוחות · כרטיסי אטרקציות · דלק · חניות · מס עירוני</div></div>`;
+/* *Cavallino Bianco (הבחירה לאורטיזאי) בפנסיון מלא ומתומחר לאדם — לבדיקה ישירה; באומדן שולב Elvis כחלופת דירה בעלת מחיר ידוע. */
+
+/* ============ CAR ============ */
 const cars=[
- {provider:"Sixt — שדה VRN",model:"VW Sharan / Ford Galaxy או דומה",trans:"אוטומט (לסנן)",seats:"7",insurance:"CDW/TP בסיסי + שדרוג Full Protection",price:"לבדיקה בקישור",link:"https://www.sixt.com/car-rental/italy/verona/verona-airport/"},
+ {provider:"Sixt — שדה VRN",model:"VW Sharan / Ford Galaxy או דומה",trans:"אוטומט (לסנן)",seats:"7",insurance:"CDW/TP בסיסי + Full Protection",price:"לבדיקה בקישור",link:"https://www.sixt.com/minivan-rental/italy/verona/"},
  {provider:"Europcar — שדה VRN",model:"Ford Galaxy / Peugeot 5008 או דומה",trans:"אוטומט (לסנן)",seats:"7",insurance:"CDW + Theft; אופציית Premium",price:"לבדיקה בקישור",link:"https://www.europcar.com/en-us/places/car-rental-italy/sommacampagna/verona-airport"},
- {provider:"Rentalcars — השוואה (VRN)",model:"כל הספקים · People carrier 7+",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Protection משלים",price:"לבדיקה בקישור",link:"https://www.rentalcars.com/en/airport/it/vrn/"},
- {provider:"DiscoverCars — השוואה",model:"מיניוואן / 7 מושבים (כולל ספקים מקומיים)",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Coverage משלים",price:"לבדיקה בקישור",link:"https://www.discovercars.com/italy/verona"}
+ {provider:"Rentalcars — השוואה (VRN)",model:"כל הספקים · People carrier 7+",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Protection משלים",price:"~€550–900 (מנחה)",link:"https://www.rentalcars.com/en/airport/it/vrn/"},
+ {provider:"DiscoverCars — השוואה",model:"מיניוואן 7 מושבים (כולל מקומיים)",trans:"לסנן אוטומט",seats:"7+",insurance:"Full Coverage משלים",price:"~€550–900 (מנחה)",link:"https://www.discovercars.com/italy-mainland/verona/vrn"}
 ];
 const ctb=document.querySelector('#cartable tbody');
 function renderCars(rows){ctb.innerHTML='';rows.forEach(c=>{
-  const tr=document.createElement('tr');
-  tr.innerHTML=`<td class="nm">${c.provider}</td><td>${c.model}</td>
+  ctb.insertAdjacentHTML('beforeend',`<tr><td class="nm">${c.provider}</td><td>${c.model}</td>
    <td><span class="tag t-good">${c.trans}</span></td><td>${c.seats}</td>
    <td>${c.insurance}</td><td><span class="tag t-neutral">${c.price}</span></td>
-   <td><a class="btnlink bk" target="_blank" rel="noopener" href="${c.link}">להזמנה</a></td>`;
-  ctb.appendChild(tr);});}
+   <td><a class="btnlink bk" target="_blank" rel="noopener" href="${c.link}">להזמנה</a></td></tr>`);});}
 renderCars(cars);
 let casc={};
 document.querySelectorAll('#cartable thead th[data-k]').forEach(th=>{
@@ -380,6 +487,40 @@ document.querySelectorAll('#cartable thead th[data-k]').forEach(th=>{
    const s=[...cars].sort((a,b)=>{const x=''+a[k],y=''+b[k];return casc[k]?x.localeCompare(y,'he'):y.localeCompare(x,'he');});
    renderCars(s);};
 });
+
+/* ============ CHECKLIST ============ */
+const checkItems=[
+ {id:"col",t:"כרטיסי קולוסיאום (הזמנה מיידית עם הפתיחה)",p:["דחוף","t-bad"]},
+ {id:"train1",t:"רכבת Frecciarossa רומא→ורונה (יום 3)",p:["~4ח׳ מראש","t-warn"]},
+ {id:"train2",t:"רכבת Frecciarossa ורונה→רומא (יום 10)",p:["~4ח׳ מראש","t-warn"]},
+ {id:"car",t:"רכב שכור בוורונה — לוודא אוטומט!",p:["מוקדם","t-warn"]},
+ {id:"h1",t:"מלון רומא מרכז — 2 לילות (17–19/9)",p:["לינה","t-neutral"]},
+ {id:"h2",t:"מלון אגם גארדה — 3 לילות (19–22/9)",p:["לינה","t-neutral"]},
+ {id:"h3",t:"מלון אורטיזאי — 4 לילות (22–26/9)",p:["לינה","t-neutral"]},
+ {id:"h4",t:"מלון רומא טרמיני — 1 לילה (26–27/9)",p:["לינה","t-neutral"]},
+ {id:"transfer",t:"הסעה משדה FCO בנחיתה (ואן 5–6)",p:["יום 1","t-neutral"]},
+ {id:"seceda",t:"כרטיסי רכבל סצ׳דה (יום 7)",p:["אטרקציה","t-neutral"]},
+ {id:"colfosco",t:"אימות פתיחת פארק Colfosco ל-2026 (יום 8)",p:["לאמת","t-warn"]},
+ {id:"gardaland",t:"כרטיסי גרדהלנד (יום 5)",p:["אטרקציה","t-neutral"]},
+ {id:"quellenhof",t:"אם בוחרים Quellenhof — לאמת מינ׳ גיל 4 לבן 3.5",p:["קריטי","t-bad"]},
+ {id:"insurance",t:"ביטוח נסיעות למשפחה",p:["חובה","t-warn"]}
+];
+const KEY="trip2026_chk_";
+const clEl=document.getElementById('checklist');
+function updProg(){const done=checkItems.filter(i=>localStorage.getItem(KEY+i.id)==="1").length;
+  const pct=Math.round(done/checkItems.length*100);
+  document.getElementById('progbar').style.width=pct+"%";
+  document.getElementById('progtxt').textContent=`הושלמו ${done} מתוך ${checkItems.length} (${pct}%)`;}
+checkItems.forEach(it=>{
+  const done=localStorage.getItem(KEY+it.id)==="1";
+  const row=document.createElement('div'); row.className="chk"+(done?" done":"");
+  row.innerHTML=`<input type="checkbox" id="ck_${it.id}" ${done?"checked":""}>
+    <label for="ck_${it.id}">${it.t}<span class="pri tag ${it.p[1]}">${it.p[0]}</span></label>`;
+  const cb=row.querySelector('input');
+  cb.onchange=()=>{localStorage.setItem(KEY+it.id,cb.checked?"1":"0");row.classList.toggle('done',cb.checked);updProg();};
+  clEl.appendChild(row);
+});
+updProg();
 </script>
 </body>
 </html>
