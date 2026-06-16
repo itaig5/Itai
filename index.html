@@ -126,6 +126,20 @@
   .filechips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
   .filechips a{font-size:13px;text-decoration:none;background:#ecfeff;border:1px solid #a5f3fc;color:#155e75;padding:7px 12px;border-radius:9px}
   .filechips a:hover{background:#155e75;color:#fff}
+  .sharedmap{background:linear-gradient(135deg,#0e7490,#155e75);color:#fff;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .sharedmap h4{margin:0 0 8px;font-size:15px}
+  .sharedmap .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .sharedmap input{flex:1 1 240px;border:0;border-radius:8px;padding:9px 12px;font-size:13.5px;font-family:inherit}
+  .sharedmap button{border:0;border-radius:8px;padding:9px 16px;font-size:13.5px;font-weight:600;cursor:pointer;background:#fff;color:#155e75}
+  .sharedmap button:hover{background:#ecfeff}
+  .sharedmap .open{background:#10b981;color:#fff;text-decoration:none;display:inline-block}
+  .sharedmap .open:hover{background:#059669}
+  .sharedmap small{opacity:.9;display:block;margin-top:8px;font-size:12px}
+  .qlinks{margin-top:8px}
+  .qlinks .grp{font-size:13px;color:var(--muted);margin:12px 0 6px;font-weight:600}
+  .qlgrid{display:flex;flex-wrap:wrap;gap:6px}
+  .qlgrid a{font-size:12.5px;text-decoration:none;background:#fff;border:1px solid var(--line);color:#1f2937;padding:6px 11px;border-radius:8px}
+  .qlgrid a:hover{background:#0e7490;color:#fff;border-color:#0e7490}
   footer{padding:28px 0 50px;color:var(--muted);font-size:12.5px;text-align:center}
   .disclaim{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#7c2d12;margin-top:10px}
   @media(max-width:640px){header.hero h1{font-size:24px}.printbtn{position:static;margin-top:14px}}
@@ -257,6 +271,15 @@
   <h2 class="sec"><span class="ico">🗺️</span> מפה משותפת ל-Google My Maps</h2>
   <p class="lead">קובץ KML מוכן לייבוא + גיבוי CSV (שכבה לכל קטגוריה). 3 שכבות: לינה (כחול) · אטרקציות וטיולים (אדום) · תחבורה (אפור).</p>
   <div class="mapbox">
+    <div class="sharedmap">
+      <h4>🔗 המפה המשותפת ב-Google My Maps</h4>
+      <div class="row">
+        <input id="mymapsInput" type="url" placeholder="הדביקו כאן את קישור השיתוף שתקבלו מ-My Maps...">
+        <button onclick="saveMyMaps()">שמור</button>
+        <a id="mymapsOpen" class="btnlink open" style="display:none" target="_blank" rel="noopener">🗺️ פתח את המפה</a>
+      </div>
+      <small>אחרי שמעלים את trip-map.kml ל-My Maps ולוחצים "שיתוף", מדביקים כאן את הקישור — הוא נשמר במכשיר הזה ויהפוך לכפתור. (רוצים שיהיה קבוע בקובץ לכולם? תנו לי את הקישור ואטמיע אותו.)</small>
+    </div>
     <div class="filechips">
       <a href="trip-map.kml" download>⬇️ trip-map.kml (כל השכבות)</a>
       <a href="lodging.csv" download>🔵 lodging.csv</a>
@@ -271,6 +294,9 @@
       <li>לחצו <b>"שיתוף"</b> → <b>"כל מי שיש לו הקישור — צפייה"</b> → העתיקו את הקישור ושלחו למשפחה. ניתן לפתוח ב-Google Maps בנייד ולהדפיס.</li>
     </ol>
     <p class="note-sm">פיני הלינה ממוקמים לפי אזור/עיר ("מיקום מקורב"); לאחר בחירת נכס סופי כדאי לעדכן את הפין למיקום המדויק. כל המיקומים מקודדים ב-UTF-8 לתמיכה מלאה בעברית.</p>
+    <h4 style="margin:16px 0 0;color:var(--accent2)">📍 ניווט מהיר ב-Google Maps (נוח במובייל)</h4>
+    <p class="note-sm">לחיצה פותחת את המיקום ב-Google Maps לניווט.</p>
+    <div class="qlinks" id="qlinks"></div>
   </div>
 </section>
 
@@ -362,6 +388,8 @@ const AGES="&age=13&age=9&age=3";
 function bk(name,ci,co){return `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(name)}&checkin=${ci}&checkout=${co}&group_adults=2&group_children=3${AGES}`;}
 function gh(name){return `https://www.google.com/travel/search?q=${encodeURIComponent(name)}`;}
 function abnb(city,ci,co){return `https://www.airbnb.com/s/${encodeURIComponent(city)}/homes?checkin=${ci}&checkout=${co}&adults=2&children=3`;}
+function gmap(q){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;}
+function gmapLL(lat,lng){return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;}
 function nightStr(lo,hi){if(lo&&hi)return `€${lo}–${hi}`;if(lo)return `€${lo}+`;return "לבדיקה בקישור";}
 function totalStr(lo,hi,n){if(lo&&hi)return `€${lo*n}–${(hi*n).toLocaleString()}`;if(lo)return `≥€${lo*n}`;return "לבדיקה בקישור";}
 
@@ -420,7 +448,8 @@ stayGroups.forEach((g,gi)=>{
     rows.forEach(r=>{
       const links=[`<a class="btnlink bk" target="_blank" rel="noopener" href="${bk(r.bkName,g.ci,g.co)}">Booking</a>`,
         `<a class="btnlink" target="_blank" rel="noopener" href="${r.official}">רשמי</a>`,
-        `<a class="btnlink" target="_blank" rel="noopener" href="${gh(r.bkName)}">Google</a>`];
+        `<a class="btnlink" target="_blank" rel="noopener" href="${gh(r.bkName)}">Google</a>`,
+        `<a class="btnlink" target="_blank" rel="noopener" href="${gmap(r.bkName)}">📍 מפה</a>`];
       if(r.airbnb) links.push(`<a class="btnlink" target="_blank" rel="noopener" href="${abnb(r.airbnb,g.ci,g.co)}">Airbnb</a>`);
       const tr=document.createElement('tr'); if(r.rec) tr.className='rec';
       tr.innerHTML=`<td class="nm">${r.name}<div class="note-sm">${r.note}</div></td>
@@ -511,6 +540,36 @@ function updProg(){const done=checkItems.filter(i=>localStorage.getItem(KEY+i.id
   const pct=Math.round(done/checkItems.length*100);
   document.getElementById('progbar').style.width=pct+"%";
   document.getElementById('progtxt').textContent=`הושלמו ${done} מתוך ${checkItems.length} (${pct}%)`;}
+/* ============ SHARED MY MAPS LINK ============ */
+const MM_KEY="trip2026_mymaps";
+function applyMyMaps(url){
+  const open=document.getElementById('mymapsOpen'), inp=document.getElementById('mymapsInput');
+  if(url){open.href=url;open.style.display='inline-block';inp.value=url;}
+  else{open.style.display='none';}
+}
+function saveMyMaps(){
+  const v=document.getElementById('mymapsInput').value.trim();
+  if(v && !/^https?:\/\//i.test(v)){alert("הדביקו קישור מלא שמתחיל ב-https://");return;}
+  if(v) localStorage.setItem(MM_KEY,v); else localStorage.removeItem(MM_KEY);
+  applyMyMaps(v);
+}
+applyMyMaps(localStorage.getItem(MM_KEY)||"");
+
+/* ============ ATTRACTION QUICK LINKS (Google Maps) ============ */
+const places={
+ "רומא":[["קולוסיאום",41.8902,12.4922],["פנתאון",41.8986,12.4769],["מזרקת טרווי",41.9009,12.4833],["פיאצה נבונה",41.8992,12.4731],["וילה בורגזה",41.9145,12.4920],["טרסטוורה",41.8896,12.4694]],
+ "ורונה":[["ארנה די ורונה",45.4390,10.9947],["ורונה Porta Nuova",45.4290,10.9817]],
+ "אגם גארדה":[["סירמיונה",45.4956,10.6064],["גרדהלנד",45.4604,10.7174],["Parco Natura Viva",45.4717,10.7553]],
+ "הדולומיטים":[["מוזיאון אצי (בולצאנו)",46.4983,11.3548],["רכבל סצ׳דה",46.5790,11.6680],["פסגת סצ׳דה",46.6075,11.6480],["אלפה די סיוזי",46.5408,11.6175],["פארק חבלים Colfosco",46.5577,11.8800],["אגם קרצה",46.4093,11.5765],["סנטה מדלנה/פונס",46.6417,11.7050],["וואלונגה (סלבה)",46.5547,11.7600],["אגם בראייס",46.6947,12.0855],["Passo Gardena",46.5469,11.8163]],
+ "תחבורה":[["שדה תעופה FCO",41.8003,12.2389],["תחנת רומא טרמיני",41.9009,12.5018]]
+};
+const ql=document.getElementById('qlinks');
+Object.entries(places).forEach(([grp,arr])=>{
+  ql.insertAdjacentHTML('beforeend',`<div class="grp">${grp}</div><div class="qlgrid">${
+    arr.map(([nm,la,ln])=>`<a target="_blank" rel="noopener" href="${gmapLL(la,ln)}">📍 ${nm}</a>`).join('')
+  }</div>`);
+});
+
 checkItems.forEach(it=>{
   const done=localStorage.getItem(KEY+it.id)==="1";
   const row=document.createElement('div'); row.className="chk"+(done?" done":"");
