@@ -222,7 +222,7 @@ resto_html = "\n".join(resto_html)
 ticket_groups = [
  ("🏛️ רומא ותחבורה", [
    dict(name="קולוסיאום + פורום רומאנו + פלטינו", when="יום 2", official="https://ticketing.colosseo.it/en/", reseller="https://www.getyourguide.com/colosseum-l719/", rlabel="חלופה (GetYourGuide)", note="⚠️ הזמינו מיד עם פתיחת המכירה — נמכר מהר מאוד. כרטיס בשעה מוזמן מראש."),
-   dict(name="רכבת Frecciarossa רומא⇄ורונה", when="ימים 3 ו-10", official="https://www.trenitalia.com/en.html", reseller="https://www.italotreno.com/en", rlabel="Italo (חלופה זהה)", note="⚠️ נפתח ~4 חודשים מראש — מוקדם = זול בהרבה."),
+   dict(name="רכבת Frecciarossa רומא⇄ורונה", when="ימים 3 ו-10", official="https://www.trenitalia.com/en.html", reseller="https://www.italotreno.com/en", rlabel="Italo (חלופה זהה)", note="יש ישיר Frecciarossa/Italo ~3ש׳10–3ש׳30, ~13 ביום (כולל צהריים). חפשו בדיוק <b>Roma Termini → Verona Porta Nuova</b> וסננו <b>'ישיר בלבד'</b> — תוצאות של 5–7 שעות הן מסלולים עם החלפה! ⚠️ נפתח ~4 חודשים מראש = זול. השוואה: <a target=\"_blank\" rel=\"noopener\" href=\"https://www.thetrainline.com/en/train-times/rome-to-verona-porta-nuova\">Trainline</a>."),
    dict(name="Leonardo Express (טרמיני↔FCO)", when="יום 11", official="https://www.trenitalia.com/en/services/leonardo-express.html", reseller=None, rlabel=None, note="€17.90, כל ~15 דק׳, ~32 דק׳. אפשר גם לקנות בתחנה."),
  ]),
  ("🏖️ אגם גארדה וורונה", [
