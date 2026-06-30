@@ -56,7 +56,7 @@ This honesty is a feature: it sets correct expectations and still delivers value
 ## 5. Feature scope
 
 ### MVP (v0 — prove the wedge)
-- Connect one channel manager (recommended: **Hostaway**) via API.
+- Connect one channel manager (recommended: **Guesty** — its Open API `PromotionController` is the *only* third-party API that pushes OTA promotions across Airbnb/Booking.com/Expedia/Vrbo; **Hostaway** as fast second for pricing + distribution) via API.
 - **Promotion Radar:** read and display every active promotion/discount/program across the operator's connected channels in one view ("what's on, where").
 - **Promotion Recommender:** rules + market-data engine suggests the optimal promo mix per listing/date-range (e.g. "add a 15% last-minute deal for the next 10 low-occupancy nights on Booking.com").
 - **Three-tier execution:** auto-execute API-settable levers; guided-execute the rest with verification.
@@ -102,7 +102,7 @@ This honesty is a feature: it sets correct expectations and still delivers value
 
 ## 8. Connectivity strategy (decision)
 
-**Channel-Manager-First.** ✅ Direct OTA APIs are gated: Expedia Rapid is case-by-case partner approval with an API key only issued after a partnership agreement; Booking.com Connectivity requires PCI/PII compliance and full ARI management; Airbnb has no open public API. Going through Hostaway/Guesty turns months/years of per-OTA certification into one or two integrations. Direct Booking.com Connectivity becomes worthwhile only once volume justifies the certification cost. (Full reasoning + per-OTA detail in `02_technical_mvp_plan.md` and `03_api_lever_matrix.md`.)
+**Channel-Manager-First, Guesty-led.** ✅ Direct OTA APIs are gated: Expedia is TAM-gated supply connectivity; **Booking.com is currently *pausing* new connectivity-partner applications**; Airbnb is invite-only and hosts can't get keys. Going through a channel manager turns years of per-OTA certification into one integration. Critically, ✅ **Guesty is the only channel manager whose public API (`PromotionController`) actually pushes OTA promotions** (Airbnb/Booking.com/Expedia/Vrbo) — so it leads for the marketing-agent wedge; **Hostaway** is the fast second for pricing + marketplace distribution (but exposes no OTA-promotion API). Pursue direct Booking.com/Expedia supply partnerships only post-validation. (Full reasoning + per-OTA/per-CM detail in `03_api_lever_matrix.md`.)
 
 ---
 
@@ -117,7 +117,7 @@ This honesty is a feature: it sets correct expectations and still delivers value
 ## 10. Go-to-market & validation (fastest realistic path)
 
 1. **Weeks 1–2 — Concierge MVP (no code):** Recruit 3–5 real property managers. Manually analyze their promotions across every channel, deliver a recommended promo plan, and measure whether they implement it and whether revenue improves. This validates *demand* before building integrations.
-2. **Month 1–2 — Thin software MVP:** One integration (Hostaway) + Promotion Radar + Promotion Recommender (promos only, **no** pricing yet — avoid the crowded fight). Dashboard: "what's active / what's recommended / execute."
+2. **Month 1–2 — Thin software MVP:** One integration (**Guesty**, for its OTA `PromotionController`) + Promotion Radar + Promotion Recommender (promos only, **no** pricing yet — avoid the crowded fight). Dashboard: "what's active / what's recommended / execute." Use Guesty to demo *real* promotion auto-execution.
 3. **Month 3+ — Execution + pricing:** Add three-tier execution, then the pricing engine as an upsell.
 
 **Keep "the marketing agent" as the core and pricing as the add-on — not the reverse.**
