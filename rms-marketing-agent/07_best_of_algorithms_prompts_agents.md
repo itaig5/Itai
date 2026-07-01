@@ -125,7 +125,7 @@ getSignals()  →  [Analyst]  →  [Executor-proposer]  →  [Verifier/judge]  �
 | **Comp/market data** | **Wheelhouse RM API** | buy pace/comp/attribution (see `06`) |
 | **Agent** | **Claude** + prompt-chaining workflow + HITL | workflow > autonomous; grounded; audit-logged |
 | **Agent framework** | **LangGraph** (Py) or **Mastra** (TS) | `interrupt()` approval + scheduling |
-| **Integration** | **MCP host** + REST clients; **Guesty MCP** (reads) | standard seam; Guesty-first |
+| **Integration** | **MCP host** + REST clients (Guesty via `DLJRealty` community MCP or direct REST) | standard seam; Guesty-first |
 | **Forecasting (v2)** | **Nixtla StatsForecast + MLForecast** | intermittent-demand + global ML, verified fast |
 | **Promo-depth learning (v2+)** | contextual bandit (**MABWiser**) | learn depth from outcomes; not full RL |
 | **Elasticity (v2+)** | linearmodels → DoubleML/EconML | causal, defensible |
@@ -137,7 +137,7 @@ getSignals()  →  [Analyst]  →  [Executor-proposer]  →  [Verifier/judge]  �
 - Algorithmic collusion from independent Q-learners — https://www.aeaweb.org/articles?id=10.1257/aer.20190623
 - Anthropic *Building Effective Agents* (workflows > agents) — https://www.anthropic.com/engineering/building-effective-agents
 - Anthropic *Writing effective tools for AI agents* — https://www.anthropic.com/engineering/writing-tools-for-agents
-- Guesty official MCP server (beta) + Apaleo MCP — hospitality MCP ecosystem is early but real
+- Apaleo = only vendor-official hotel MCP (alpha); Guesty/PriceLabs MCPs are community (audit before use) — hospitality MCP ecosystem is early
 - LangGraph HITL `interrupt()` — https://docs.langchain.com/oss/python/langgraph/interrupts
 - Official SDKs: Cloudbeds (Python), Expedia (JVM); most others REST-only
 - Best OSS building blocks: tensor-house, revmng, PyEPO; no drop-in OSS RMS exists
