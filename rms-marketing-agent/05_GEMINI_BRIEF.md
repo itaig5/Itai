@@ -155,6 +155,47 @@ Anthropic/Claude guidance (this project uses Claude). Give concrete adaptable
 examples. Cite sources; end with Key facts + Open questions.
 ```
 
+## G. Cross-check tasks (hand Gemini Claude's conclusions to verify/refute)
+
+These are sharper than Tasks 5–7: they give Gemini Claude's specific findings (from docs 07/08) to independently confirm/refute. Run each in the Gem with Deep Research; bring results back to Claude to reconcile.
+
+### Cross-check A — Algorithms
+```
+I've researched pricing/revenue-management algorithms for a lean, solo-built RMS + OTA-promotion tool. Independently verify or challenge each conclusion below — for each say CONFIRM / REFUTE / REFINE with cited 2024-2026 sources, and add anything important I missed. Be skeptical and specific.
+1. Build rules first in this order: occupancy-vs-target triggers, orphan-gap filling, last-minute/booking-window, length-of-stay (all from the operator's own calendar), then BUY comp-set data, then compute booking pace vs STLY.
+2. Build a deterministic "double-discount / max-effective-discount" guard FIRST, because OTA promos stack (Booking.com rate-stacking + Genius; Airbnb same-type doesn't stack, larger-of applies).
+3. The primary price optimizer should be expected-revenue maximization: maximize price × P(book|price), using a Bayesian (PyMC) booking-probability model for small samples.
+4. Estimate elasticity with causal methods (log-log → EconML/DoubleML DML) because naive price-quantity regression is endogenous/biased.
+5. Forecasting: additive/multiplicative pickup first, then Nixtla StatsForecast (intermittent demand) + MLForecast (global ML).
+6. SKIP bespoke reinforcement learning (cold-start fatal at solo scale; competitive RL risks tacit algorithmic collusion). Use contextual bandits (MABWiser) only later for promo depth.
+End with "Key facts (bulleted, with URLs)" and "What I got wrong or missed".
+```
+
+### Cross-check B — Agents & prompts
+```
+Independently verify or challenge my conclusions on LLM agent design for an advisory pricing/promotion assistant built on Claude. CONFIRM/REFUTE/REFINE each with cited sources; add what I missed.
+1. Use a WORKFLOW (predefined path), not an autonomous agent — plan/analyst → recommend → verifier → human approval → execute.
+2. The LLM must NEVER compute the numbers; all metrics come from deterministic tools; the model only interprets and explains.
+3. Three-tool contract: getSignals (read-only), recommendPromotion (pure, no side effects), executePromotion (gated by a human approval token, dry-run default, idempotency key, MCP destructiveHint).
+4. Guardrails: allow "I don't know"; ground every number in provided data with citations; LLM-as-judge validator; treat verbalized confidence as overconfident; immutable structured audit trail.
+5. Framework: LangGraph (Python, interrupt() for human-in-the-loop) or Mastra (TypeScript).
+6. Avoid multi-agent swarms (~15× tokens; a single agent often matches them).
+End with "Key facts (with URLs)" and "What I got wrong or missed".
+```
+
+### Cross-check C — Skills, MCP & tools
+```
+Independently verify or challenge my findings on existing tools for a hospitality RMS + OTA-promotion product (2024-2026). CONFIRM/REFUTE/REFINE each with cited sources; add what I missed.
+1. The ONLY vendor-official hotel-domain MCP server is Apaleo's (alpha). Guesty/PriceLabs "MCP servers" are community projects (DLJRealty/guesty-mcp-server; bluehawk27/pricelabs-mcp-server), not vendor-authored. AirROI offers a market-data MCP.
+2. There is no official Claude/agent skill for hospitality revenue management; alirezarezvani/claude-skills (MIT) is the best reusable template; the PriceLabs "Revenue Management Skill Tree" (akashnambiar pl-rm-skills) is a useful design reference (mock-data).
+3. The only real official PMS SDKs are Cloudbeds (Python) and Expedia (JVM); Guesty/Hostaway/PriceLabs/Beyond are REST-only; Airbnb has no open API.
+4. No drop-in open-source RMS exists; best building blocks are ikatsov/tensor-house, arikanatakan/revmng, khalil-research/PyEPO.
+5. Best forecasting libs: Nixtla (statsforecast/mlforecast), Darts, sktime, Prophet. Best elasticity: EconML, DoubleML, causalml, linearmodels.
+End with "Key facts (with URLs)" and "What I got wrong or missed".
+```
+
+---
+
 ### Task 7 — Survey the best existing skills, agents, MCP servers, and tools
 ```
 Survey the best existing tools for building a hospitality revenue-management +
