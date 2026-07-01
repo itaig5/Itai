@@ -121,3 +121,51 @@ or manual? Identify the genuine white space and any direct competitor to a
 3. Repeat. The repo (reliable) or the Drive folder (when the connector is stable) is the shared memory.
 
 **Output format to request from Gemini** (so Claude ingests cleanly): ask Gemini to end every research task with a short **"Key facts (bulleted, with source URLs)"** section and a **"Open questions"** section. That's the part Claude acts on.
+
+---
+
+## F. Deeper-learning tasks — algorithms, prompts, skills, agents (round 2)
+
+Run these in your Gem with Deep Research. Claude is researching the same topics in parallel; compare notes.
+
+### Task 5 — Learn the best pricing / revenue-management algorithms
+```
+Teach me the best algorithms for dynamic pricing and revenue management in
+hotels and short-term rentals, from simple to advanced, for a solo founder
+building rules-first then ML. Cover: pace/occupancy-trigger rules, orphan-gap
+and length-of-stay logic, booking-curve/pickup forecasting, unconstrained
+demand, price elasticity and expected-revenue maximization, and advanced
+methods (reinforcement learning, contextual bandits, MDP) with an honest note
+on whether they're worth it at small scale. For each: what it is, the math,
+data needed, complexity, and when to use it. Recommend a concrete v1 (rules)
+and v2 (ML) algorithm stack. Cite sources; end with Key facts + Open questions.
+```
+
+### Task 6 — Learn the best LLM prompt & agent patterns for an analytical pricing agent
+```
+Teach me the best prompt-engineering patterns and agent architectures for an
+AI assistant that reasons over revenue metrics (pace, occupancy, comp position)
+and recommends/executes OTA promotions. Cover: agent patterns (ReAct, planner-
+executor, reflection/critique, multi-agent, human-in-the-loop); prompting for
+numeric/analytical reasoning (structured JSON output, grounding the model in
+computed metrics so it never invents numbers, self-consistency, LLM-as-judge);
+tool/function design and MCP tool best practices; and guardrails (advisory-only,
+no fabrication, uncertainty reporting, audit-friendly output). Prefer
+Anthropic/Claude guidance (this project uses Claude). Give concrete adaptable
+examples. Cite sources; end with Key facts + Open questions.
+```
+
+### Task 7 — Survey the best existing skills, agents, MCP servers, and tools
+```
+Survey the best existing tools for building a hospitality revenue-management +
+OTA-promotion automation product (2024-2026): MCP servers in hospitality/pricing
+(Beyond, PriceLabs "Revenue Management Skill Tree", Apaleo, Agentic Hospitality),
+reusable Claude/agent skills, open-source RMS/dynamic-pricing GitHub projects,
+useful libraries (forecasting: Prophet, Nixtla, Darts, sktime; optimization:
+OR-Tools, PuLP), channel-manager SDKs (Guesty, Hostaway), public hospitality
+demand/pricing datasets, and agent frameworks (LangGraph, Anthropic Agent SDK).
+For each: what it does, link, maturity, and how to use/adapt it. Flag directly
+reusable vs. instructive. End with a shortlist of top picks, Key facts + Open
+questions.
+```
+
