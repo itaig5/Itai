@@ -10,12 +10,16 @@
 
 ## 1. Vision
 
-A revenue platform for accommodation operators (short-term rentals **and** small hotels/B&Bs) that does two jobs in one:
+> **Architecture reframe (v2 — see `04_rms_engine_and_architecture.md`):** the product is **layered**. A focused **RMS brain** (mini-RMS) computes revenue signals and findings; a **marketing assistant** turns those findings into cross-channel promotion moves and executes them. The marketing layer is the *outcome* of the RMS layer — not a separate thing.
 
-1. **Prices the inventory** to maximize revenue (dynamic pricing).
-2. **Acts as an automated marketing agent** — it knows every promotion, discount, and visibility program available on each channel (Airbnb, Booking.com, Expedia/Vrbo), detects which ones the operator currently uses, recommends the optimal mix, and **executes** the ones that are programmatically executable.
+A revenue platform for accommodation operators (short-term rentals **and** small hotels/B&Bs), built as two layers:
 
-**One-line positioning:** *"Not just what price to charge — which deals, programs, and promotions to run on every channel, set up for you."*
+1. **RMS brain (the engine, not a sellable product):** computes pace, pickup, occupancy vs. target, revenue vs. budget, ADR/RevPAN, comp position → emits ranked *findings/opportunities*. Rules-based v1; forecasting later. Built from the same channel-manager data the connectors already pull.
+2. **Marketing assistant (the differentiator):** translates each RMS finding into the optimal marketing move — which promotion/discount/program, on which channel, at what depth — recommends it with its "why," and **executes** what's programmatically executable (Guesty promotions API), guiding the rest.
+
+**Target customers are manual-first** (no RMS today) → we are their first RMS. Connecting to an *external* RMS is a later optional wedge, not core.
+
+**One-line positioning:** *"A revenue brain that doesn't just tell you the price — it runs the right deals and programs on every channel for you."*
 
 ---
 

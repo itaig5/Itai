@@ -6,6 +6,10 @@ Deliverables for a hybrid Revenue Management System (short-term rentals **and** 
 1. **`01_PRD_strategy.md`** — product strategy & PRD: vision, market, ICP, competitive white space, risks, GTM.
 2. **`02_technical_mvp_plan.md`** — architecture, the channel adapter interface, the three engines, build sequence, stack.
 3. **`03_api_lever_matrix.md`** — the make-or-break answer: what's auto-executable vs guided vs manual, per OTA and per channel manager.
+4. **`04_rms_engine_and_architecture.md`** — ⭐ the reframe: RMS brain → marketing assistant layered architecture, the mini-RMS signal/data model, and the locked build decisions. Read this first for the current thinking.
+5. **`05_GEMINI_BRIEF.md`** — Gemini persona, learning curriculum, Deep Research task prompts, and the Claude↔Gemini handoff protocol.
+
+> **Current framing (v2):** the marketing assistant is the **action layer on top of an RMS brain** — promotion moves are outcomes of RMS findings (pace, occupancy vs. target, etc.). We build a lean **mini-RMS as the engine** (customers are manual-first, so we're their first RMS), rules-first with ML groundwork captured from day one. See `04`.
 
 ## The three conclusions that matter
 
