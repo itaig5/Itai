@@ -8,6 +8,9 @@ Deliverables for a hybrid Revenue Management System (short-term rentals **and** 
 3. **`03_api_lever_matrix.md`** — the make-or-break answer: what's auto-executable vs guided vs manual, per OTA and per channel manager.
 4. **`04_rms_engine_and_architecture.md`** — ⭐ the reframe: RMS brain → marketing assistant layered architecture, the mini-RMS signal/data model, and the locked build decisions. Read this first for the current thinking.
 5. **`05_GEMINI_BRIEF.md`** — Gemini persona, learning curriculum, Deep Research task prompts, and the Claude↔Gemini handoff protocol.
+6. **`06`–`09`** — research log, best-of catalog (algorithms/prompts/skills/agents), engineering playbook, and the Claude↔Gemini cross-check reconciliation.
+7. **`10_concierge_mvp_playbook.md`** — the 2-week no-code validation plan (run this before building).
+8. **`mvp/`** — ⭐ the **starter code** (TypeScript, 22 passing tests): mini-RMS signals, the double-discount guard, the rules engine, the 3-tool agent contract, Guesty adapter skeleton, and DB schema. `cd mvp && npm test && npm run demo`.
 
 > **Current framing (v2):** the marketing assistant is the **action layer on top of an RMS brain** — promotion moves are outcomes of RMS findings (pace, occupancy vs. target, etc.). We build a lean **mini-RMS as the engine** (customers are manual-first, so we're their first RMS), rules-first with ML groundwork captured from day one. See `04`.
 
