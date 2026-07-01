@@ -29,6 +29,11 @@ A revenue platform for accommodation operators (short-term rentals **and** small
 - **The promotions/marketing layer is genuine white space.** No major RMS automates *cross-channel promotion management* end-to-end. ✅ Even leading channel managers (e.g. OwnerRez↔Airbnb) expose only a **limited** set of promotion levers via API — meaning operators do this manually, channel by channel. That manual pain **is** the opportunity.
 - **The AI-agent wave in hospitality is just starting.** ✅ Apaleo shipped the first PMS MCP server (Sept 2025) with an "Agent Hub"; ✅ citizenM is an early adopter; ✅ Agentic Hospitality launched a "TravelOS" MCP server. The infrastructure for AI-driven operations is being laid right now — early movers can ride it.
 
+**Why native promotions beat a flat price cut (the core argument — Gemini Task 2 / `06`):**
+1. **Merchandising:** a native OTA promotion earns a **strikethrough "was/is" badge + a search-rank boost**; simply dropping the nightly rate does *not* — the guest sees a flat lower price with no badge and no ranking lift. Dynamic-pricing tools (PriceLabs/Beyond/Wheelhouse) only move the *number*, not the *presentation*. That gap is the product.
+2. **Double-discount protection:** a flat RMS price cut *stacks on top* of an active OTA promo (20% + 20% ≈ 36% off), silently eroding margin. We track active promos and prevent it.
+3. **Orphaned-promotion cleanup:** operators forget to switch promos off when demand recovers; we auto-unassign once pace hits target.
+
 ---
 
 ## 3. Target users (ICP)
@@ -85,9 +90,10 @@ This honesty is a feature: it sets correct expectations and still delivers value
 | AirDNA "Adapt" (2025) | ✅ AI-native | ❌ no |
 | Duetto / IDeaS / RoomPriceGenie | ✅ (hotels) | ❌ no |
 | Guesty / Hostaway / Cloudbeds | partial (bundled) | ❌ limited, manual |
+| **Guesty PriceOptimizer (GPO)** | ✅ (Guesty only) | ⚠️ auto LOS promos — **but Guesty-only, can't ingest external RMS** | 
 | **This product** | v1 | ✅ **the wedge** |
 
-**White space confirmed:** the promotion-automation layer is unowned.
+**White space confirmed:** the promotion-automation layer is unowned by any *platform-agnostic* player. The closest thing — **Guesty PriceOptimizer** — auto-triggers length-of-stay promotions but is locked to Guesty's ecosystem and can't ingest external signals. **Our edge: platform-agnostic, cross-channel, and able to ingest an external RMS (Wheelhouse/Beyond).**
 
 ---
 

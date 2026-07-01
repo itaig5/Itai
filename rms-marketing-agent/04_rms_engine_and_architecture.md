@@ -86,8 +86,10 @@ interface InsightsProvider {
   capabilities: { hasForecast: boolean; hasPace: boolean; hasTargets: boolean }
 }
 ```
-- **v1:** `InternalRmsProvider` (your mini-RMS).
-- **Later (optional wedge):** `PriceLabsProvider` etc. — **but only if they expose usable signals via API.** ⚠️ Open question — most RMS likely push a *price*, not their forecast/pace. **This is a top Gemini research task** (see `05`). Because your ICP is manual-first (decision #2), this stays low-priority until validated.
+- **v1:** `InternalRmsProvider` (your mini-RMS — pace/OTB from Guesty data).
+- **✅ RESOLVED (Gemini Task 2, see `06`):** the "connect to external RMS" path **is viable — for Wheelhouse (excellent) and Beyond (via its MCP server)**, which expose pace, comp-set, and (Wheelhouse) rate *attribution* over self-serve APIs. **PriceLabs = marginal** (rates only, black box); **Duetto = unviable** (enterprise-only). So `WheelhouseProvider` and `BeyondProvider` are real optional implementations for customers who already run one.
+
+**Key buy-vs-build decision (from Task 2):** don't build comp-tracking or pay AirDNA — **buy neighborhood pricing + neighborhood occupancy-pace + attribution from the Wheelhouse RM API** (self-serve key), and keep your **own OTB/pace engine** (from Guesty reservations) as the core you control. **Hybrid = own OTB pace + bought neighborhood signals.**
 
 ## The ML groundwork (decision #3 "parallel B") — do this without building models
 
@@ -102,7 +104,7 @@ You are **not** building forecasting now. You **are**:
 - **Jobs:** a lightweight scheduler for the daily snapshot + rate-limited channel writes (Supabase cron / a small queue). Don't over-engineer.
 - **App:** Next.js (one language, AI-friendly, fast dashboards).
 - **AI/agent:** Claude behind an internal MCP host; the RMS engine + connectors are MCP tools.
-- **Market data:** **buy, don't build** — AirDNA / Key Data for comp/market signals.
+- **Market data:** **buy, don't build** — ✅ prefer the **Wheelhouse RM API** (self-serve, exposes neighborhood pricing percentiles + neighborhood occupancy-pace + rate attribution) over AirDNA/Key Data. It gives the comp/demand signals a single customer's own data can't.
 - **Build style:** AI-assisted (Claude Code for the app + adapters; Gemini for research/learning). Ship the concierge MVP with **no code** first.
 
 ## Data model sketch
