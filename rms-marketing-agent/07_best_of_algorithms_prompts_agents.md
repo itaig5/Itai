@@ -16,8 +16,8 @@ Verified build-order by data cost (the first four run off the operator's **own c
 2. **Orphan-gap filling** — discount 1–2 night gaps between bookings + drop min-stay to gap length. *(PriceLabs default: 20% orphan discount; up to 5 gap ranges; when an orphan is also last-minute, it applies the **larger** of the two discounts.)*
 3. **Booking-window / last-minute** — cascading discount curve by days-to-arrival.
 4. **Length-of-stay** — premium on 1-night, tiered discounts for longer. *(PriceLabs caps LOS at 7 nights, applied to the final price.)*
-5. **Comp-set anchoring** — position vs. neighborhood median. **Buy this** (Wheelhouse) — needs market data you can't get solo.
-6. **True booking pace/pickup vs STLY** — highest data cost (needs your own daily snapshots + a year of history). Build the snapshots now, compute pace once you have history.
+5. **True booking pace/pickup vs STLY** — needs your own daily snapshots + a year of history, but it's **zero-cost internal data** (build snapshots now). *(Gemini cross-check: do this BEFORE buying comp-set data — STLY is free, comp-set is paid OpEx.)*
+6. **Comp-set anchoring** — position vs. neighborhood median. **Buy this last** (Wheelhouse / AirROI) — recurring cost.
 
 **The marketing-action policy (your differentiator):** `finding → {promo type, channel, depth}` with double-discount + orphan-promo guards. Rules now; contextual bandit later.
 
@@ -82,12 +82,12 @@ getSignals()  →  [Analyst]  →  [Executor-proposer]  →  [Verifier/judge]  �
 - **Decision:** if you go one-language TS (app+agent) → **Mastra**. If you want the strongest HITL/scheduling primitives → **LangGraph** (Python) with a TS app calling it. Both are MCP clients.
 
 ### MCP (the integration standard — now Linux Foundation-governed, industry-wide)
-✅ **Verified correction:** the only clearly *vendor-official* hotel-domain MCP server is **Apaleo's** (alpha, ~237 Core API endpoints as tools, OAuth2). Everything else is **community** (real code, but mostly 0-star, single-author, 2025–26 — audit before depending):
-- **Guesty:** `DLJRealty/guesty-mcp-server` (community, MIT; 43 tools incl. `update_pricing`/`update_listing_pricing`; powers "Guesty Copilot" beta). *Not* Guesty-authored — aggregators mislabel it "official."
-- **PriceLabs:** `bluehawk27/pricelabs-mcp-server` (npm; 11 read+write tools incl. `set_overrides`) is the most complete; **`akashnambiar-dot/pl-rm-skills`** ("Revenue Management Skill Tree" — 14 skills/23 tools in a 3-layer data→analytics→strategy decomposition) is **the best design reference** (but mock-data, 0★).
-- **AirROI MCP** — ~20 tools returning pre-computed occupancy/ADR/RevPAR — a good **market-data bolt-on**.
-- **Beyond** claims an MCP server but no public artifact; **Agentic Hospitality TravelOS** = enterprise distribution/booking (not RMS).
-- **You'll build your own internal MCP host** exposing `getSignals`/`recommendPromotion`/`executePromotion` + adapters; the community servers above are references + possible bolt-ons.
+✅ **Corrected by Gemini cross-check (`09`):** more official servers exist than first thought.
+- **Official, vendor-authored:** **Apaleo** (alpha, ~230–237 endpoints, OAuth2) · **Guesty MCP** (official *beta*, read-only — `@guestyorg/sdk mcp` / `mcp.guesty.com`; docs open-api-docs.guesty.com/docs/guesty-mcp-server-beta) · **Hospitable** (official, *production* — `mcp.hospitable.com`; read + tasks + guest messaging).
+- **Community (more tools, incl. write — audit first):** `DLJRealty/guesty-mcp-server` (MIT; ~38 read tools free, Pro adds ~16 write incl. `update_pricing`) · `bluehawk27/pricelabs-mcp-server` (11 read+write incl. `set_overrides`) · **`akashnambiar-dot/pl-rm-skills`** ("Revenue Management Skill Tree", 14 skills/23 tools, 3-layer) = **the best design reference** (mock-data).
+- **Commercial market-data:** **AirROI MCP** (~22 tools, pre-computed occ/ADR/RevPAR, 60-mo history, 365-day forward) — a strong **public-data bolt-on** (also helps the legal "public data only" posture).
+- **Beyond** claims an MCP but no public artifact; **Agentic Hospitality TravelOS** = enterprise distribution/booking (not RMS).
+- **You'll still build your own internal MCP host** exposing `getSignals`/`recommendPromotion`/`executePromotion` + adapters; the above are references + read/data bolt-ons.
 
 ### Claude / agent skills
 - No official hospitality skill. **`alirezarezvani/claude-skills`** (MIT) is the best reusable + authoring template — its **variance-analysis, rolling-forecaster, commercial-forecaster** skills adapt to RMS budgeting; SKILL.md conventions are a clean scaffold.
@@ -102,9 +102,9 @@ getSignals()  →  [Analyst]  →  [Executor-proposer]  →  [Verifier/judge]  �
 - **`tule2236/Airbnb-Dynamic-Pricing-Optimization`** (238★) — most-starred community STR pricing template (clustering comps + kNN demand + optimization; note: it's a demand optimizer, not a rule engine).
 - **QloApps** (13.9k★, OSL-3.0) — open-source hotel PMS/booking-engine (the operational layer, no RMS) — integration-shape reference.
 
-### PMS / channel-manager SDKs (verified — mostly REST-only)
-- **Only real official SDKs:** **Cloudbeds** (`cloudbeds-pms`, Python, MIT, active) and **Expedia** (JVM/`rapid-java-sdk`; Node/Python SDKs archived).
-- **Guesty, Hostaway, PriceLabs, Beyond = REST/OAuth directly** (Guesty's `@fern-api/guesty` npm is a stale beta — don't use). Build a thin typed client.
+### PMS / channel-manager SDKs (verified)
+- **Official SDKs:** **Cloudbeds** (`cloudbeds-pms`/`cloudbeds-api-python`, Python, MIT, active) · **Expedia** (JVM/`rapid-java-sdk`; Node/Python archived) · ✅ **Guesty** (official **Node.js** `@guestyorg/sdk` — powers its official MCP; *corrected by Gemini*). Note: the old `@fern-api/guesty` npm is a stale beta — use `@guestyorg/sdk` instead.
+- **Hostaway, PriceLabs, Beyond = REST/OAuth directly** (build a thin typed client).
 - **Airbnb** = closed; reach it only via a partner-connected channel manager.
 
 ### Public datasets (for building/testing forecasting)
