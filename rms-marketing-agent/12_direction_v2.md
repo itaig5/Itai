@@ -5,10 +5,13 @@
 ## 1. The marketing lever = ADD native promotions, not cut base rates
 The primary action of the marketing engine is to **enroll/add a native OTA promotion** (last-minute, basic, early-booker, campaign) — because native promotions earn the **strikethrough badge + search-rank boost**, which a flat base-rate cut does not. Lowering the nightly rate is a *last resort*, not the default.
 
-**Autonomy is configurable (compliant "automatic"):**
-- Default = **advisory** (human approves).
-- Operator can enable **auto-execution within bounds they set once** (e.g. "auto-run up to 15% last-minute deals on nights pacing >15% behind; max 2 active promos/listing"). This is the compliant form of "automatic" — the RealPage settlement specifically requires that **auto-execution ranges be set by the user**, not by hidden defaults (docs 09).
-- The deterministic guardrail (double-discount / clip-floor) always runs before any write, in every autonomy mode.
+**What "automatic" means (the core time-saver):** the operator **approves once** in the dashboard, and the system **pushes the promotion to ALL relevant platforms at once** — instead of the operator logging into Booking.com, Airbnb, and Expedia separately to add the same promo three times. One place, one click, every channel. That is the headline value.
+
+**Autonomy levels:**
+- Default = **approve-then-push-everywhere** (human approves each recommendation; system executes across all channels simultaneously).
+- Optional advanced = **auto-execution within bounds the operator sets once** (e.g. "auto-run up to 15% last-minute on nights pacing >15% behind; max 2 active promos/listing"). Compliant only because the bounds are operator-set (RealPage settlement — no hidden auto-accept).
+- **Auto-turn-OFF:** unassign a promotion automatically once pace recovers to target.
+- The deterministic guardrail (double-discount / clip-floor) always runs before any write, in every mode.
 
 ## 2. Visibility tracking + smart handling (see `11` for the API reality)
 Visibility is **another signal into the RMS brain**. Funnel data is mostly extranet-only, so assemble it per-platform:
