@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  CalendarClock, Compass, Eye, Home, ListChecks, Settings, Sparkles,
+  Building2, CalendarClock, Compass, Eye, Home, ListChecks, Settings, Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -12,6 +12,7 @@ const NAV = [
   { href: '/recommendations', label: 'Recommendations', icon: Sparkles },
   { href: '/radar', label: 'Promotion Radar', icon: Compass },
   { href: '/visibility', label: 'Visibility', icon: Eye },
+  { href: '/clients', label: 'Clients', icon: Building2 },
   { href: '/audit', label: 'Audit & Outcomes', icon: ListChecks },
   { href: '/settings', label: 'Settings', icon: Settings },
 ];

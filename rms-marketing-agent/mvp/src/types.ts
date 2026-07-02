@@ -269,7 +269,33 @@ export type AuditKind =
   | 'recommendation_created' | 'verifier_pass' | 'verifier_block'
   | 'approved' | 'rejected' | 'dry_run' | 'executed' | 'auto_executed'
   | 'guardrail_block' | 'guided_step' | 'promo_ended' | 'outcome_measured'
-  | 'bandit_update' | 'visibility_drop' | 'settings_changed' | 'snapshot' | 'learning_job';
+  | 'bandit_update' | 'visibility_drop' | 'settings_changed' | 'snapshot' | 'learning_job'
+  | 'client_added' | 'client_connected' | 'client_error' | 'client_disconnected';
+
+// --- Client onboarding (the operator accounts whose portfolios RevPilot manages) ---
+
+export type ClientChannelManager = 'guesty' | 'hostaway' | 'demo';
+export type ClientStatus = 'pending' | 'connected' | 'error' | 'disabled';
+
+export interface ClientCredentials {
+  clientId?: string;      // Guesty OAuth client id / Hostaway account id
+  clientSecret?: string;  // stored server-side only — NEVER returned to the browser
+}
+
+export interface ClientRecord {
+  id: string;
+  name: string;              // the property manager / company
+  contactEmail: string;
+  market: string;            // primary market label for imported listings
+  channelManager: ClientChannelManager;
+  credentials?: ClientCredentials;
+  status: ClientStatus;
+  statusDetail: string;      // human-readable connection state ("12 listings imported", error text)
+  listingIds: string[];
+  createdAt: string;         // sim date
+  connectedAt?: string;
+  demoListingCount?: number; // demo CM only: portfolio size (stable across re-syncs)
+}
 
 export interface AuditEvent {
   id: string;
@@ -307,4 +333,5 @@ export interface ListingRecord {
   createdAt: string;          // for new-listing detection
   imageHue: number;           // deterministic placeholder art hue for the UI
   channelFlags?: Partial<Record<Platform, ChannelFlags>>;
+  clientId?: string;          // which client account owns this listing
 }

@@ -100,6 +100,22 @@ export function generateWorld(opts: WorldOptions = {}): RevPilotState {
     visibilityObservations.push(...generateVisibility(p, simDate, rng));
   }
 
+  // the seed portfolio belongs to one already-connected demo client account
+  const seedClientId = nextId('cl');
+  const clients: RevPilotState['clients'] = [{
+    id: seedClientId,
+    name: 'Sunrise Stays (demo)',
+    contactEmail: 'ops@sunrisestays.example',
+    market: 'Mixed EU/US',
+    channelManager: 'demo',
+    status: 'connected',
+    statusDetail: `${PERSONAS.length} listings imported from the demo portfolio`,
+    listingIds: PERSONAS.map((p) => p.id),
+    createdAt: addDays(simDate, -30),
+    connectedAt: addDays(simDate, -30),
+  }];
+  for (const l of listings) l.clientId = seedClientId;
+
   // --- history: a promo that already ran + one still active, so outcomes/audit aren't empty ---
   const promotions: PromotionRecord[] = [];
   const recommendations: Recommendation[] = [];
@@ -182,10 +198,84 @@ export function generateWorld(opts: WorldOptions = {}): RevPilotState {
   log(simDate, 'system', 'snapshot', 'Daily OTB snapshot captured for 8 listings (pace curves updated)', {});
 
   return {
-    seed, simDate, listings, calendar, reservations, snapshots, stlyOccupancy, compMedianRate,
+    seed, simDate, clients, listings, calendar, reservations, snapshots, stlyOccupancy, compMedianRate,
     visibilityObservations, promotions, recommendations, outcomes, audit,
     settings: structuredClone(DEFAULT_SETTINGS), banditState, banditModel: 'ts-thompson-v1', counters,
   };
+}
+
+// ---------------------------------------------------------------------------
+// Client portfolio generation — powers "connect a demo client" on the Clients
+// screen: N fresh listings with full history that flow straight into the brain.
+// ---------------------------------------------------------------------------
+
+const UNIT_NAMES = [
+  'Harbor Flat', 'Old Mill Loft', 'Stone Court 3BR', 'Palm Garden Studio',
+  'Lakeview Cabin', 'Bell Tower Suite', 'Cypress Villa', 'Canal House',
+  'Meadow Barn', 'Pier 9 Apartment', 'Vineyard Cottage', 'Summit Chalet',
+];
+
+export interface ClientPortfolio {
+  listings: ListingRecord[];
+  calendar: Record<string, CalendarNight[]>;
+  reservations: Reservation[];
+  snapshots: Record<string, OtbSnapshot[]>;
+  stlyOccupancy: Record<string, number>;
+  compMedianRate: Record<string, number>;
+  visibilityObservations: VisibilityObservation[];
+}
+
+/** Deterministic per-client portfolio: a mix of behind-pace, ahead, and healthy units so a
+ *  freshly connected client immediately exercises the whole recommendation loop. */
+export function generateClientListings(
+  seed: number,
+  client: { id: string; name: string; market: string },
+  count: number,
+  simDate: string,
+): ClientPortfolio {
+  const out: ClientPortfolio = {
+    listings: [], calendar: {}, reservations: [], snapshots: {},
+    stlyOccupancy: {}, compMedianRate: {}, visibilityObservations: [],
+  };
+  const n = Math.max(1, Math.min(count, UNIT_NAMES.length));
+  for (let i = 0; i < n; i++) {
+    const rng = mulberry32(hashSeed(seed, client.id, i));
+    const occ21 = 0.35 + rng() * 0.5;                          // 35%..85% booked
+    const paceDelta = (rng() - 0.55) * 0.3;                    // slight bias toward behind
+    const persona: Persona = {
+      id: `${client.id.toUpperCase().replace(/[^A-Z0-9]/g, '')}-U${i + 1}`,
+      name: `${UNIT_NAMES[i]} — ${client.name.split(' ')[0]}`,
+      market: client.market,
+      bedrooms: Math.floor(rng() * 4),
+      baseRate: Math.round(90 + rng() * 190),
+      targetOccupancy: Math.round((0.6 + rng() * 0.15) * 100) / 100,
+      channels: ALL_OTA,
+      occ21: Math.round(occ21 * 100) / 100,
+      stlyOcc: Math.max(0.2, Math.min(0.9, Math.round((occ21 - paceDelta) * 100) / 100)),
+      compGap: Math.round((rng() - 0.4) * 0.3 * 100) / 100,    // -12%..+18% vs market
+      createdDaysAgo: 200 + Math.floor(rng() * 500),
+      pastOcc: Math.max(0.25, occ21 - 0.05),
+    };
+    // ids must never collide with existing reservation counters — prefix with the client id
+    let resSeq = 0;
+    const clientNextId = (prefix: string) => `${prefix}_${client.id}_${String(++resSeq).padStart(4, '0')}`;
+
+    out.listings.push({
+      id: persona.id, cmId: `${client.id}-${persona.id.toLowerCase()}`, name: persona.name,
+      market: persona.market, bedrooms: persona.bedrooms, baseRate: persona.baseRate,
+      targetOccupancy: persona.targetOccupancy, channels: persona.channels,
+      createdAt: addDays(simDate, -persona.createdDaysAgo),
+      imageHue: Math.floor(rng() * 360), clientId: client.id,
+    });
+    out.calendar[persona.id] = generateForwardCalendar(persona, simDate, rng);
+    out.reservations.push(...reservationsFromCalendar(persona, out.calendar[persona.id], simDate, rng, clientNextId));
+    out.reservations.push(...pastReservations(persona, simDate, rng, clientNextId));
+    out.snapshots[persona.id] = generateSnapshots(persona, out.calendar[persona.id], simDate, rng);
+    out.stlyOccupancy[persona.id] = persona.stlyOcc;
+    out.compMedianRate[persona.id] = Math.round(persona.baseRate / (1 + persona.compGap));
+    out.visibilityObservations.push(...generateVisibility(persona, simDate, rng));
+  }
+  return out;
 }
 
 // ---------- generation helpers ----------

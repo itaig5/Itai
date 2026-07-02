@@ -3,6 +3,7 @@
 import type {
   AuditEvent,
   CalendarNight,
+  ClientRecord,
   ListingRecord,
   OperatorSettings,
   OtbSnapshot,
@@ -18,6 +19,7 @@ import type {
 export interface RevPilotState {
   seed: number;               // PRNG seed the world was generated from
   simDate: string;            // "today" in the demo world (ISO date)
+  clients: ClientRecord[];    // the operator accounts whose portfolios RevPilot manages
   listings: ListingRecord[];
   /** listingId -> forward calendar nights (rolling ~120 days) */
   calendar: Record<string, CalendarNight[]>;

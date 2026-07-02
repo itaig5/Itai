@@ -24,6 +24,7 @@ function ob(p: Partial<VisibilityObservation> & { observedAt: string; source: Vi
 function makeState(observations: VisibilityObservation[]): RevPilotState {
   return {
     seed: 1, simDate: ASOF,
+    clients: [],
     listings: [], calendar: {}, reservations: [], snapshots: {},
     stlyOccupancy: {}, compMedianRate: {},
     visibilityObservations: observations,

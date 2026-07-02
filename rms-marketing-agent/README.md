@@ -43,7 +43,7 @@ extranet numbers (CSV/manual — funnels have no API; nothing is ever scraped).
 | Path | What it is |
 |---|---|
 | `mvp/` | `@revpilot/core` — the tested domain: signal math, rules + bandit policy, double-discount guardrail, verifier, cross-channel orchestrator, visibility provider (4 adapters), outcome log + TS fallback bandit, seed-world generator + day simulator, Mastra HITL workflow, Guesty/Hostaway/mock adapters, jobs. `npm test` = 86 tests. |
-| `app/` | Next.js (App Router) dashboard: Home, Recommendations, Promotion Radar, Visibility, Audit & Outcomes, Settings. Design tokens live in ONE place: `app/src/app/globals.css` (light + dark). API route handlers call the core directly. |
+| `app/` | Next.js (App Router) dashboard: Home, Recommendations, Promotion Radar, Visibility, Clients (add + connect property-manager accounts: demo portfolio with zero creds, or Guesty/Hostaway with the client's own API credentials), Audit & Outcomes, Settings. Design tokens live in ONE place: `app/src/app/globals.css` (light + dark). API route handlers call the core directly. |
 | `ml-service/` | Python/FastAPI microservice: contextual bandit (Thompson; MABWiser LinUCB optional), forecasting (pickup baseline → StatsForecast; TimeGPT cold-start behind `NIXTLA_API_KEY`), model registry + champion/challenger backtests + confidently-wrong metric. The TS side mirrors the bandit math and takes over when the service is down. |
 | `mvp/src/db/schema.sql` | The Postgres (Supabase) shape for production; the demo persists the same state as JSON (`app/.data/`). |
 

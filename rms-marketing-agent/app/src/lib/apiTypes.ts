@@ -1,14 +1,38 @@
 // Shared request/response DTOs between route handlers and client components.
 // Client components import ONLY types from here (the core runs server-side).
 import type {
-  AuditEvent, Channel, DaySummary, HitlHandle, OperatorSettings, OutcomeRecord,
-  PromotionRecord, Recommendation, Signals, VerifierReport, VisibilitySignals,
+  AuditEvent, Channel, ClientChannelManager, ClientStatus, ClientView, DaySummary,
+  HitlHandle, OperatorSettings, OutcomeRecord, PromotionRecord, Recommendation,
+  Signals, VerifierReport, VisibilitySignals,
 } from '@revpilot/core';
 
 export type {
-  AuditEvent, Channel, DaySummary, HitlHandle, OperatorSettings, OutcomeRecord,
-  PromotionRecord, Recommendation, Signals, VerifierReport, VisibilitySignals,
+  AuditEvent, Channel, ClientChannelManager, ClientStatus, ClientView, DaySummary,
+  HitlHandle, OperatorSettings, OutcomeRecord, PromotionRecord, Recommendation,
+  Signals, VerifierReport, VisibilitySignals,
 };
+
+export interface ClientsResponse {
+  simDate: string;
+  clients: ClientView[];
+  totals: { connected: number; listings: number };
+}
+
+export interface AddClientRequest {
+  name: string;
+  contactEmail: string;
+  market: string;
+  channelManager: ClientChannelManager;
+  credentials?: { clientId?: string; clientSecret?: string };
+  demoListingCount?: number;
+  /** create + immediately attempt the connection (the default UI flow) */
+  connectNow?: boolean;
+}
+
+export interface ClientMutationResponse {
+  client: ClientView;
+  connect?: { status: ClientStatus; detail: string; importedListingIds: string[] };
+}
 
 export interface SeriesPointDto {
   ds: string;

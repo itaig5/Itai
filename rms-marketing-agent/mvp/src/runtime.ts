@@ -33,6 +33,26 @@ export function createRuntime(opts: RuntimeOptions = {}): Runtime {
     ? new MemoryStore(generateWorld({ seed }))
     : JsonFileStore.load(env.dataFile, () => generateWorld({ seed }));
 
+  // migrate dev-state files written before client accounts existed
+  if (!store.getState().clients) {
+    store.update((s) => {
+      s.clients = [{
+        id: 'cl_00001',
+        name: 'Sunrise Stays (demo)',
+        contactEmail: 'ops@sunrisestays.example',
+        market: 'Mixed EU/US',
+        channelManager: 'demo',
+        status: 'connected',
+        statusDetail: `${s.listings.length} listings imported from the demo portfolio`,
+        listingIds: s.listings.map((l) => l.id),
+        createdAt: s.simDate,
+        connectedAt: s.simDate,
+      }];
+      s.counters.cl = Math.max(s.counters.cl ?? 0, 1);
+      for (const l of s.listings) l.clientId = l.clientId ?? 'cl_00001';
+    });
+  }
+
   // Live Guesty only with explicit env opt-in; the demo world uses the mock adapter.
   const adapter: ChannelAdapter = env.guestyEnabled
     ? createGuestyAdapter(env)

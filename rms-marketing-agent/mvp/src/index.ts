@@ -31,6 +31,7 @@ export { REC_WINDOW_DAYS } from './engine/signalService.ts';
 export * from './sample/world.ts';
 export * from './sample/simulator.ts';
 export * from './workflow/hitl.ts';
+export * from './clients/clientService.ts';
 export * from './adapters/channelAdapter.ts';
 export * from './adapters/tokenCache.ts';
 export * from './adapters/guestyAdapter.ts';
