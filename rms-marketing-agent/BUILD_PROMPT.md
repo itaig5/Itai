@@ -1,8 +1,23 @@
 # BUILD PROMPT — RevPilot (paste-free: point a Fable session at this file)
 
-**How to use:** start a fresh Claude Code session on repo `itaig5/Itai`, branch
+**How to use:** start a Claude Code session on repo `itaig5/Itai`, branch
 `claude/skill-scout-review-6u0hmc`, model **Fable**, then send one line:
-> "Read `rms-marketing-agent/BUILD_PROMPT.md` and build the whole system. Confirm the plan in 4–6 bullets first."
+> "Read `rms-marketing-agent/BUILD_PROMPT.md`. First check what already exists on this branch and extend it — don't restart. List the files you'll add/change, then build the whole system."
+
+## BOUNDARIES — do NOT (read before building)
+- **Build on what already exists; never restart or duplicate.** The branch already has docs 00–12,
+  a tested `mvp/` core (signals, guardrail, rules, 3-tool contract — 22 passing tests), and a
+  SessionStart hook. Extend them. Keep every existing test green.
+- **Do NOT delete, rewrite, or "refactor away"** the existing docs, the tested `mvp/` code, the
+  guardrail, or the hook. Add alongside; don't tear down passing work.
+- **Do NOT call live OTA/Guesty APIs or use real credentials.** Everything runs on SEED DATA behind
+  env flags — no real calls to Booking.com/Airbnb/Expedia/Guesty.
+- **Do NOT push to any branch other than the current one; do NOT force-push; do NOT open a pull
+  request** unless I explicitly ask.
+- **Do NOT contradict the locked decisions in docs 09 and 12** (Guesty-first; approve-then-push;
+  public-data-only, no data pooling; guardrail-before-every-write).
+- **ASK me before any destructive or irreversible action.** Otherwise build autonomously — don't
+  wait for step-by-step approval on each file.
 
 ---
 
@@ -118,4 +133,7 @@ recommendation with its "why" -> Approve & push to all channels -> guarded execu
 logged -> the bandit visibly updating. GuestyAdapter + VisibilityProvider + ML service are
 code-complete and credential-ready via env vars. `npm test` green.
 
-Confirm the plan in 4–6 bullets, then build the whole thing. Only ask if a decision truly blocks you.
+Start by listing the files/modules you will ADD or CHANGE (a short manifest — not an explanation of
+your reasoning), noting which existing files you're extending vs. creating, so nothing is
+duplicated. Then build the whole thing autonomously within the BOUNDARIES above. Don't narrate your
+thinking; execute. Only pause for a genuinely blocking decision.
