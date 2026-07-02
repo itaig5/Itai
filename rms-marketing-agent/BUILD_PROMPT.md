@@ -7,7 +7,8 @@
 ---
 
 ## STEP 0 — orient (do this first)
-Confirm you're on the right branch and the tested core is green before extending it:
+A SessionStart hook (`.claude/hooks/session-start.sh`) auto-installs npm/pip deps on session start,
+so tests are ready immediately. Confirm you're on the right branch and the tested core is green:
 ```
 git branch --show-current        # expect: claude/skill-scout-review-6u0hmc
 # if not:  git fetch origin && git checkout claude/skill-scout-review-6u0hmc
