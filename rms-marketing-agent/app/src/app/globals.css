@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   RevPilot design tokens — THE one place to restyle the product.
+   Palette = the validated dataviz reference instance (CVD-checked); swap these
+   values for your brand and re-run scripts/validate_palette.js on the series.
+   ========================================================================== */
+:root {
+  /* surfaces & ink */
+  --surface-page: #f9f9f7;
+  --surface-card: #fcfcfb;
+  --surface-inset: #f0efec;
+  --ink-primary: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --hairline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --ring: rgba(11, 11, 11, 0.1);
+
+  /* brand accent (buttons, active nav, emphasis) — categorical slot 1 */
+  --accent: #2a78d6;
+  --accent-ink: #ffffff;
+  --accent-soft: #cde2fb;
+
+  /* categorical series (fixed order — color follows the entity, never rank) */
+  --series-1: #2a78d6; /* blue    — booking.com */
+  --series-2: #1baf7a; /* aqua    — airbnb (see channel map) */
+  --series-3: #eda100; /* yellow  — expedia */
+  --series-4: #008300; /* green   — vrbo */
+  --series-5: #4a3aa7; /* violet  — direct */
+  --series-6: #e34948; /* red */
+  --series-7: #e87ba4; /* magenta */
+  --series-8: #eb6834; /* orange */
+
+  /* sequential ramp (magnitude) — blue, light->dark */
+  --seq-100: #cde2fb;
+  --seq-250: #86b6ef;
+  --seq-400: #3987e5;
+  --seq-550: #1c5cab;
+  --seq-700: #0d366b;
+
+  /* status (reserved — never a series color) */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+  --delta-up-good: #006300;
+
+  --radius: 0.625rem;
+}
+
+[data-theme='dark'] {
+  --surface-page: #0d0d0d;
+  --surface-card: #1a1a19;
+  --surface-inset: #262624;
+  --ink-primary: #ffffff;
+  --ink-secondary: #c3c2b7;
+  --ink-muted: #898781;
+  --hairline: #2c2c2a;
+  --baseline: #383835;
+  --ring: rgba(255, 255, 255, 0.1);
+
+  --accent: #3987e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #104281;
+
+  --series-1: #3987e5;
+  --series-2: #199e70;
+  --series-3: #c98500;
+  --series-4: #008300;
+  --series-5: #9085e9;
+  --series-6: #e66767;
+  --series-7: #d55181;
+  --series-8: #d95926;
+
+  --seq-100: #104281;
+  --seq-250: #1c5cab;
+  --seq-400: #2a78d6;
+  --seq-550: #6da7ec;
+  --seq-700: #b7d3f6;
+
+  --delta-up-good: #0ca30c;
+}
+
+/* Map tokens into Tailwind v4 theme (bg-card, text-ink, border-hairline, ...) */
+@theme inline {
+  --color-page: var(--surface-page);
+  --color-card: var(--surface-card);
+  --color-inset: var(--surface-inset);
+  --color-ink: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-baseline: var(--baseline);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--status-good);
+  --color-warning: var(--status-warning);
+  --color-serious: var(--status-serious);
+  --color-critical: var(--status-critical);
+  --radius-card: var(--radius);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+html {
+  background: var(--surface-page);
+  color: var(--ink-primary);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* recharts chrome should stay recessive and tokenized */
+.recharts-cartesian-grid line {
+  stroke: var(--hairline);
+}
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--baseline);
+}
+.recharts-text {
+  fill: var(--ink-muted);
+  font-size: 11px;
+}
+.recharts-default-tooltip {
+  border-radius: 8px !important;
+}

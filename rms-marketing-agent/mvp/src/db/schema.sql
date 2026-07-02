@@ -86,3 +86,119 @@ CREATE TABLE actions (
   result_json       JSONB,
   executed_at       TIMESTAMPTZ DEFAULT now()
 );
+
+-- ===========================================================================
+-- v2 additions (BUILD_PROMPT): visibility, cross-channel promotions, the
+-- learning loop's outcome log + feature store, bandit state, settings, audit.
+-- ===========================================================================
+
+-- Raw multi-source visibility observations (doc 11: funnel data is mostly
+-- operator-input; rank comes from the compliant PUBLIC-search proxy).
+CREATE TABLE visibility_observations (
+  id            BIGSERIAL PRIMARY KEY,
+  listing_id    TEXT NOT NULL REFERENCES listings(id),
+  platform      TEXT NOT NULL,           -- airbnb | booking | expedia | vrbo
+  observed_at   DATE NOT NULL,
+  source        TEXT NOT NULL,           -- market_insights | public_rank | operator_input | reviews
+  rank          INT,
+  impressions   INT,
+  ctr           NUMERIC(6,4),
+  conversion    NUMERIC(6,4),
+  review_score  NUMERIC(4,2),
+  programs_json JSONB
+);
+CREATE INDEX idx_vis_lookup ON visibility_observations (listing_id, platform, observed_at);
+
+-- Cross-channel promotion state (the Promotion Radar). source distinguishes
+-- RevPilot-managed promos from operator/OTA-created ones (the stacking hazard).
+CREATE TABLE promotions (
+  id                 TEXT PRIMARY KEY,
+  listing_id         TEXT NOT NULL REFERENCES listings(id),
+  channel            TEXT NOT NULL,
+  type               TEXT NOT NULL,
+  depth_pct          NUMERIC(4,3) NOT NULL,
+  window_start       DATE NOT NULL,
+  window_end         DATE NOT NULL,
+  status             TEXT NOT NULL,      -- active | scheduled | ended | pending_sync
+  source             TEXT NOT NULL,      -- revpilot | operator | ota
+  recommendation_id  TEXT REFERENCES recommendations(id),
+  created_at         TIMESTAMPTZ DEFAULT now(),
+  ended_at           TIMESTAMPTZ,
+  ended_reason       TEXT                -- pace_recovered | operator | expired | guardrail
+);
+CREATE INDEX idx_promo_active ON promotions (listing_id, channel, status);
+
+-- The immutable outcome log — every action's measured result IS the training data
+-- (doc 12 §3: the moat is proprietary outcome data). Append-only by policy.
+CREATE TABLE outcomes (
+  id                 TEXT PRIMARY KEY,
+  recommendation_id  TEXT NOT NULL REFERENCES recommendations(id),
+  listing_id         TEXT NOT NULL REFERENCES listings(id),
+  channels           TEXT[] NOT NULL,
+  action_type        TEXT NOT NULL,
+  depth_pct          NUMERIC(4,3) NOT NULL,
+  context_json       JSONB NOT NULL,     -- BanditContext at decision time (OWN data only)
+  executed_at        DATE NOT NULL,
+  measure_after_days INT NOT NULL,
+  measured_at        DATE,
+  baseline_json      JSONB NOT NULL,     -- OutcomeMetrics pre-period
+  result_json        JSONB,              -- OutcomeMetrics post-period
+  booking_lift       NUMERIC(8,3),
+  revenue_lift       NUMERIC(10,2),
+  visibility_change  INT,
+  reward             NUMERIC(5,4),       -- normalized 0..1 for the bandit
+  status             TEXT NOT NULL       -- pending | measured
+);
+CREATE INDEX idx_outcome_pending ON outcomes (status, executed_at);
+
+-- Flat decision-time feature rows (the feature store): one row per recommendation.
+CREATE TABLE feature_rows (
+  recommendation_id  TEXT PRIMARY KEY REFERENCES recommendations(id),
+  listing_id         TEXT NOT NULL,
+  as_of              DATE NOT NULL,
+  features_json      JSONB NOT NULL
+);
+
+-- Bandit posteriors (mirrors the ML service's registry; the TS fallback reads/writes this).
+CREATE TABLE bandit_state (
+  bucket   TEXT NOT NULL,               -- e.g. 'd1|v0|c1'
+  arm_id   TEXT NOT NULL,               -- e.g. 'last_minute@0.15'
+  alpha    NUMERIC(10,4) NOT NULL DEFAULT 1,
+  beta     NUMERIC(10,4) NOT NULL DEFAULT 1,
+  pulls    INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (bucket, arm_id)
+);
+
+-- Model registry (champion/challenger + eval metrics incl. the confidently-wrong rate).
+CREATE TABLE model_registry (
+  id          BIGSERIAL PRIMARY KEY,
+  task        TEXT NOT NULL,             -- promo_policy | forecast
+  name        TEXT NOT NULL,
+  version     TEXT NOT NULL,
+  role        TEXT NOT NULL,             -- champion | challenger | retired
+  params_json JSONB,
+  metrics_json JSONB,                    -- {mape, bias, confidentlyWrong, ...}
+  created_at  TIMESTAMPTZ DEFAULT now()
+);
+
+-- Operator settings: autonomy mode + operator-set auto-execution bounds (no hidden
+-- auto-accept — RealPage/AB325), guardrail caps, channel connections.
+CREATE TABLE operator_settings (
+  id            INT PRIMARY KEY DEFAULT 1,
+  settings_json JSONB NOT NULL,
+  updated_at    TIMESTAMPTZ DEFAULT now()
+);
+
+-- Immutable audit trail v2 (extends actions): every event in the loop, append-only.
+CREATE TABLE audit_events (
+  id                TEXT PRIMARY KEY,
+  ts                TIMESTAMPTZ NOT NULL,
+  actor             TEXT NOT NULL,       -- system | operator | workflow
+  kind              TEXT NOT NULL,
+  listing_id        TEXT,
+  recommendation_id TEXT,
+  channel           TEXT,
+  detail            TEXT NOT NULL,
+  payload_json      JSONB
+);
+CREATE INDEX idx_audit_ts ON audit_events (ts DESC);

@@ -86,3 +86,23 @@ export function validateAirbnb(basePrice: number, stack: AirbnbStack, cfg: Guard
 export function meetsVrboMerchandising(depthPct: number, min = 0.05): boolean {
   return depthPct >= min;
 }
+
+/** Expedia/Vrbo (and any channel without verified stacking rules): assume the WORST case —
+ *  every active discount compounds multiplicatively with the proposed one. Conservative by design. */
+export function validateGenericStack(
+  channel: Channel,
+  basePrice: number,
+  existingDepths: number[],
+  proposedDepth: number,
+  cfg: GuardConfig = {},
+): GuardResult {
+  const remaining = [...existingDepths, proposedDepth]
+    .map(clamp01)
+    .reduce((acc, d) => acc * (1 - d), 1);
+  const eff = round(1 - remaining);
+  const result = decide(channel, eff, round(basePrice * (1 - eff), 2), cfg);
+  if (channel === 'vrbo' && result.approved && proposedDepth > 0 && !meetsVrboMerchandising(proposedDepth, cfg.minVrboDiscount)) {
+    return { ...result, approved: false, reason: `Vrbo depth ${(proposedDepth * 100).toFixed(1)}% is below the 5% merchandising floor — price cut with no badge/rank gain` };
+  }
+  return result;
+}

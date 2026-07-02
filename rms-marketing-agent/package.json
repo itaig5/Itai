@@ -1,0 +1,22 @@
+{
+  "name": "revpilot",
+  "version": "0.2.0",
+  "private": true,
+  "description": "RevPilot — hybrid RMS + automated marketing assistant for STR/small-hotel operators. Approve once, push to every channel.",
+  "engines": { "node": ">=22.6" },
+  "workspaces": [
+    "mvp",
+    "app"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace app",
+    "build": "npm run build --workspace app",
+    "start": "npm run start --workspace app",
+    "test": "npm run test --workspace mvp",
+    "typecheck": "npm run typecheck --workspace mvp && npm run typecheck --workspace app",
+    "demo": "npm run demo --workspace mvp",
+    "job:snapshot": "node mvp/src/jobs/dailySnapshot.ts",
+    "job:learn": "node mvp/src/jobs/nightlyLearning.ts",
+    "ml:dev": "cd ml-service && python3 -m uvicorn main:app --port 8787 --reload"
+  }
+}

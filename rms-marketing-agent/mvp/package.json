@@ -1,10 +1,15 @@
 {
-  "name": "rms-marketing-agent",
-  "version": "0.1.0",
+  "name": "@revpilot/core",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Hybrid RMS + marketing-assistant MVP: a lean rules-first revenue engine that turns pace/occupancy/comp signals into cross-channel OTA promotion moves, with a human-approved execution gate.",
+  "description": "RevPilot core: mini-RMS signals, visibility provider, promotion guardrail, rules + bandit policy, HITL workflow, channel adapters, outcome log.",
   "engines": { "node": ">=22.6" },
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
   "scripts": {
     "test": "node --test tests/*.test.ts",
     "demo": "node src/demo.ts",
@@ -12,6 +17,10 @@
   },
   "keywords": ["rms", "revenue-management", "short-term-rental", "dynamic-pricing", "ota-promotions"],
   "license": "UNLICENSED",
+  "dependencies": {
+    "@mastra/core": "^1.48.0",
+    "zod": "^3.25.0"
+  },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "typescript": "^5.6.0"

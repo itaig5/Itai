@@ -1,0 +1,12 @@
+# RevPilot ML microservice — bandit + forecasting + registry/eval.
+# Core (required):
+fastapi>=0.115
+uvicorn>=0.30
+pydantic>=2.7
+numpy>=1.26
+# Optional backends (the service degrades gracefully if absent):
+#   mabwiser        — alternative contextual-bandit backend (LinUCB)
+#   statsforecast   — statistical forecasting as history accrues
+#   nixtla          — TimeGPT zero-shot cold-start client (needs NIXTLA_API_KEY)
+mabwiser>=2.7
+statsforecast>=1.7

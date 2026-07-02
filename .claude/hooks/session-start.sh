@@ -21,7 +21,7 @@ while IFS= read -r pkg; do
   echo "[session-start] npm install in $dir"
   ( cd "$dir" && npm install --no-audit --no-fund ) \
     || echo "[session-start] WARN: npm install failed in $dir (continuing)"
-done < <(find . -name package.json -not -path '*/node_modules/*' -not -path '*/.git/*')
+done < <(find . -name package.json -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/.next/*')
 
 # --- Python projects (ML microservice, etc.) ---
 while IFS= read -r req; do
