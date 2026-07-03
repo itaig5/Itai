@@ -1,0 +1,13 @@
+{
+  "//": "RevPilot MCP server config. Claude Code: copy into .mcp.json at the repo root. Claude Desktop: merge the 'mcpServers' object into claude_desktop_config.json. Point REVPILOT_DATA_FILE at app/.data/revpilot-state.json to share the dashboard's world.",
+  "mcpServers": {
+    "revpilot": {
+      "command": "node",
+      "args": ["mvp/src/mcp/stdio.ts"],
+      "cwd": "/absolute/path/to/Itai/rms-marketing-agent",
+      "env": {
+        "REVPILOT_DATA_FILE": "app/.data/revpilot-state.json"
+      }
+    }
+  }
+}

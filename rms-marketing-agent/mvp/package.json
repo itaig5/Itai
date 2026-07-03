@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "description": "RevPilot core: mini-RMS signals, visibility provider, promotion guardrail, rules + bandit policy, HITL workflow, channel adapters, outcome log.",
-  "engines": { "node": ">=22.6" },
+  "engines": {
+    "node": ">=22.6"
+  },
   "main": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
@@ -15,10 +17,17 @@
     "demo": "node src/demo.ts",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": ["rms", "revenue-management", "short-term-rental", "dynamic-pricing", "ota-promotions"],
+  "keywords": [
+    "rms",
+    "revenue-management",
+    "short-term-rental",
+    "dynamic-pricing",
+    "ota-promotions"
+  ],
   "license": "UNLICENSED",
   "dependencies": {
     "@mastra/core": "^1.48.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^3.25.0"
   },
   "devDependencies": {

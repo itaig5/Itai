@@ -24,6 +24,9 @@ pip install -r ml-service/requirements.txt
 npm run ml:dev       # -> http://localhost:8787
 cd ml-service && python3 -m pytest tests/ -q
 
+# optional — the MCP server (talk to RevPilot from Claude Desktop / Claude Code / any MCP client)
+npm run mcp          # stdio transport; see mcp.example.json for client config
+
 # jobs (the dashboard's "Advance 1 day" runs the same pipeline in fast-forward)
 npm run job:snapshot # daily OTB snapshot + demand sim + outcome measurement + auto-turn-off
 npm run job:learn    # nightly learning: measure due outcomes, update bandit, backtest champion/challenger
@@ -45,6 +48,7 @@ extranet numbers (CSV/manual — funnels have no API; nothing is ever scraped).
 | `mvp/` | `@revpilot/core` — the tested domain: signal math, rules + bandit policy, double-discount guardrail, verifier, cross-channel orchestrator, visibility provider (4 adapters), outcome log + TS fallback bandit, seed-world generator + day simulator, Mastra HITL workflow, Guesty/Hostaway/mock adapters, jobs. `npm test` = 86 tests. |
 | `app/` | Next.js (App Router) dashboard: Home, Recommendations, Promotion Radar, Visibility, Clients (add + connect property-manager accounts: demo portfolio with zero creds, or Guesty/Hostaway with the client's own API credentials), Audit & Outcomes, Settings. Design tokens live in ONE place: `app/src/app/globals.css` (light + dark). API route handlers call the core directly. |
 | `ml-service/` | Python/FastAPI microservice: contextual bandit (Thompson; MABWiser LinUCB optional), forecasting (pickup baseline → StatsForecast; TimeGPT cold-start behind `NIXTLA_API_KEY`), model registry + champion/challenger backtests + confidently-wrong metric. The TS side mirrors the bandit math and takes over when the service is down. |
+| `mvp/src/mcp/` | The MCP server (`npm run mcp`, stdio): the same core exposed as agent tools with the 3-tool safety contract — reads are free (`get_portfolio`, `get_signals`, `get_recommendations`, radar/audit/learning/clients), and the ONLY write tool (`approve_and_push`) demands an explicit human approval token and defaults to dry-run. Real CM credentials can NOT be entered via MCP by design. Config template: `mcp.example.json`. |
 | `mvp/src/db/schema.sql` | The Postgres (Supabase) shape for production; the demo persists the same state as JSON (`app/.data/`). |
 
 ## Env flags (see `.env.example`)
