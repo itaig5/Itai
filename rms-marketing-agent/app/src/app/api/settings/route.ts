@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { OperatorSettings } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
+import { requireAdmin } from '@/lib/server/session';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  const rt = getRuntime();
+  const rt = await getRuntime();
   const state = rt.store.getState();
   return NextResponse.json({
     simDate: state.simDate,
@@ -20,7 +21,9 @@ export async function GET() {
 }
 
 export async function PUT(req: Request) {
-  const rt = getRuntime();
+  const denied = await requireAdmin(req);
+  if (denied) return denied;
+  const rt = await getRuntime();
   const state = rt.store.getState();
   const next = (await req.json().catch(() => null)) as OperatorSettings | null;
   if (!next || !next.autonomyMode || !next.bounds) {

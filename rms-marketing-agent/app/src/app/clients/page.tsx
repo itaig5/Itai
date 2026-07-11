@@ -2,15 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Building2, Plug, Plus, Unplug } from 'lucide-react';
+import { ArrowRight, Building2, KeyRound, Plug, Plus, Unplug } from 'lucide-react';
 import { useApi, postJson, triggerRefresh } from '@/lib/useApi';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Dialog } from '@/components/ui/dialog';
 import { PageHeader, Skeleton, StatTile, EmptyState } from '@/components/ui/misc';
 import { AddClientDialog } from '@/components/clients/add-client-dialog';
 import { cn, fmtDate } from '@/lib/utils';
-import type { ClientMutationResponse, ClientsResponse, ClientView } from '@/lib/apiTypes';
+import type { ClientLoginResponse, ClientMutationResponse, ClientsResponse, ClientView } from '@/lib/apiTypes';
 
 const STATUS_META: Record<ClientView['status'], { label: string; variant: 'good' | 'critical' | 'warning' | 'outline' }> = {
   connected: { label: 'connected', variant: 'good' },
@@ -76,6 +77,7 @@ export default function ClientsPage() {
 function ClientCard({ client }: { client: ClientView }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
+  const [login, setLogin] = useState<ClientLoginResponse | null>(null);
   const status = STATUS_META[client.status];
 
   async function act(path: 'connect' | 'disconnect') {
@@ -83,6 +85,19 @@ function ClientCard({ client }: { client: ClientView }) {
     setActionError(null);
     try {
       await postJson<ClientMutationResponse>(`/api/clients/${client.id}/${path}`, {});
+      triggerRefresh();
+    } catch (err) {
+      setActionError(err instanceof Error ? err.message : 'failed');
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function createLogin() {
+    setBusy('login');
+    setActionError(null);
+    try {
+      setLogin(await postJson<ClientLoginResponse>(`/api/clients/${client.id}/login`, {}));
       triggerRefresh();
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'failed');
@@ -117,9 +132,14 @@ function ClientCard({ client }: { client: ClientView }) {
             </Button>
           ) : null}
           {client.status === 'connected' ? (
-            <Button variant="ghost" size="sm" onClick={() => act('disconnect')} disabled={busy !== null} aria-label={`Disconnect ${client.name}`}>
-              <Unplug size={13} /> Disconnect
-            </Button>
+            <>
+              <Button variant="ghost" size="sm" onClick={createLogin} disabled={busy !== null} aria-label={`Create login for ${client.name}`}>
+                <KeyRound size={13} /> {busy === 'login' ? 'Creating…' : 'Create login'}
+              </Button>
+              <Button variant="ghost" size="sm" onClick={() => act('disconnect')} disabled={busy !== null} aria-label={`Disconnect ${client.name}`}>
+                <Unplug size={13} /> Disconnect
+              </Button>
+            </>
           ) : null}
         </div>
       </CardHeader>
@@ -139,6 +159,24 @@ function ClientCard({ client }: { client: ClientView }) {
         </div>
         {actionError ? <p className="mt-2 text-xs text-critical">{actionError}</p> : null}
       </CardContent>
+
+      <Dialog
+        open={login !== null}
+        onClose={() => setLogin(null)}
+        title="Client login created"
+        description="Copy these now — the password is shown once and only its hash is stored."
+        footer={<Button onClick={() => setLogin(null)}>Done</Button>}
+      >
+        {login ? (
+          <div className="flex flex-col gap-2 text-sm">
+            <div className="rounded-lg bg-inset p-3 font-mono text-[13px]">
+              <div>email: {login.email}</div>
+              <div>password: {login.password}</div>
+            </div>
+            <p className="text-xs text-ink-muted">{login.note}</p>
+          </div>
+        ) : null}
+      </Dialog>
     </Card>
   );
 }

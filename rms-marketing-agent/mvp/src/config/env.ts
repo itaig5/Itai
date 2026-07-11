@@ -29,6 +29,15 @@ export interface RevPilotEnv {
 
   // Where the JSON dev store persists (seed-data mode)
   dataFile: string;
+
+  // Postgres/Supabase persistence: set to the TRANSACTION-POOLER url (port 6543) on serverless
+  databaseUrl: string | null;
+
+  // Console auth: 'off' (frictionless demo, default) | 'local' (email+password, signed cookies)
+  authMode: 'off' | 'local';
+  authSecret: string;
+  adminEmail: string;
+  adminPassword: string;
 }
 
 export function loadEnv(env: NodeJS.ProcessEnv = process.env): RevPilotEnv {
@@ -53,5 +62,13 @@ export function loadEnv(env: NodeJS.ProcessEnv = process.env): RevPilotEnv {
     // serverless (Vercel/Lambda) filesystems are read-only outside /tmp — the demo store
     // must live there (ephemeral by design; production persistence is the Postgres port)
     dataFile: env.REVPILOT_DATA_FILE ?? (env.VERCEL ? '/tmp/revpilot-state.json' : '.data/revpilot-state.json'),
+
+    databaseUrl: env.DATABASE_URL ?? null,
+
+    authMode: env.REVPILOT_AUTH === 'local' ? 'local' : 'off',
+    // dev fallback secret keeps the demo one-command; production MUST set its own
+    authSecret: env.REVPILOT_AUTH_SECRET ?? 'revpilot-dev-secret-change-me',
+    adminEmail: env.REVPILOT_ADMIN_EMAIL ?? 'admin@revpilot.demo',
+    adminPassword: env.REVPILOT_ADMIN_PASSWORD ?? 'revpilot-demo',
   };
 }

@@ -34,6 +34,18 @@ export interface ClientMutationResponse {
   connect?: { status: ClientStatus; detail: string; importedListingIds: string[] };
 }
 
+export interface MeResponse {
+  authMode: 'off' | 'local';
+  user: { email: string; name: string; role: 'admin' | 'client'; clientId: string | null } | null;
+  defaultAdminCredentials: boolean;
+}
+
+export interface ClientLoginResponse {
+  email: string;
+  password: string; // shown once — only the hash is stored
+  note: string;
+}
+
 export interface SeriesPointDto {
   ds: string;
   [key: string]: string | number | null;

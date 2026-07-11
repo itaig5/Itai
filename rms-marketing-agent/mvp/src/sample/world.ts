@@ -198,7 +198,7 @@ export function generateWorld(opts: WorldOptions = {}): RevPilotState {
   log(simDate, 'system', 'snapshot', 'Daily OTB snapshot captured for 8 listings (pace curves updated)', {});
 
   return {
-    seed, simDate, clients, listings, calendar, reservations, snapshots, stlyOccupancy, compMedianRate,
+    seed, simDate, clients, users: [], listings, calendar, reservations, snapshots, stlyOccupancy, compMedianRate,
     visibilityObservations, promotions, recommendations, outcomes, audit,
     settings: structuredClone(DEFAULT_SETTINGS), banditState, banditModel: 'ts-thompson-v1', counters,
   };

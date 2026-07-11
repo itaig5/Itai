@@ -2,14 +2,15 @@ import { NextResponse } from 'next/server';
 import type { Channel } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
 import { clientIdFrom, inScope, scopedListingIds } from '@/lib/server/clientScope';
+import { forcedClientId } from '@/lib/server/session';
 import type { RadarResponse } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
-  const rt = getRuntime();
+  const rt = await getRuntime();
   const state = rt.store.getState();
-  const scope = scopedListingIds(state, clientIdFrom(req));
+  const scope = scopedListingIds(state, (await forcedClientId(req)) ?? clientIdFrom(req));
   const withName = (p: (typeof state.promotions)[number]) => ({
     ...p,
     listingName: state.listings.find((l) => l.id === p.listingId)?.name ?? p.listingId,

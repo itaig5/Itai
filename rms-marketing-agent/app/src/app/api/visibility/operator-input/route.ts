@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 import { parseOperatorVisibilityCsv, buildManualEntry } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
+import { requireAdmin } from '@/lib/server/session';
 
 export const dynamic = 'force-dynamic';
 
 /** Human-in-the-loop visibility ingestion (doc 11): the operator reads the extranet
  *  dashboards and uploads a CSV or a single manual entry — we NEVER scrape logged-in extranets. */
 export async function POST(req: Request) {
-  const rt = getRuntime();
+  const denied = await requireAdmin(req);
+  if (denied) return denied;
+  const rt = await getRuntime();
   const state = rt.store.getState();
   const body = await req.json().catch(() => null);
   if (!body) return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });

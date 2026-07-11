@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Sidebar } from '@/components/shell/sidebar';
-import { TopBar } from '@/components/shell/topbar';
+import { AppShell } from '@/components/shell/app-shell';
 
 export const metadata: Metadata = {
   title: 'RevPilot — revenue on every channel',
@@ -24,13 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body className="bg-page text-ink antialiased">
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <div className="flex min-w-0 flex-1 flex-col">
-            <TopBar />
-            <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-6">{children}</main>
-          </div>
-        </div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

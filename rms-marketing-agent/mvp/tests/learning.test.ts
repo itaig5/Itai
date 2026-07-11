@@ -17,6 +17,7 @@ function makeState(): RevPilotState {
     seed: 1,
     simDate: '2026-07-02',
     clients: [],
+    users: [],
     listings: [],
     calendar: {},
     reservations: [],

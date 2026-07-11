@@ -3,6 +3,9 @@
 import { loadEnv, type RevPilotEnv } from './config/env.ts';
 import { JsonFileStore } from './store/jsonFileStore.ts';
 import { MemoryStore, type Store } from './store/store.ts';
+import { PostgresStore } from './store/postgresStore.ts';
+import { createPostgresExecutor } from './store/sql.ts';
+import { ensureAdminUser } from './auth/users.ts';
 import { generateWorld, DEFAULT_SEED } from './sample/world.ts';
 import { MockChannelAdapter } from './adapters/mockAdapter.ts';
 import { createGuestyAdapter } from './adapters/guestyAdapter.ts';
@@ -33,6 +36,21 @@ export function createRuntime(opts: RuntimeOptions = {}): Runtime {
     ? new MemoryStore(generateWorld({ seed }))
     : JsonFileStore.load(env.dataFile, () => generateWorld({ seed }));
 
+  return finishRuntime(env, store, seed);
+}
+
+/** Async variant: required when DATABASE_URL is set (Postgres/Supabase persistence).
+ *  Falls back to the sync JSON/memory path when it isn't. */
+export async function createRuntimeAsync(opts: RuntimeOptions = {}): Promise<Runtime> {
+  const env = opts.env ?? loadEnv();
+  const seed = opts.seed ?? DEFAULT_SEED;
+  if (!env.databaseUrl || opts.ephemeral) return createRuntime(opts);
+  const executor = await createPostgresExecutor(env.databaseUrl);
+  const store = await PostgresStore.load(executor, () => generateWorld({ seed }));
+  return finishRuntime(env, store, seed);
+}
+
+function finishRuntime(env: RevPilotEnv, store: Store, seed: number): Runtime {
   // migrate dev-state files written before client accounts existed
   if (!store.getState().clients) {
     store.update((s) => {
@@ -52,6 +70,9 @@ export function createRuntime(opts: RuntimeOptions = {}): Runtime {
       for (const l of s.listings) l.clientId = l.clientId ?? 'cl_00001';
     });
   }
+
+  // seed/migrate console users: there is always an admin (env-overridable credentials)
+  ensureAdminUser(store, { email: env.adminEmail, password: env.adminPassword });
 
   // Live Guesty only with explicit env opt-in; the demo world uses the mock adapter.
   const adapter: ChannelAdapter = env.guestyEnabled

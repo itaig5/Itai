@@ -1,22 +1,22 @@
-// Server-side singleton runtime. Survives Next dev hot-reloads via globalThis; state itself
-// is persisted by the core's JsonFileStore (app/.data/revpilot-state.json).
-import { createRuntime, HitlRunner, type Runtime } from '@revpilot/core';
+// Server-side singleton runtime. Survives Next dev hot-reloads via globalThis. Persistence
+// is chosen by env: DATABASE_URL -> Postgres/Supabase; otherwise the JSON dev store.
+import { createRuntimeAsync, HitlRunner, type Runtime } from '@revpilot/core';
 
 const g = globalThis as unknown as {
-  __revpilotRuntime?: Runtime;
+  __revpilotRuntime?: Promise<Runtime>;
   __revpilotHitl?: HitlRunner;
 };
 
-export function getRuntime(): Runtime {
+export function getRuntime(): Promise<Runtime> {
   if (!g.__revpilotRuntime) {
-    g.__revpilotRuntime = createRuntime();
+    g.__revpilotRuntime = createRuntimeAsync();
   }
   return g.__revpilotRuntime;
 }
 
-export function getHitlRunner(): HitlRunner {
+export async function getHitlRunner(): Promise<HitlRunner> {
   if (!g.__revpilotHitl) {
-    g.__revpilotHitl = new HitlRunner(getRuntime());
+    g.__revpilotHitl = new HitlRunner(await getRuntime());
   }
   return g.__revpilotHitl;
 }

@@ -22,6 +22,29 @@ which is per-instance and ephemeral — the world can reset between visits or di
 across concurrent instances. Fine for showing the product; real persistence is the
 Supabase/Postgres step (the `Store` port + `mvp/src/db/schema.sql` are ready).
 
+## Real persistence + login (Supabase, ~10 minutes)
+
+1. Create a free project at **supabase.com** → copy the **Transaction pooler** connection
+   string (Settings → Database → Connection string → *Transaction*, port 6543).
+2. Set env vars (Vercel → Project → Settings → Environment Variables, or `.env.local`):
+   ```
+   DATABASE_URL=postgresql://postgres.xxxx:PASSWORD@aws-0-...pooler.supabase.com:6543/postgres
+   REVPILOT_AUTH=local
+   REVPILOT_AUTH_SECRET=<long random string>
+   REVPILOT_ADMIN_EMAIL=itai@dconsult.me
+   REVPILOT_ADMIN_PASSWORD=<your password>
+   ```
+3. Redeploy. The store bootstraps its own tables (`revpilot_world` + append-only
+   `revpilot_audit_events` / `revpilot_outcomes` mirrors) on first boot and the world now
+   survives restarts and instances. The audit/outcome mirrors are plain SQL — query them
+   directly in Supabase for reporting.
+4. Sign in with the admin credentials. On the **Clients** page, *Create login* issues a
+   read-only login per client — client users see ONLY their own portfolio (enforced
+   server-side, not just in the UI) and cannot approve/change anything.
+
+Without these vars nothing changes: auth stays off and the demo store persists as JSON —
+the one-command demo keeps working.
+
 ## The ML service (Fly.io / Railway / Render)
 
 Any Python host works; the service is a single FastAPI app:

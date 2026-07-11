@@ -2,14 +2,15 @@ import { NextResponse } from 'next/server';
 import { buildAllSignals, daysBetween } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
 import { clientIdFrom, inScope, scopedListingIds } from '@/lib/server/clientScope';
+import { forcedClientId } from '@/lib/server/session';
 import type { PortfolioResponse } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
-  const rt = getRuntime();
+  const rt = await getRuntime();
   const state = rt.store.getState();
-  const scope = scopedListingIds(state, clientIdFrom(req));
+  const scope = scopedListingIds(state, (await forcedClientId(req)) ?? clientIdFrom(req));
   const signalsByListing = await buildAllSignals(rt.store, rt.visibility);
 
   const listings: PortfolioResponse['listings'] = state.listings.filter((l) => inScope(scope, l.id)).map((l) => {

@@ -56,6 +56,7 @@ function makeState(): RevPilotState {
     seed: 1,
     simDate: SIM_DATE,
     clients: [],
+    users: [],
     listings: [{
       id: 'L1', cmId: 'g1', name: 'Test Loft', market: 'austin', bedrooms: 2, baseRate: 200,
       targetOccupancy: 0.75, channels: ['airbnb', 'booking'], createdAt: '2025-01-01', imageHue: 120,

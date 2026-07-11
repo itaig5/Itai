@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { FastForward, RotateCcw } from 'lucide-react';
+import { FastForward, LogOut, RotateCcw, UserRound } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/shell/theme';
 import { useApi, postJson, triggerRefresh, getClientFilter, setClientFilter } from '@/lib/useApi';
 import { fmtDate } from '@/lib/utils';
-import type { ClientsResponse, SimAdvanceResponse } from '@/lib/apiTypes';
+import type { ClientsResponse, MeResponse, SimAdvanceResponse } from '@/lib/apiTypes';
 
 function ClientSwitcher() {
   const { data } = useApi<ClientsResponse>('/api/clients');
@@ -34,8 +34,15 @@ function ClientSwitcher() {
 
 export function TopBar() {
   const { data } = useApi<{ simDate: string }>('/api/settings');
+  const { data: me } = useApi<MeResponse>('/api/auth/me');
   const [busy, setBusy] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const isClientRole = me?.user?.role === 'client';
+
+  async function signOut() {
+    await postJson('/api/auth/logout');
+    window.location.href = '/login';
+  }
 
   async function advance() {
     setBusy('advance');
@@ -68,7 +75,7 @@ export function TopBar() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-page/90 backdrop-blur">
       <div className="flex h-14 items-center gap-3 px-6">
-        <ClientSwitcher />
+        {!isClientRole ? <ClientSwitcher /> : null}
         <div className="text-xs text-ink-muted">
           Portfolio day
           <span className="ml-2 rounded-md bg-inset px-2 py-1 font-medium text-ink">
@@ -82,14 +89,27 @@ export function TopBar() {
         ) : (
           <div className="flex-1" />
         )}
-        <Button variant="secondary" size="sm" onClick={advance} disabled={busy !== null}>
-          <FastForward size={14} />
-          {busy === 'advance' ? 'Simulating…' : 'Advance 1 day'}
-        </Button>
-        <Button variant="ghost" size="sm" onClick={reset} disabled={busy !== null} aria-label="Reset demo data">
-          <RotateCcw size={14} />
-          Reset demo
-        </Button>
+        {!isClientRole ? (
+          <>
+            <Button variant="secondary" size="sm" onClick={advance} disabled={busy !== null}>
+              <FastForward size={14} />
+              {busy === 'advance' ? 'Simulating…' : 'Advance 1 day'}
+            </Button>
+            <Button variant="ghost" size="sm" onClick={reset} disabled={busy !== null} aria-label="Reset demo data">
+              <RotateCcw size={14} />
+              Reset demo
+            </Button>
+          </>
+        ) : null}
+        {me?.authMode === 'local' && me.user ? (
+          <span className="flex items-center gap-1.5 rounded-full border border-hairline px-2.5 py-1 text-[11px] text-ink-secondary">
+            <UserRound size={12} className="text-ink-muted" />
+            {me.user.email}
+            <button onClick={signOut} aria-label="Sign out" className="ml-1 cursor-pointer text-ink-muted hover:text-ink">
+              <LogOut size={12} />
+            </button>
+          </span>
+        ) : null}
         <ThemeToggle />
       </div>
     </header>

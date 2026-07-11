@@ -25,6 +25,7 @@ function makeState(observations: VisibilityObservation[]): RevPilotState {
   return {
     seed: 1, simDate: ASOF,
     clients: [],
+    users: [],
     listings: [], calendar: {}, reservations: [], snapshots: {},
     stlyOccupancy: {}, compMedianRate: {},
     visibilityObservations: observations,

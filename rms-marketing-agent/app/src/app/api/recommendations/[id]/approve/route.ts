@@ -1,14 +1,17 @@
 import { NextResponse } from 'next/server';
 import { approveAndPush } from '@revpilot/core';
+import { requireAdmin } from '@/lib/server/session';
 import { getRuntime } from '@/lib/server/runtime';
 import type { PushResultDto } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const denied = await requireAdmin(req);
+  if (denied) return denied;
   const { id } = await params;
   const { dryRun = false } = await req.json().catch(() => ({}));
-  const rt = getRuntime();
+  const rt = await getRuntime();
   try {
     const summary = await approveAndPush(rt, id, { dryRun, approvalToken: 'operator-ui' });
     const body: PushResultDto = {

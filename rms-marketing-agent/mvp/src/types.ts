@@ -270,7 +270,22 @@ export type AuditKind =
   | 'approved' | 'rejected' | 'dry_run' | 'executed' | 'auto_executed'
   | 'guardrail_block' | 'guided_step' | 'promo_ended' | 'outcome_measured'
   | 'bandit_update' | 'visibility_drop' | 'settings_changed' | 'snapshot' | 'learning_job'
-  | 'client_added' | 'client_connected' | 'client_error' | 'client_disconnected';
+  | 'client_added' | 'client_connected' | 'client_error' | 'client_disconnected' | 'user_added';
+
+// --- Operator console users (local auth mode; Supabase Auth slots behind the same shape) ---
+
+export type UserRole = 'admin' | 'client';
+
+export interface UserRecord {
+  id: string;
+  email: string;
+  name: string;
+  role: UserRole;
+  /** client-role users are locked to this client's listings (true isolation) */
+  clientId?: string;
+  passwordHash: string; // scrypt, `${saltHex}:${hashHex}` — never leaves the server
+  createdAt: string;
+}
 
 // --- Client onboarding (the operator accounts whose portfolios RevPilot manages) ---
 

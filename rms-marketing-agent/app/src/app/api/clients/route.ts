@@ -1,14 +1,18 @@
 import { NextResponse } from 'next/server';
 import { addClient, connectClient, toClientView } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
+import { forcedClientId, requireAdmin } from '@/lib/server/session';
 import type { AddClientRequest, ClientMutationResponse, ClientsResponse } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
-  const rt = getRuntime();
+export async function GET(req: Request) {
+  const rt = await getRuntime();
   const state = rt.store.getState();
-  const clients = state.clients.map((c) => toClientView(rt.store, c));
+  const forced = await forcedClientId(req);
+  const clients = state.clients
+    .filter((c) => !forced || c.id === forced)
+    .map((c) => toClientView(rt.store, c));
   const body: ClientsResponse = {
     simDate: state.simDate,
     clients,
@@ -21,7 +25,9 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const rt = getRuntime();
+  const denied = await requireAdmin(req);
+  if (denied) return denied;
+  const rt = await getRuntime();
   const input = (await req.json().catch(() => null)) as AddClientRequest | null;
   if (!input) return NextResponse.json({ error: 'invalid JSON' }, { status: 400 });
   try {

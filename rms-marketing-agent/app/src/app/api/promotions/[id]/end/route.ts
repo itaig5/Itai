@@ -1,11 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getRuntime } from '@/lib/server/runtime';
+import { requireAdmin } from '@/lib/server/session';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(_req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const denied = await requireAdmin(req);
+  if (denied) return denied;
   const { id } = await params;
-  const rt = getRuntime();
+  const rt = await getRuntime();
   const state = rt.store.getState();
   const promo = state.promotions.find((p) => p.id === id);
   if (!promo) return NextResponse.json({ error: 'unknown promotion' }, { status: 404 });
