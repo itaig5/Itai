@@ -32,7 +32,10 @@ export async function advanceDay(rt: Runtime): Promise<DaySummary> {
   let bookedNights = 0;
   store.update((s) => {
     s.simDate = newDate;
+    // real clients fed by a sheet import are NEVER simulated — their data only changes on re-sync
+    const sheetOwners = new Set(s.clients.filter((c) => c.channelManager === 'sheets').map((c) => c.id));
     for (const listing of s.listings) {
+      if (listing.clientId && sheetOwners.has(listing.clientId)) continue;
       const nights = s.calendar[listing.id] ?? [];
       const activePromos = s.promotions.filter(
         (p) => p.listingId === listing.id && p.status === 'active',

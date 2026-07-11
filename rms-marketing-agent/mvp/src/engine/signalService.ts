@@ -46,7 +46,10 @@ export async function buildSignals(
 
   const platforms = listing.channels.filter((c): c is Exclude<typeof c, 'direct'> => c !== 'direct');
   signals.visibility = await visibility.getVisibility(listingId, platforms, state.simDate);
-  signals.orphanGapCount = orphanGaps(calendar).length;
+  // Sheet-imported hotels have a statistically-rendered calendar: monthly occupancy and pace
+  // are faithful, but individual night gaps are illustrative — orphan-gap findings would be noise.
+  const owner = state.clients.find((c) => c.id === listing.clientId);
+  signals.orphanGapCount = owner?.channelManager === 'sheets' ? 0 : orphanGaps(calendar).length;
   return signals;
 }
 

@@ -119,7 +119,12 @@ export async function pushToAllChannels(
   let outcomeId: string | null = null;
   if (!opts.dryRun) {
     const anyExecuted = results.some((r) => r.execution.status === 'executed');
-    store.setRecommendationStatus(rec.recommendationId, anyExecuted ? (opts.actor === 'system' ? 'auto_executed' : 'executed') : 'blocked');
+    const anyGuided = results.some((r) => r.execution.status === 'guided');
+    // guided-tier approvals issued their checklists — that IS the action for no-API clients
+    store.setRecommendationStatus(
+      rec.recommendationId,
+      anyExecuted ? (opts.actor === 'system' ? 'auto_executed' : 'executed') : anyGuided ? 'executed' : 'blocked',
+    );
     if (anyExecuted && rec.move.type !== 'remove_discounts') {
       outcomeId = openOutcome(store, rec, signals, results, now);
     }

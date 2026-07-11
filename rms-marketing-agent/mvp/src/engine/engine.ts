@@ -51,11 +51,19 @@ export async function generateRecommendations(rt: Runtime): Promise<Recommendati
     if (dup) continue;
 
     let move = recommendMove(primary, signals, { channel: 'booking' });
-    if (signals.missing.length > 0 && move.type !== 'none') {
-      // degrade to NO_ACTION on missing/stale inputs (the #1 hallucination guardrail)
-      continue;
-    }
+    // Degrade to NO_ACTION when CRITICAL inputs are missing (the #1 hallucination guardrail).
+    // Missing comp-set data is tolerated: real clients start without a market feed, and the
+    // own-data signals (pace/occupancy/pickup) are the legally-preferred triggers anyway.
+    const criticalMissing = signals.missing.filter((m) => m !== 'compMedianRate');
+    if (criticalMissing.length > 0 && move.type !== 'none') continue;
     if (move.type === 'none') continue;
+
+    // Sheets-connected clients have no execution API — the three-tier model says GUIDED:
+    // RevPilot proposes with exact parameters; the operator executes in the extranet.
+    const owner = state.clients.find((c) => c.id === listing.clientId);
+    if (owner?.channelManager === 'sheets' && move.tier === 'api') {
+      move = { ...move, tier: 'guided' };
+    }
 
     // Bandit refines type+depth within the rules' candidate set (online learning, doc 12 §3)
     let banditChoice;

@@ -25,6 +25,8 @@ export interface AddClientRequest {
   channelManager: ClientChannelManager;
   credentials?: { clientId?: string; clientSecret?: string };
   demoListingCount?: number;
+  /** sheets mode: the monthly-snapshot CSV export */
+  sheetsCsv?: string;
   /** create + immediately attempt the connection (the default UI flow) */
   connectNow?: boolean;
 }

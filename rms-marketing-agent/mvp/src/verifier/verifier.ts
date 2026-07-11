@@ -123,13 +123,17 @@ export function verifyRecommendation(inp: VerifyInput): VerifierReport {
   // 2. Grounding
   checks.push(groundingCheck(rec));
 
-  // 3. Freshness — stale signals must degrade to NO_ACTION upstream, but verify anyway
+  // 3. Freshness — stale CRITICAL signals must degrade to NO_ACTION upstream; a missing
+  //    comp-set feed is tolerated (own-data triggers carry the recommendation).
+  const criticalMissing = signals.missing.filter((m) => m !== 'compMedianRate');
   checks.push({
     name: 'data_freshness',
-    pass: signals.missing.length === 0 || !isPromo,
+    pass: criticalMissing.length === 0 || !isPromo,
     detail: signals.missing.length === 0
       ? 'All signal inputs present.'
-      : `Missing inputs: ${signals.missing.join(', ')}`,
+      : criticalMissing.length === 0
+        ? `No market comp feed (tolerated — own-data triggers only): ${signals.missing.join(', ')}`
+        : `Missing critical inputs: ${criticalMissing.join(', ')}`,
   });
 
   // 4. Legal (Gibson/RealPage + CA AB325/SB763, docs 01/09):

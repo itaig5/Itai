@@ -4,12 +4,17 @@ import { useState } from 'react';
 import { Dialog } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input, Label, Select } from '@/components/ui/input';
+import { Input, Label, Select, Textarea } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { postJson, triggerRefresh } from '@/lib/useApi';
 import type { AddClientRequest, ClientChannelManager, ClientMutationResponse } from '@/lib/apiTypes';
 
 const CM_OPTIONS: { value: ClientChannelManager; title: string; detail: string }[] = [
+  {
+    value: 'sheets',
+    title: 'Google Sheets / weekly OTB log (real clients, no API)',
+    detail: 'Paste the CSV export of the client’s weekly on-the-books sheet (room nights, income, targets, last-year same-time per stay-month). The brain runs on it; execution is guided — RevPilot proposes with exact parameters, you apply them in the extranet.',
+  },
   {
     value: 'demo',
     title: 'Demo portfolio (no credentials)',
@@ -30,14 +35,14 @@ const CM_OPTIONS: { value: ClientChannelManager; title: string; detail: string }
 export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [form, setForm] = useState({
     name: '', contactEmail: '', market: '',
-    channelManager: 'demo' as ClientChannelManager,
-    apiId: '', apiSecret: '', demoListingCount: 4,
+    channelManager: 'sheets' as ClientChannelManager,
+    apiId: '', apiSecret: '', demoListingCount: 4, sheetsCsv: '',
   });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<ClientMutationResponse | null>(null);
 
-  const needsCreds = form.channelManager !== 'demo';
+  const needsCreds = form.channelManager === 'guesty' || form.channelManager === 'hostaway';
 
   async function submit() {
     setBusy(true);
@@ -50,6 +55,7 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
         channelManager: form.channelManager,
         credentials: needsCreds ? { clientId: form.apiId, clientSecret: form.apiSecret } : undefined,
         demoListingCount: form.demoListingCount,
+        sheetsCsv: form.channelManager === 'sheets' ? form.sheetsCsv : undefined,
         connectNow: true,
       };
       const res = await postJson<ClientMutationResponse>('/api/clients', payload);
@@ -65,7 +71,7 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
   function reset() {
     setResult(null);
     setError(null);
-    setForm({ name: '', contactEmail: '', market: '', channelManager: 'demo', apiId: '', apiSecret: '', demoListingCount: 4 });
+    setForm({ name: '', contactEmail: '', market: '', channelManager: 'sheets', apiId: '', apiSecret: '', demoListingCount: 4, sheetsCsv: '' });
     onClose();
   }
 
@@ -80,7 +86,7 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
       ) : (
         <>
           <Button variant="ghost" onClick={reset} disabled={busy}>Cancel</Button>
-          <Button onClick={submit} disabled={busy || !form.name || !form.contactEmail}>
+          <Button onClick={submit} disabled={busy || !form.name || !form.contactEmail || (form.channelManager === 'sheets' && !form.sheetsCsv.trim())}>
             {busy ? 'Connecting…' : 'Add & connect'}
           </Button>
         </>
@@ -151,6 +157,24 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
             </div>
           </div>
 
+          {form.channelManager === 'sheets' ? (
+            <div className="flex flex-col gap-2 rounded-lg border border-hairline p-3">
+              <Label htmlFor="cl-sheet">Weekly OTB sheet — CSV export</Label>
+              <Textarea
+                id="cl-sheet"
+                className="min-h-36 font-mono text-[11px]"
+                placeholder={'property,rooms,month,asOf,roomNights,income,occTarget,revenueTarget,expectedAdr,stlyRoomNights,stlyIncome\nHarbor House,19,2026-06,2026-01-25,210,41000,92,110000,220,30,8500\nHarbor House,19,2026-06,2026-02-01,240,46000,92,110000,220,55,12000'}
+                value={form.sheetsCsv}
+                onChange={(e) => setForm({ ...form, sheetsCsv: e.target.value })}
+              />
+              <p className="text-[11px] leading-relaxed text-ink-muted">
+                One row per as-of week × stay-month: room nights + income on the books, targets, expected ADR,
+                and same-time-last-year (the pace baseline). Column names are matched loosely; extra columns are ignored.
+                Re-sync any time by pasting a fresh export — the weekly sheet update is the data feed.
+              </p>
+            </div>
+          ) : null}
+
           {needsCreds ? (
             <div className="grid gap-3 rounded-lg border border-hairline p-3 sm:grid-cols-2">
               <div>
@@ -168,7 +192,7 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
                 at most 5 tokens per 24h — RevPilot caches the token automatically.
               </p>
             </div>
-          ) : (
+          ) : form.channelManager === 'demo' ? (
             <div className="flex items-center gap-4 rounded-lg border border-hairline p-3">
               <div className="w-32 shrink-0">
                 <Label htmlFor="cl-count" className="whitespace-nowrap">Demo listings</Label>
@@ -180,7 +204,7 @@ export function AddClientDialog({ open, onClose }: { open: boolean; onClose: () 
                 behind-pace and healthy units so recommendations appear immediately.
               </p>
             </div>
-          )}
+          ) : null}
 
           {error ? <p className="text-xs text-critical">{error}</p> : null}
         </div>

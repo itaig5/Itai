@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog } from '@/components/ui/dialog';
+import { Textarea } from '@/components/ui/input';
 import { PageHeader, Skeleton, StatTile, EmptyState } from '@/components/ui/misc';
 import { AddClientDialog } from '@/components/clients/add-client-dialog';
 import { cn, fmtDate } from '@/lib/utils';
@@ -21,6 +22,7 @@ const STATUS_META: Record<ClientView['status'], { label: string; variant: 'good'
 };
 
 const CM_LABEL: Record<ClientView['channelManager'], string> = {
+  sheets: 'Google Sheets (guided)',
   demo: 'Demo portfolio',
   guesty: 'Guesty',
   hostaway: 'Hostaway',
@@ -78,13 +80,18 @@ function ClientCard({ client }: { client: ClientView }) {
   const [busy, setBusy] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const [login, setLogin] = useState<ClientLoginResponse | null>(null);
+  const [resyncOpen, setResyncOpen] = useState(false);
+  const [csv, setCsv] = useState('');
   const status = STATUS_META[client.status];
+  const isSheets = client.channelManager === 'sheets';
 
-  async function act(path: 'connect' | 'disconnect') {
+  async function act(path: 'connect' | 'disconnect', body: Record<string, unknown> = {}) {
     setBusy(path);
     setActionError(null);
     try {
-      await postJson<ClientMutationResponse>(`/api/clients/${client.id}/${path}`, {});
+      await postJson<ClientMutationResponse>(`/api/clients/${client.id}/${path}`, body);
+      setResyncOpen(false);
+      setCsv('');
       triggerRefresh();
     } catch (err) {
       setActionError(err instanceof Error ? err.message : 'failed');
@@ -126,7 +133,10 @@ function ClientCard({ client }: { client: ClientView }) {
         </div>
         <div className="flex shrink-0 gap-2">
           {client.status !== 'disabled' ? (
-            <Button variant="secondary" size="sm" onClick={() => act('connect')} disabled={busy !== null}>
+            <Button
+              variant="secondary" size="sm" disabled={busy !== null}
+              onClick={() => (isSheets ? setResyncOpen(true) : act('connect'))}
+            >
               <Plug size={13} />
               {busy === 'connect' ? 'Connecting…' : client.status === 'connected' ? 'Sync now' : client.status === 'error' ? 'Retry connection' : 'Connect'}
             </Button>
@@ -159,6 +169,28 @@ function ClientCard({ client }: { client: ClientView }) {
         </div>
         {actionError ? <p className="mt-2 text-xs text-critical">{actionError}</p> : null}
       </CardContent>
+
+      <Dialog
+        open={resyncOpen}
+        onClose={() => setResyncOpen(false)}
+        title={`Sync ${client.name} from the weekly sheet`}
+        description="Paste the fresh CSV export — the imported months replace the previous ones. Leave empty to re-run the last import."
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setResyncOpen(false)} disabled={busy !== null}>Cancel</Button>
+            <Button onClick={() => act('connect', csv.trim() ? { sheetsCsv: csv } : {})} disabled={busy !== null}>
+              {busy === 'connect' ? 'Syncing…' : 'Sync'}
+            </Button>
+          </>
+        }
+      >
+        <Textarea
+          className="min-h-40 font-mono text-[11px]"
+          placeholder="property,rooms,month,asOf,roomNights,income,occTarget,revenueTarget,expectedAdr,stlyRoomNights,stlyIncome"
+          value={csv}
+          onChange={(e) => setCsv(e.target.value)}
+        />
+      </Dialog>
 
       <Dialog
         open={login !== null}

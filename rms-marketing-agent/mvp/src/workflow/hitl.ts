@@ -64,12 +64,17 @@ export function buildHitlWorkflow(rt: Runtime) {
       const findings = evaluateFindings(signals);
       const primary = findings[0];
       let move = recommendMove(primary, signals, { channel: 'booking' });
-      if (primary.signal === 'healthy' || move.type === 'none' || signals.missing.length > 0) {
+      const criticalMissing = signals.missing.filter((m) => m !== 'compMedianRate');
+      if (primary.signal === 'healthy' || move.type === 'none' || criticalMissing.length > 0) {
         // NO_ACTION is a first-class outcome (the #1 hallucination guardrail, docs 07)
         return bail({
           status: 'no_action', rec: null, report: null, push: null,
-          detail: signals.missing.length > 0 ? `missing inputs: ${signals.missing.join(', ')}` : 'no action indicated',
+          detail: criticalMissing.length > 0 ? `missing inputs: ${criticalMissing.join(', ')}` : 'no action indicated',
         } satisfies HitlResult);
+      }
+      const owner = state.clients.find((c) => c.id === listing.clientId);
+      if (owner?.channelManager === 'sheets' && move.tier === 'api') {
+        move = { ...move, tier: 'guided' };
       }
 
       let banditChoice;

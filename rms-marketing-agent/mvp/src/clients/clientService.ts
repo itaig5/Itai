@@ -10,6 +10,7 @@ import type { RevPilotEnv } from '../config/env.ts';
 import { createGuestyAdapter } from '../adapters/guestyAdapter.ts';
 import { createHostawayAdapter } from '../adapters/hostawayAdapter.ts';
 import { generateClientListings } from '../sample/world.ts';
+import { materializeProperty, parseMonthlySnapshotCsv } from './sheetsImport.ts';
 import { hashSeed, mulberry32 } from '../util/prng.ts';
 
 export interface AddClientInput {
@@ -20,10 +21,13 @@ export interface AddClientInput {
   credentials?: { clientId?: string; clientSecret?: string };
   /** demo mode only: portfolio size to generate on connect (default 4) */
   demoListingCount?: number;
+  /** sheets mode: the monthly-snapshot CSV (see sheetsImport.ts for the format) */
+  sheetsCsv?: string;
 }
 
-/** The browser-safe view: secrets masked to their last 4 characters. */
-export interface ClientView extends Omit<ClientRecord, 'credentials'> {
+/** The browser-safe view: secrets masked to their last 4 characters; the raw sheet export
+ *  stays server-side (it's the client's business data — kept only for re-sync). */
+export interface ClientView extends Omit<ClientRecord, 'credentials' | 'sheetsCsv'> {
   credentialHint: string | null;
   listingCount: number;
   openRecs: number;
@@ -32,7 +36,7 @@ export interface ClientView extends Omit<ClientRecord, 'credentials'> {
 
 export function toClientView(store: Store, c: ClientRecord): ClientView {
   const state = store.getState();
-  const { credentials, ...rest } = c;
+  const { credentials, sheetsCsv: _omitted, ...rest } = c;
   const secret = credentials?.clientSecret;
   return {
     ...rest,
@@ -54,7 +58,10 @@ export function addClient(store: Store, input: AddClientInput): ClientRecord {
   const email = input.contactEmail.trim();
   if (!name) throw new Error('client name is required');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw new Error('a valid contact email is required');
-  if (input.channelManager !== 'demo' && !(input.credentials?.clientId && input.credentials?.clientSecret)) {
+  if (input.channelManager === 'sheets' && !input.sheetsCsv?.trim()) {
+    throw new Error('sheets clients need the monthly-snapshot CSV (paste the sheet export)');
+  }
+  if (!['demo', 'sheets'].includes(input.channelManager) && !(input.credentials?.clientId && input.credentials?.clientSecret)) {
     throw new Error(`${input.channelManager} needs an API client id + secret (or pick the demo portfolio to start without credentials)`);
   }
   const state = store.getState();
@@ -73,6 +80,7 @@ export function addClient(store: Store, input: AddClientInput): ClientRecord {
     listingIds: [],
     createdAt: state.simDate,
     demoListingCount: input.channelManager === 'demo' ? (input.demoListingCount ?? 4) : undefined,
+    sheetsCsv: input.channelManager === 'sheets' ? input.sheetsCsv : undefined,
   };
   store.update((s) => {
     s.clients.push(client);
@@ -87,6 +95,8 @@ export function addClient(store: Store, input: AddClientInput): ClientRecord {
 export interface ConnectOptions {
   env: RevPilotEnv;
   demoListingCount?: number;
+  /** sheets mode: fresh CSV for this sync (falls back to the one stored on the client) */
+  sheetsCsv?: string;
   /** injectable for tests — passed through to the live adapters */
   fetchImpl?: typeof fetch;
 }
@@ -108,7 +118,9 @@ export async function connectClient(store: Store, clientId: string, opts: Connec
   const demoCount = opts.demoListingCount ?? client.demoListingCount ?? 4;
   let result: ConnectResult;
   try {
-    if (client.channelManager === 'demo') {
+    if (client.channelManager === 'sheets') {
+      result = importSheetsProperty(store, client, opts.sheetsCsv);
+    } else if (client.channelManager === 'demo') {
       result = importDemoPortfolio(store, client, demoCount);
     } else {
       result = await importFromChannelManager(store, client, opts);
@@ -131,6 +143,7 @@ export async function connectClient(store: Store, clientId: string, opts: Connec
     c.listingIds = [...new Set([...c.listingIds, ...result.importedListingIds])];
     // remember the portfolio size actually used, so "Sync now" never silently grows it
     if (c.channelManager === 'demo') c.demoListingCount = demoCount;
+    if (c.channelManager === 'sheets' && opts.sheetsCsv?.trim()) c.sheetsCsv = opts.sheetsCsv;
   });
   store.appendAudit({
     ts: state.simDate, actor: 'system', kind: 'client_connected',
@@ -185,6 +198,39 @@ function importDemoPortfolio(store: Store, client: ClientRecord, count: number):
       ? `portfolio in sync — ${client.listingIds.length} listings up to date`
       : `${fresh.length} demo listing${fresh.length === 1 ? '' : 's'} imported with full booking history`,
     importedListingIds: fresh.map((l) => l.id),
+  };
+}
+
+/** No-API onboarding: the client's weekly OTB sheet (monthly buckets) becomes a property the
+ *  brain reasons over. Re-sync with a fresh CSV replaces the property's data in place —
+ *  the weekly sheet update IS the data feed. */
+function importSheetsProperty(store: Store, client: ClientRecord, freshCsv: string | undefined): ConnectResult {
+  const csv = freshCsv?.trim() || client.sheetsCsv;
+  if (!csv) throw new Error('no sheet data — paste the monthly-snapshot CSV');
+  const { property, skipped } = parseMonthlySnapshotCsv(csv);
+  const state = store.getState();
+  const materialized = materializeProperty(client.id, property, state.simDate);
+
+  store.update((s) => {
+    const existing = s.listings.findIndex((l) => l.id === materialized.listing.id);
+    if (existing >= 0) s.listings[existing] = materialized.listing;
+    else s.listings.push(materialized.listing);
+    s.calendar[materialized.listing.id] = materialized.calendar;
+    s.snapshots[materialized.listing.id] = materialized.snapshots;
+    s.stlyOccupancy[materialized.listing.id] = materialized.stlyOccupancy;
+    // no market feed for sheet clients (yet) — comp gap reads as "no data", never fabricated
+    delete s.compMedianRate[materialized.listing.id];
+    // open recommendations were computed on the replaced data — expire them; the next sweep re-evaluates
+    for (const r of s.recommendations) {
+      if (r.listingId === materialized.listing.id && (r.status ?? 'proposed') === 'proposed') r.status = 'expired';
+    }
+  });
+
+  const weeks = new Set(property.months.flatMap((m) => m.snapshots.map((sn) => sn.asOf))).size;
+  return {
+    status: 'connected',
+    detail: `${property.name}: ${materialized.monthsLoaded.length} forward month(s) loaded (${materialized.monthsLoaded.join(', ')}) from ${weeks} weekly snapshot(s), ${property.rooms} rooms${skipped.length ? ` — ${skipped.length} row(s) skipped` : ''}. Execution runs at GUIDED tier (no PMS/OTA API).`,
+    importedListingIds: [materialized.listing.id],
   };
 }
 

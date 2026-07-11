@@ -11,10 +11,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
   const denied = await requireAdmin(req);
   if (denied) return denied;
   const { id } = await params;
-  const { demoListingCount } = await req.json().catch(() => ({}));
+  const { demoListingCount, sheetsCsv } = await req.json().catch(() => ({}));
   const rt = await getRuntime();
   try {
-    const connect = await connectClient(rt.store, id, { env: rt.env, demoListingCount });
+    const connect = await connectClient(rt.store, id, { env: rt.env, demoListingCount, sheetsCsv });
     const client = rt.store.getState().clients.find((c) => c.id === id)!;
     const body: ClientMutationResponse = { client: toClientView(rt.store, client), connect };
     return NextResponse.json(body);

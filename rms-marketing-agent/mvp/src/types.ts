@@ -289,7 +289,7 @@ export interface UserRecord {
 
 // --- Client onboarding (the operator accounts whose portfolios RevPilot manages) ---
 
-export type ClientChannelManager = 'guesty' | 'hostaway' | 'demo';
+export type ClientChannelManager = 'guesty' | 'hostaway' | 'sheets' | 'demo';
 export type ClientStatus = 'pending' | 'connected' | 'error' | 'disabled';
 
 export interface ClientCredentials {
@@ -310,6 +310,8 @@ export interface ClientRecord {
   createdAt: string;         // sim date
   connectedAt?: string;
   demoListingCount?: number; // demo CM only: portfolio size (stable across re-syncs)
+  /** sheets CM: the canonical monthly-snapshot CSV (kept for re-sync; contains NO guest PII) */
+  sheetsCsv?: string;
 }
 
 export interface AuditEvent {
