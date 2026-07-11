@@ -18,6 +18,7 @@
     "job:snapshot": "node mvp/src/jobs/dailySnapshot.ts",
     "job:learn": "node mvp/src/jobs/nightlyLearning.ts",
     "mcp": "node mvp/src/mcp/stdio.ts",
+    "mcp:http": "node mvp/src/mcp/http.ts",
     "ml:dev": "cd ml-service && python3 -m uvicorn main:app --port 8787 --reload"
   }
 }

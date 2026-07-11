@@ -1,0 +1,49 @@
+name: revpilot-ci
+
+on:
+  push:
+    paths:
+      - 'rms-marketing-agent/**'
+      - '.github/workflows/revpilot-ci.yml'
+  pull_request:
+    paths:
+      - 'rms-marketing-agent/**'
+      - '.github/workflows/revpilot-ci.yml'
+
+jobs:
+  core-and-app:
+    name: core tests · typecheck · production build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rms-marketing-agent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # >=22.18 required for unflagged TS type-stripping
+          cache: npm
+          cache-dependency-path: rms-marketing-agent/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - name: Core tests (node --test)
+        run: npm test
+      - name: Core typecheck
+        run: npm run typecheck --workspace mvp
+      - name: Production build (includes app typecheck)
+        run: npm run build
+
+  ml-service:
+    name: ML service pytest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rms-marketing-agent/ml-service
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: rms-marketing-agent/ml-service/requirements.txt
+      - run: pip install -r requirements.txt httpx pytest
+      - run: python -m pytest tests/ -q

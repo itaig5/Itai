@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getRuntime } from '@/lib/server/runtime';
+import { clientIdFrom, inScope, scopedListingIds } from '@/lib/server/clientScope';
 import type { LearningResponse } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: Request) {
   const rt = getRuntime();
   const state = rt.store.getState();
+  const scope = scopedListingIds(state, clientIdFrom(req));
   const names = new Map(state.listings.map((l) => [l.id, l.name]));
 
   const banditView = await rt.bandit.stateView();
@@ -25,10 +27,11 @@ export async function GET() {
     }
   } catch { /* dashboard runs fine on the TS fallback */ }
 
-  const measured = state.outcomes.filter((o) => o.status === 'measured');
+  const scopedOutcomes = state.outcomes.filter((o) => inScope(scope, o.listingId));
+  const measured = scopedOutcomes.filter((o) => o.status === 'measured');
   const body: LearningResponse = {
     simDate: state.simDate,
-    outcomes: [...state.outcomes]
+    outcomes: [...scopedOutcomes]
       .sort((a, b) => b.executedAt.localeCompare(a.executedAt))
       .map((o) => ({ ...o, listingName: names.get(o.listingId) ?? o.listingId })),
     bandit: {

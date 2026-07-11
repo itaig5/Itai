@@ -1,12 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FastForward, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Select } from '@/components/ui/input';
 import { ThemeToggle } from '@/components/shell/theme';
-import { useApi, postJson, triggerRefresh } from '@/lib/useApi';
+import { useApi, postJson, triggerRefresh, getClientFilter, setClientFilter } from '@/lib/useApi';
 import { fmtDate } from '@/lib/utils';
-import type { SimAdvanceResponse } from '@/lib/apiTypes';
+import type { ClientsResponse, SimAdvanceResponse } from '@/lib/apiTypes';
+
+function ClientSwitcher() {
+  const { data } = useApi<ClientsResponse>('/api/clients');
+  const [selected, setSelected] = useState<string>('all');
+  useEffect(() => { setSelected(getClientFilter() ?? 'all'); }, []);
+  if (!data || data.clients.length <= 1) return null;
+  return (
+    <Select
+      aria-label="Filter dashboard by client"
+      className="h-8 max-w-44 text-xs"
+      value={selected}
+      onChange={(e) => {
+        setSelected(e.target.value);
+        setClientFilter(e.target.value === 'all' ? null : e.target.value);
+      }}
+    >
+      <option value="all">All clients</option>
+      {data.clients.map((c) => (
+        <option key={c.id} value={c.id}>{c.name}</option>
+      ))}
+    </Select>
+  );
+}
 
 export function TopBar() {
   const { data } = useApi<{ simDate: string }>('/api/settings');
@@ -44,6 +68,7 @@ export function TopBar() {
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-page/90 backdrop-blur">
       <div className="flex h-14 items-center gap-3 px-6">
+        <ClientSwitcher />
         <div className="text-xs text-ink-muted">
           Portfolio day
           <span className="ml-2 rounded-md bg-inset px-2 py-1 font-medium text-ink">

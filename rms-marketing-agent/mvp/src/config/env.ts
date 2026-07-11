@@ -50,6 +50,8 @@ export function loadEnv(env: NodeJS.ProcessEnv = process.env): RevPilotEnv {
     nixtlaApiKey: env.NIXTLA_API_KEY ?? null,
     anthropicApiKey: env.ANTHROPIC_API_KEY ?? null,
 
-    dataFile: env.REVPILOT_DATA_FILE ?? '.data/revpilot-state.json',
+    // serverless (Vercel/Lambda) filesystems are read-only outside /tmp — the demo store
+    // must live there (ephemeral by design; production persistence is the Postgres port)
+    dataFile: env.REVPILOT_DATA_FILE ?? (env.VERCEL ? '/tmp/revpilot-state.json' : '.data/revpilot-state.json'),
   };
 }

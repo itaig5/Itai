@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { Channel } from '@revpilot/core';
 import { getRuntime } from '@/lib/server/runtime';
+import { clientIdFrom, inScope, scopedListingIds } from '@/lib/server/clientScope';
 import type { VisibilityResponse } from '@/lib/apiTypes';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(req: Request) {
   const rt = getRuntime();
   const state = rt.store.getState();
+  const scope = scopedListingIds(state, clientIdFrom(req));
 
   const listings: VisibilityResponse['listings'] = [];
-  for (const l of state.listings) {
+  for (const l of state.listings.filter((x) => inScope(scope, x.id))) {
     const platforms = l.channels.filter((c): c is Exclude<Channel, 'direct'> => c !== 'direct');
     const signals = await rt.visibility.getVisibility(l.id, platforms, state.simDate);
     listings.push({
