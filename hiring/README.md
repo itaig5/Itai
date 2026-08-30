@@ -10,7 +10,8 @@
 | [`hiring-process.md`](hiring-process.md) | תהליך הגיוס בן 7 השלבים, ערוצי הפצה ולוח זמנים |
 | [`screening-test.md`](screening-test.md) | המבחן המעשי לסינון + מחוון ניקוד ⭐ |
 | [`interview-guide.md`](interview-guide.md) | מדריך ראיון עומק וסולם דירוג |
-| [`engagement-terms.md`](engagement-terms.md) | תנאי התקשרות, סיכון יחסי עובד-מעביד, סודיות ואבטחת מידע |
+| [`engagement-terms.md`](engagement-terms.md) | תנאי התקשרות, סיכון יחסי עובד-מעביד, סודיות ואבטחת מידע — הרקע וההסבר |
+| [`service-agreement.md`](service-agreement.md) | **ההסכם עצמו — נוסח לחתימה**, על בסיס הסכם השירות הקיים שלך, עם שני נספחים ⭐ |
 | [`onboarding-90-days.md`](onboarding-90-days.md) | תוכנית הכשרה וקליטה ל-90 יום |
 
 ---
