@@ -1,83 +1,72 @@
 # מודעת דרושים — עוזר/ת אנליסט ניהול תשואה והפצה
 
-> שלוש גרסאות: ארוכה (לוחות דרושים ואתר), קצרה (פייסבוק/וואטסאפ), ולינקדאין.
-> לפני פרסום: החליפו את `[X]` בהיקף השעות שתחליטו עליו.
+> שלוש גרסאות: ארוכה (לוחות דרושים ואתר החברה), קצרה (פייסבוק/וואטסאפ), ולינקדאין באנגלית.
+> **מוכנות לפרסום כמות שהן.** אין שדות למילוי.
+
+**עקרונות שהמודעה בנויה לפיהם** — מועמדים סורקים כ-14 שניות ומחליטים, ולכן שלוש השאלות
+״מה התפקיד / מה מצפים ממני / מה אני מקבל״ נענות ב-100 המילים הראשונות. אורך הגרסה הארוכה
+כ-420 מילים, בתוך הטווח שמביא הכי הרבה פניות (300–700). הדרישות מוגבלות לשש, ולא לתריסר.
+משפט אחד אומר במפורש שחלק מהעבודה חוזר על עצמו — זה מקטין את מספר הפונים ומעלה את
+התאמתם. אין ניסוח שמזכיר מאפיינים מוגנים (גיל, הורות, מצב משפחתי); הגמישות מתוארת, והמועמד
+מסיק לבד.
 
 ---
 
 ## גרסה 1 — ארוכה (AllJobs / דרושים / אתר החברה)
 
-**כותרת:** דרוש/ה עוזר/ת אנליסט/ית ניהול תשואה והפצה (Revenue & Distribution) — פרילנס, היברידי, גמיש
+**כותרת:** דרוש/ה עוזר/ת אנליסט/ית ניהול תשואה והפצה למלונות — פרילנס, 10–20 ש״ש, היברידי
 
-**D Consulting** היא חברת ייעוץ לניהול תשואה ושיווק דיגיטלי למלונות ובתי אירוח בישראל וביוון.
-אנחנו מלווים מלונות בוטיק, בתי מלון עירוניים ונכסי אירוח בכל מה שקשור לתמחור, ניהול ערוצי המכירה
-המקוונים והגדלת ההכנסות. העסק גדל, ואנחנו מחפשים אדם נוסף שיצטרף לצוות.
+**D Consulting** מלווה מלונות בוטיק ובתי אירוח בישראל וביוון בתמחור, בניהול ערוצי המכירה
+המקוונים ובהגדלת ההכנסות. העסק גדל, ואנחנו מגייסים את איש או אשת הצוות הראשונים.
 
-זו הזדמנות להיכנס לתחום מקצועי ומבוקש — ניהול תשואה והפצה מלונאית — דרך צד הביצוע והנתונים,
-עם ליווי והכשרה צמודה.
+**התפקיד:** לקחת לידיים את הביצוע והמדידה — הדוחות השבועיים של הלקוחות, הבקרה על המחירים
+בערוצים, והתוכן והמבצעים שמוצגים בהם. ההחלטות המקצועיות נשארות אצלנו; אתם הדיוק שמאחוריהן.
+
+**לא צריך ידע קודם בניהול תשואה.** ההכשרה מלאה, מצידנו, ובתשלום מהיום הראשון.
 
 ### מה עושים בתפקיד
 
-**נתונים**
+- **הדוח השבועי של כל לקוח** — איסוף נתוני תפוסה, הכנסות והזמנות מהמערכות, עדכון קובצי
+  המעקב, וחישוב המדדים: תפוסה, ADR, RevPAR, הכנסות מול יעד
+- **איתור חריגות** — סימון חודשים ותאריכים שסוטים מהיעד או מהמגמה, והעברתם לבחינה
+- **בקרת אחידות מחירים (Rate Parity)** — בדיקה שיטתית שהמחיר מוצג נכון בכל ערוץ ובערוץ
+  הישיר, וסקירת מחירי מתחרים
+- **בניית מבצעים והזנת תוכן ותמונות** — ב-Booking, ב-Expedia ובמנוע ההזמנות (מערכת נפרדת
+  מהאתר). התוכן והתמונות מתקבלים מוכנים מהלקוח
+- **הזנת מחירים, מלאי ומגבלות במערכת הניהול של המלון (PMS)** — לאחר הכשרה מלאה
+- **ניתוחים** — תמהיל ערוצי מכירה, ולוחות אירועים וביקושים לשנה קדימה
 
-- **דוחות ביצועים שבועיים:** איסוף נתוני תפוסה, הכנסות והזמנות מהמערכות, עדכון קובצי המעקב של כל
-  לקוח, וחישוב המדדים המרכזיים (Occupancy, ADR, RevPAR, הכנסות מול יעד)
-- **איתור חריגות:** סימון חודשים ותאריכים שחורגים מהיעד או מהמגמה, והעברתם לבחינה
-- **הכנת ניתוחים:** תמהיל ערוצי מכירה, לוחות אירועים וביקושים לשנה קדימה
-
-**הערוץ הישיר — אתרי הלקוחות ומנועי ההזמנות** *(חלק משמעותי מהתפקיד)*
-
-- עדכון תוכן באתרי הלקוחות: תיאורים, תמונות, סוגי חדרים, מתקנים, מדיניות וטקסטים עונתיים
-  (עריכת תוכן ב-CMS, בעיקר WordPress — לא נדרש פיתוח)
-- טעינת מחירים, מבצעים, קודי קופון ומגבלות שהות במנוע ההזמנות
-  (Simple Booking, Hotelizer, WebHotelier, Mini Hotel)
-- בדיקות תקינות שוטפות: לינקים, טפסים, תצוגה במובייל, שפות, מהירות טעינה
-- מעקב אחר ביצועי הערוץ הישיר ב-GA4 — כמה נסגר ישירות, מאיפה, ואיפה נוטשים
-- ממשק מול מפתחי ומקדמי האתרים של הלקוחות: ניסוח בקשה מדויקת ווידוא שבוצעה
-
-**ערוצי מכירה מקוונים**
-
-- **תחזוקת נכסים בערוצים:** עדכון תוכן, תמונות, תיאורים, סוגי חדרים, מתקנים ומדיניות
-  ב-Booking.com, Expedia, TripAdvisor ו-Trivago
-- **בקרת אחידות מחירים (Rate Parity):** בדיקה שיטתית שהמחירים מוצגים נכון בכל הערוצים —
-  כולל האתר הישיר — וסקירת מחירי מתחרים
-- **הזנת מחירים, מבצעים ומגבלות** במערכות הניהול המלונאיות — בהתאם לרקע ולניסיון, ולאחר הכשרה
-- מטא-סרץ׳: Google Hotel Ads, Trivago, TripAdvisor
+**בגילוי מלא:** חלק ניכר מהעבודה חוזר על עצמו כל שבוע, מול דדליין קבוע, ובמספרים שטעות
+בהם עולה כסף ללקוח. מי שזה לא מתאים לו — עדיף שיֵדע עכשיו.
 
 ### מה אנחנו מחפשים
 
-- **ראש אנליטי ודיוק** — זו עבודה עם מספרים שטעות בהם עולה כסף ללקוח
-- שליטה טובה ב-Excel / Google Sheets (נוסחאות, טבלאות, עבודה מסודרת עם דאטה)
-- **נוחות בעבודה מול ממשקי ניהול אינטרנטיים** — מי שנכנס למערכת חדשה ומוצא את דרכו בה לבד
-- אנגלית ברמת קריאה וכתיבה טובה (כל ממשקי העבודה באנגלית)
-- יכולת לעבוד עצמאית, לנהל זמן ולעמוד בלוח זמנים שבועי קבוע
-- זמינות לחלק משעות הפעילות: א׳–ה׳, 9:00–18:00
+- **ראש אנליטי ודיוק** — היכולת להסתכל על טבלה ולראות מה לא מסתדר בה
+- שליטה טובה ב-Excel או Google Sheets — נוסחאות, טבלאות, עבודה מסודרת עם דאטה
+- נוחות מול ממשקי ניהול אינטרנטיים — מי שנכנס למערכת חדשה ומוצא בה את דרכו לבד
+- אנגלית טובה בקריאה ובכתיבה — כל ממשקי העבודה באנגלית
+- עצמאות ועמידה בלוח זמנים שבועי קבוע
+- זמינות לחלק משעות הפעילות, א׳–ה׳
 
 ### יתרון (לא חובה)
 
-- **ניסיון בתפעול אתרים** — עריכת תוכן ב-WordPress או CMS אחר, עבודה מול מנוע הזמנות מלונאי
-- **ידע וניסיון ב-GDS** — Amadeus, Sabre, Travelport/Galileo — ובתעריפי קונסורציות
-  (Virtuoso, Relais & Châteaux, Amex FHR). יתרון משמעותי
 - ניסיון בקבלה או במחלקת הזמנות במלון
-- היכרות עם Mini Hotel, אופטימה (Silverbyte) או מערכת PMS אחרת
-- רקע בשיווק דיגיטלי, אנליטיקה (GA4, Search Console) או עבודה עם דוחות
-- לימודים בתחום ניהול מלונאות ותיירות, כלכלה, מנהל עסקים או תעשייה וניהול
+- היכרות עם מנוע הזמנות מלונאי, עם Mini Hotel, עם אופטימה (Silverbyte) או עם PMS אחר
+- **ידע וניסיון ב-GDS ובתעריפי קונסורציות — יתרון משמעותי**
+- רקע באנליטיקה או בעבודה שוטפת עם דוחות
 
 ### תנאים
 
 - העסקה כפרילנס/ית כנגד חשבונית, תגמול שעתי לפי דיווח שעות
-- היקף התחלתי של כ-[X] שעות שבועיות, עם אפשרות אמיתית לגדול ככל שהעסק ותחומי האחריות גדלים
+- **10–20 שעות שבועיות**, בשעות גמישות שנקבעות מולך, עם אפשרות אמיתית לגדול ככל שהעסק
+  ותחומי האחריות גדלים
 - עבודה היברידית — עיקר העבודה מהבית, עם מפגשי עבודה קבועים
-- **הכשרה מלאה מצידנו, בתשלום מהיום הראשון** — לא מצפים שתגיעו עם ידע בניהול תשואה
-- מתאים לסטודנטים/יות, להורים המחפשים משרה חלקית גמישה, ולכל מי שרוצה להיכנס לעולם הזה
-  דרך הדלת המקצועית
+- **הכשרה מלאה בתשלום מהיום הראשון**
 
 ### להגשה
 
-קורות חיים + 3–4 שורות על עצמך ועל מה שמושך אותך בתפקיד, למייל **itai@dconsult.me**
+קורות חיים + 3–4 שורות על עצמך ועל מה שמושך אותך בתפקיד, למייל **itai@dconsult.me**,
 בכותרת: `עוזר/ת אנליסט – [שם מלא]`
-
-אם יש לך ניסיון באתרים או ב-GDS — ציין/י אותו במפורש, זה משנה לנו.
 
 נשמח לחזור לכל פונה. המשרה מיועדת לכל המגדרים כאחד.
 
@@ -85,73 +74,69 @@
 
 ## גרסה 2 — קצרה (קבוצות פייסבוק / וואטסאפ)
 
-> 🏨 **דרוש/ה עוזר/ת אנליסט/ית — ניהול תשואה והפצה למלונות | פרילנס, גמיש, היברידי**
+> 🏨 **דרוש/ה עוזר/ת אנליסט/ית ניהול תשואה והפצה למלונות**
+> פרילנס · 10–20 שעות שבועיות · היברידי · **הכשרה מלאה בתשלום מהיום הראשון**
 >
-> D Consulting מלווה מלונות ובתי אירוח בישראל וביוון בתמחור, ניהול ערוצי מכירה מקוונים והגדלת
-> הכנסות. אנחנו גדלים ומחפשים אדם נוסף לצוות.
+> D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל וביוון בתמחור, בניהול ערוצי המכירה
+> המקוונים ובהגדלת ההכנסות. אנחנו גדלים ומגייסים את איש או אשת הצוות הראשונים.
 >
-> **בתפקיד:** הפקת דוחות ביצועים שבועיים ללקוחות (תפוסה, ADR, הכנסות מול יעד); **תחזוקת אתרי
-> הלקוחות ומנועי ההזמנות — תוכן, מחירים, מבצעים ותקינות** (חלק משמעותי מהתפקיד); תחזוקת נכסים
-> ב-Booking ו-Expedia; בקרת אחידות מחירים וסקירת מתחרים.
+> **בתפקיד:** הדוח השבועי של כל לקוח (תפוסה, ADR, RevPAR, הכנסות מול יעד) · איתור חריגות
+> מול היעד · בקרת אחידות מחירים וסקירת מתחרים · בניית מבצעים והזנת תוכן ותמונות ב-Booking,
+> ב-Expedia ובמנוע ההזמנות · הזנת מחירים ומגבלות ב-PMS, לאחר הכשרה.
 >
-> **מתאים למי ש:** אוהב/ת לעבוד עם מספרים, מדייק/ת, חזק/ה באקסל, מסתדר/ת לבד מול ממשקי ניהול
-> אינטרנטיים, אנגלית טובה בקריאה וכתיבה, ויודע/ת לעבוד עצמאית.
+> **מתאים למי ש:** יש לו ראש אנליטי ועין לפרטים, חזק/ה באקסל, מסתדר/ת לבד מול מערכת חדשה,
+> אנגלית טובה בקריאה ובכתיבה, ויודע/ת לעבוד עצמאית מול לוח זמנים שבועי קבוע.
 >
-> **יתרון:** ניסיון בתפעול אתרים (WordPress / מנוע הזמנות), **ידע ב-GDS ובתעריפי קונסורציות**,
-> ניסיון בקבלה או בהזמנות במלון, היכרות עם PMS, רקע בדיגיטל או באנליטיקה.
+> **יתרון:** ניסיון בקבלה או בהזמנות במלון, היכרות עם PMS או עם מנוע הזמנות, **ידע ב-GDS
+> ובתעריפי קונסורציות**.
 >
-> **תנאים:** פרילנס לפי שעות, היקף גמיש עם אפשרות לגדול, עבודה היברידית, **הכשרה מלאה בתשלום
-> מהיום הראשון**. מתאים לסטודנטים/יות ולהורים המחפשים משרה חלקית גמישה.
+> **גילוי מלא:** חלק ניכר מהעבודה חוזר על עצמו כל שבוע, מול דדליין קבוע.
 >
+> לא צריך ידע קודם בניהול תשואה — את זה אנחנו מלמדים.
 > קו״ח למייל itai@dconsult.me | המשרה מיועדת לכל המגדרים
 
 ---
 
 ## גרסה 3 — לינקדאין
 
-**Revenue & Distribution Analyst Assistant — Freelance, Hybrid, Flexible Hours**
+**Revenue & Distribution Analyst Assistant — Freelance, 10–20 hrs/week, Hybrid**
 
-D Consulting is a revenue management and digital marketing consultancy for hotels and hospitality
-properties in Israel and Greece. We're growing, and we're looking for someone to join the team.
+D Consulting advises boutique hotels and hospitality properties in Israel and Greece on
+pricing, online distribution and revenue growth. We're growing, and we're hiring our first
+team member.
+
+**The role:** own the execution and the measurement — the weekly client reports, the rate
+checks across channels, and the content and promotions that appear in them. The commercial
+calls stay with us; you are the precision behind them.
+
+**No prior revenue management knowledge needed.** Training is ours to give, and it is paid
+from day one.
 
 **What you'll do**
-
-*Data*
-- Build and maintain weekly performance reports per client (occupancy, ADR, RevPAR, revenue vs. target)
-- Flag variances and trends for review
+- The weekly report for each client — pull occupancy, revenue and booking data from the
+  systems, update the tracking files, and compute occupancy, ADR, RevPAR and revenue vs. target
+- Flag months and dates that drift from target or trend
+- Run rate parity checks across channels and the direct channel, plus competitor rate shopping
+- Build promotions and load content and images on Booking, Expedia and the booking engine
+  (a system separate from the website) — content and images arrive ready from the client
+- Load rates, inventory and restrictions into the hotel's PMS, after full training
 - Prepare channel mix analyses and forward-looking events & demand calendars
 
-*Direct channel — client websites and booking engines (a substantial part of the role)*
-- Maintain website content: descriptions, images, room types, amenities, policies and seasonal
-  copy, in the client's CMS (mostly WordPress — content editing, no development required)
-- Load rates, promotions, coupon codes and stay restrictions into the booking engine
-  (Simple Booking, Hotelizer, WebHotelier, Mini Hotel)
-- Routine QA: links, forms, mobile rendering, languages, page speed
-- Track direct-channel performance in GA4 — what closes direct, from where, and where people drop off
-- Brief and follow up with the clients' own web developers and SEO providers
-
-*Online channels*
-- Maintain client listings across Booking.com, Expedia, TripAdvisor and Trivago — content, images,
-  room types, amenities, policies
-- Run rate parity checks — the direct website included — and competitor rate shopping
-- Load rates, promotions and restrictions into hotel management systems (based on your background,
-  after training)
-- Metasearch: Google Hotel Ads, Trivago, TripAdvisor
+**Straight talk:** much of this repeats every week, against a fixed deadline, on numbers
+where a mistake costs the client money. Better to know that now.
 
 **What we're looking for**
-- Strong analytical mindset and precision — these are numbers where a mistake costs the client money
-- Solid Excel / Google Sheets skills
-- Comfortable finding your way around an unfamiliar web admin interface on your own
-- Good written English
-- Ability to work independently against a fixed weekly cadence
+- An analytical head and precision — the ability to look at a table and see what doesn't add up
+- Solid Excel or Google Sheets
+- Comfortable finding your way around an unfamiliar admin interface on your own
+- Good written and spoken English — every interface we work in is in English
+- Independence, and delivery against a fixed weekly cadence
 
-**Nice to have:** website operations experience (WordPress or another CMS, hotel booking engines);
-**GDS knowledge and hands-on experience — Amadeus, Sabre, Travelport/Galileo — and consortia rates
-(Virtuoso, Relais & Châteaux, Amex FHR): a significant advantage**; hotel front-desk or reservations
-experience; familiarity with a PMS (Mini Hotel, Optima/Silverbyte or similar); digital marketing or
-analytics background (GA4, Search Console).
+**Nice to have:** hotel front-desk or reservations experience; familiarity with a hotel
+booking engine, Mini Hotel, Optima/Silverbyte or another PMS; **GDS and consortia rate
+experience — a significant advantage**; an analytics or reporting background.
 
-**Terms:** freelance, hourly, flexible scope with room to grow, hybrid work, and **fully paid
-training from day one** — we don't expect you to arrive knowing revenue management.
+**Terms:** freelance against invoice, hourly, 10–20 hours a week on flexible hours agreed
+with you, hybrid, with real room to grow as the business does.
 
-Apply: itai@dconsult.me — and if you have website or GDS experience, say so explicitly.
+Apply: itai@dconsult.me
