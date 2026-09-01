@@ -17,7 +17,7 @@
 **כותרת:** דרוש/ה עוזר/ת אנליסט/ית ניהול תשואה והפצה למלונות — פרילנס, 10–20 ש״ש, היברידי
 
 **D Consulting** מלווה מלונות בוטיק ובתי אירוח בישראל וביוון בתמחור, בניהול ערוצי המכירה
-המקוונים ובהגדלת ההכנסות. העסק גדל, ואנחנו מגייסים אדם ראשון לצוות.
+המקוונים ובהגדלת ההכנסות. העסק גדל, ואנחנו מרחיבים את הצוות.
 
 **התפקיד:** לקחת לידיים את הביצוע והמדידה — הדוחות השבועיים של הלקוחות, הבקרה על המחירים
 בערוצים, והתוכן והמבצעים שמוצגים בהם. ההחלטות המקצועיות נשארות אצלנו, והעבודה שלך היא לוודא שהמספרים שמאחוריהן מדויקים.
@@ -78,7 +78,7 @@
 > פרילנס · 10–20 שעות שבועיות · היברידי · **הכשרה מלאה בתשלום מהיום הראשון**
 >
 > D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל וביוון בתמחור, בניהול ערוצי המכירה
-> המקוונים ובהגדלת ההכנסות. אנחנו גדלים ומגייסים את איש או אשת הצוות הראשונים.
+> המקוונים ובהגדלת ההכנסות. אנחנו גדלים ומרחיבים את הצוות.
 >
 > **בתפקיד:** הדוח השבועי של כל לקוח (תפוסה, ADR, RevPAR, הכנסות מול יעד) · איתור חריגות
 > מול היעד · בקרת אחידות מחירים וסקירת מתחרים · בניית מבצעים והזנת תוכן ותמונות ב־Booking,
@@ -102,8 +102,7 @@
 **Revenue & Distribution Analyst Assistant — Freelance, 10–20 hrs/week, Hybrid**
 
 D Consulting advises boutique hotels and hospitality properties in Israel and Greece on
-pricing, online distribution and revenue growth. We're growing, and we're hiring our first
-team member.
+pricing, online distribution and revenue growth. We're growing, and we're expanding the team.
 
 **The role:** own the execution and the measurement — the weekly client reports, the rate
 checks across channels, and the content and promotions that appear in them. The commercial
