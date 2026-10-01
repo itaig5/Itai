@@ -7,7 +7,7 @@
 
 - **אורך:** מודעות של 200-400 מילים מביאות את שיעור הפניות הגבוה ביותר; מתחת ל-200 ומעל 700
   השיעור יורד (Appcast 2023, נתוני ספק; LinkedIn 2018, כ-4.5 מיליון מודעות). הגרסה הארוכה
-  כאן כ-430 מילים כולל כותרות, מעט מעל הגבול העליון; גרסת לינקדאין כ-390.
+  כאן כ-450 מילים כולל כותרות, מעל הטווח, לבקשתך לפרט יותר את התפקיד; גרסת לינקדאין כ-460.
 - **צמיחה כרשימת כישורים שלומדים, בלי זמנים:** מועמדים בתחילת הדרך מחפשים למידה (LinkedIn
   Workplace Learning Report 2024; Drewery et al. 2022, מדגם קטן). לפי החלטתך (1.10.2026) המודעה
   לא נוקבת בזמנים: לא בכותרות ולא בתוך הרשימה. לוח הזמנים נמצא רק בתוכנית הקליטה הפנימית.
@@ -40,19 +40,24 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 ### מה תעשו
 
-- תעלו תכנים ותמונות של המלונות לערוצי המכירה ולמנועי ההזמנות. החומרים מגיעים מוכנים מהלקוח
-- תגדירו מבצעים והנחות שסוכמו עם הלקוח, ותיכנסו כמו אורחים כדי לבדוק שהם מוצגים נכון
-- תקימו מלונות בערוצים שבהם הם עוד לא נמכרים: סוגי חדרים, תוכניות מחיר ומדיניות ביטול,
-  וחיבור למערכת שמפיצה אליהם מחירים ומלאי (Channel Manager)
+- **הזנת תכנים:** תיאורי המלון והחדרים, תמונות, מתקנים ומדיניות, ב-Booking, ב-Expedia, ב-Airbnb
+  ובמנועי ההזמנות. החומרים מגיעים מוכנים מהלקוח, ואתם דואגים שיוצגו נכון ובאופן אחיד בכל ערוץ
+- **מבצעים:** הגדרת מבצעים והנחות שסוכמו עם הלקוח, בכל ערוץ ובמנוע ההזמנות. אחרי ההגדרה נכנסים
+  כמו אורחים ובודקים שהמבצע מוצג, בשיעור הנכון ובתאריכים הנכונים
+- **בניית נכסים בערוצים:** הקמת מלון בערוץ שבו הוא עוד לא נמכר: סוגי חדרים, תוכניות מחיר ומדיניות
+  ביטול, וחיבור למערכת שמפיצה לערוץ מחירים ומלאי (Channel Manager). בסוף בודקים שהמחירים והמלאי
+  מגיעים נכון
 
 ### מה תלמדו אצלנו
 
-- להזין מחירים, מלאי והגבלות (כמו מינימום לילות) במערכת הניהול של המלון (PMS)
-- לבדוק שהמחיר זהה בכל הערוצים, ולעקוב אחרי מחירי המתחרים
-- לעדכן את דוחות הביצועים השבועיים של הלקוחות
-- לנתח את תמהיל ערוצי המכירה, ולבנות לוח אירועים וביקושים
+- **מחירים ומלאי:** הזנת מחירים, מלאי והגבלות (כמו מינימום לילות) במערכת הניהול של המלון (PMS),
+  שממנה הם עוברים לכל הערוצים
+- **בקרת מחירים:** בדיקה שהמחיר זהה בכל הערוצים ובאתר המלון, וסקירת מחירי המתחרים
+- **דוחות ביצועים:** עדכון הדוחות השבועיים של הלקוחות (תפוסה, מחיר ממוצע לחדר ללילה והכנסות מול
+  היעד), וסימון תאריכים שסוטים מהיעד
+- **ניתוחים:** ניתוח תמהיל ערוצי המכירה ובניית לוחות אירועים וביקושים
 
-עוברים לכל תחום חדש אחרי הכשרה ועבודה בליווי, והתעריף השעתי עולה כשעומדים ביעדים שסיכמנו מראש.
+תעברו לכל תחום חדש אחרי הכשרה ועבודה בליווי, והתעריף השעתי יעלה כשתעמדו ביעדים שסיכמנו מראש.
 
 ### כדאי לדעת
 
@@ -119,16 +124,24 @@ Airbnb and the booking engines, and move on to the analytical side: rates, repor
 No experience needed: we teach everything, and training is paid from the first hour.
 
 **What you'll do**
-- Load hotel content and photos onto the channels and booking engines (materials come from the client)
-- Set up promotions agreed with the client, and check as a guest that they display correctly
-- Set hotels up on new channels: room types, rate plans, cancellation policies, and the
-  connection to the channel manager
+- Content: property and room descriptions, photos, facilities and policies on Booking, Expedia,
+  Airbnb and the booking engines. Materials arrive ready from the client; you make sure they
+  display correctly and consistently on every channel
+- Promotions: setting up promotions and discounts agreed with the client on every channel and in
+  the booking engine, then checking as a guest that each one shows, at the right rate and on the
+  right dates
+- Channel setup: setting a hotel up on a channel where it is not yet sold (room types, rate
+  plans, cancellation policies) and connecting it to the channel manager that feeds it rates and
+  inventory, then checking that rates and inventory arrive correctly
 
 **What you'll learn with us**
-- Loading rates, inventory and restrictions (such as minimum stay) into the hotel's PMS
-- Checking that the rate is the same on every channel, and tracking competitor rates
-- Updating clients' weekly performance reports
-- Analysing the channel mix, and building an events and demand calendar
+- Rates and inventory: loading rates, inventory and restrictions (such as minimum stay) into the
+  hotel's PMS, which feeds every channel
+- Rate checks: making sure the rate is the same on every channel and on the hotel's website, and
+  reviewing competitor rates
+- Performance reports: updating clients' weekly reports (occupancy, average daily rate and
+  revenue against target) and flagging dates that drift from target
+- Analyses: channel mix, and events and demand calendars
 
 You move to each new area after training and supervised work, and the hourly rate rises once you
 meet targets agreed in advance.
