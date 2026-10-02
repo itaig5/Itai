@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>מבחן מעשי: חומרי עבודה | D Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  :root { --primary:#2C6CC5; --text:#131D2F; --muted:#5E6E82; --soft:#F7F9FB; --border:#DDE4EC; --gold:#D7B254; --green:#1E7D4F; --red:#B3261E; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:'Heebo',sans-serif; color:var(--text); font-size:12.5pt; line-height:1.6; }
+  .page { page-break-after:always; }
+  .page:last-child { page-break-after:auto; }
+  .head { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--primary); padding-bottom:6px; margin-bottom:14px; }
+  .head img { width:150px; }
+  .head .tag { font-size:10.5pt; color:var(--muted); }
+  h1 { font-size:20pt; margin:0 0 6px; }
+  h2 { font-size:15pt; margin:16px 0 6px; color:var(--primary); }
+  h3 { font-size:12.5pt; margin:12px 0 4px; }
+  p { margin:0 0 8px; }
+  ul, ol { margin:0 0 8px; padding-inline-start:20px; }
+  li { margin-bottom:3px; }
+  .box { border:1px solid var(--border); background:var(--soft); border-radius:6px; padding:10px 14px; margin:8px 0; }
+  .note { font-size:10.5pt; color:var(--muted); }
+  table { border-collapse:collapse; width:100%; margin:6px 0 10px; font-size:11pt; }
+  th, td { border:1px solid var(--border); padding:5px 8px; text-align:start; vertical-align:top; }
+  th { background:#EEF3FA; }
+  .nw { white-space:nowrap; }
+  /* client material photos */
+  .photos { display:flex; gap:10px; margin:6px 0; }
+  .ph { flex:1; border:1px solid var(--border); border-radius:6px; overflow:hidden; background:#fff; }
+  .ph svg { display:block; width:100%; height:auto; background:#F4F1EA; }
+  .ph .cap { font-size:10pt; padding:4px 8px; border-top:1px solid var(--border); }
+  /* mock channel screen */
+  .screen { border:1.5px solid #9AA8BA; border-radius:8px; overflow:hidden; margin:8px 0; }
+  .screen .bar { background:#2B3A55; color:#fff; font-size:10pt; padding:5px 10px; display:flex; justify-content:space-between; }
+  .screen .body { padding:10px 12px; background:#fff; }
+  .shot-label { display:inline-block; background:var(--primary); color:#fff; border-radius:4px; padding:1px 10px; font-size:10.5pt; font-weight:600; margin-bottom:4px; }
+  .roomcard { display:flex; gap:10px; border:1px solid var(--border); border-radius:6px; padding:8px; margin-bottom:8px; }
+  .roomcard .img { width:150px; flex:none; }
+  .roomcard .img svg { width:100%; height:auto; display:block; border-radius:4px; background:#F4F1EA; }
+  .roomcard .info { flex:1; font-size:10.5pt; }
+  .roomcard .info b { font-size:11.5pt; }
+  .fac { display:flex; flex-wrap:wrap; gap:6px; font-size:10.5pt; }
+  .fac span { border:1px solid var(--border); border-radius:12px; padding:1px 9px; background:var(--soft); }
+  .res td { font-size:10.5pt; }
+  .old { text-decoration:line-through; color:var(--muted); }
+  .deal { color:#fff; background:var(--green); border-radius:4px; padding:0 6px; font-size:9.5pt; }
+  .compact .res td, .compact .res th { padding:2px 7px; font-size:9.8pt; line-height:1.35; }
+  .compact .screen { margin:4px 0 6px; }
+  .compact .screen .body { padding:6px 10px; }
+  .compact h1 { font-size:17pt; }
+  .compact .search { margin-bottom:4px; padding:3px 10px; }
+  .search { background:#EEF3FA; border-radius:6px; padding:6px 10px; font-size:10.5pt; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<!-- ===================== Page 1: instructions ===================== -->
+<div class="page">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">מבחן מעשי · אנליסט/ית ניהול תשואה והפצה</span></div>
+  <h1>מבחן מעשי: חומרי עבודה</h1>
+  <p>תודה שהגעת לשלב הזה. התרגיל בנוי לכ-90 דקות, ואין צורך בידע קודם במערכות: כל מה שצריך נמצא כאן.</p>
+  <div class="box">
+    <b>איך עובדים:</b> במסמך הזה נמצאים החומרים לארבע המשימות. את התשובות ממלאים בגיליון המצורף, בלשונית של כל משימה.
+    כל השמות, המחירים והקודים בתרגיל בדויים.
+  </div>
+  <table>
+    <tr><th>משימה</th><th>מה עושים</th><th>זמן מומלץ</th></tr>
+    <tr><td>1. תוכן מול החומר</td><td>משווים בין החומר שהלקוח שלח לבין מה שמוצג בערוץ, ורושמים כל פער</td><td>25 דקות</td></tr>
+    <tr><td>2. בניית מבצע</td><td>ממלאים טופס מבצע לפי הנחיה</td><td>25 דקות</td></tr>
+    <tr><td>3. בניית נכס בערוץ</td><td>בונים את טבלת החדרים ותוכניות המחיר של מלון חדש</td><td>25 דקות</td></tr>
+    <tr><td>4. בדיקה מצד האורח</td><td>בודקים בצילומי מסך אם המבצע עובד כמו שצריך</td><td>15 דקות</td></tr>
+  </table>
+  <p><b>שאלות:</b> אם משהו לא ברור, או נראה לך שמשהו בהנחיה מתנגש במשהו אחר, כתוב/כתבי את השאלה בגיליון, בעמודת השאלות של המשימה. שאלה כזו היא חלק מהתרגיל, ולא תיזקף לחובתך.</p>
+  <p><b>"היום" בתרגיל הוא 10 באוקטובר.</b> כל התאריכים במשימות 2 ו-4 מתייחסים לאותה שנה.</p>
+</div>
+
+<!-- ===================== Page 2: Task 1 client material ===================== -->
+<div class="page">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">משימה 1 · החומר שהלקוח שלח</span></div>
+  <h1>מלון א׳: חומר מהלקוח</h1>
+  <p class="note">זה המסמך שהלקוח שלח לנו. הוא המקור הנכון.</p>
+  <h3>תיאור</h3>
+  <p>מלון בוטיק בן 24 חדרים בלב העיר, 5 דקות הליכה מהים. ארוחת בוקר ישראלית בכל בוקר, וגג עם מרפסת שמש פתוח לאורחים.</p>
+  <h3>סוגי חדרים</h3>
+  <table>
+    <tr><th>סוג חדר</th><th>גודל</th><th>מיטות</th><th>מספר אורחים</th><th>נוסף</th></tr>
+    <tr><td>חדר זוגי סטנדרט</td><td class="nw">18 מ״ר</td><td>מיטה זוגית אחת</td><td>עד 2</td><td>חלון לרחוב</td></tr>
+    <tr><td>חדר דלוקס</td><td class="nw">24 מ״ר</td><td>מיטה זוגית או שתי מיטות נפרדות</td><td>עד 2</td><td>מרפסת</td></tr>
+    <tr><td>סוויטה</td><td class="nw">38 מ״ר</td><td>מיטת קינג וספה נפתחת</td><td>עד 4 (2 מבוגרים ו-2 ילדים)</td><td>מרפסת ופינת ישיבה</td></tr>
+  </table>
+  <h3>מתקנים</h3>
+  <p>Wi-Fi חינם בכל המלון · מיזוג אוויר · מעלית · ארוחת בוקר · קבלה 24 שעות · גג עם מרפסת שמש. <b>אין חניה במלון</b>; יש חניון ציבורי בתשלום במרחק 200 מטר.</p>
+  <h3>מדיניות</h3>
+  <ul>
+    <li>צ׳ק־אין מ-15:00, צ׳ק־אאוט עד 11:00</li>
+    <li>ילדים בכל גיל מתקבלים בברכה. תינוק עד גיל 2 בעריסה, ללא תשלום. מיטה נוספת לילד בסוויטה בלבד, 120 ₪ ללילה</li>
+    <li>אין כניסה לחיות מחמד</li>
+  </ul>
+  <h3>תמונות</h3>
+  <div class="photos">
+    <div class="ph">
+      <svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="70" y="70" width="160" height="60" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="70" y="50" width="160" height="26" rx="5" fill="#B8A88F"/><rect x="85" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="160" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="235" y="20" width="45" height="55" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/></svg>
+      <div class="cap">תמונה 1: חדר זוגי סטנדרט</div>
+    </div>
+    <div class="ph">
+      <svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="40" y="75" width="150" height="55" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="40" y="55" width="150" height="24" rx="5" fill="#B8A88F"/><rect x="55" y="82" width="50" height="16" rx="6" fill="#EDE6DA"/><rect x="125" y="82" width="50" height="16" rx="6" fill="#EDE6DA"/><rect x="215" y="15" width="70" height="105" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/><line x1="250" y1="15" x2="250" y2="120" stroke="#8A7B66" stroke-width="2"/><rect x="205" y="112" width="90" height="8" fill="#8A7B66"/></svg>
+      <div class="cap">תמונה 2: חדר דלוקס, עם יציאה למרפסת</div>
+    </div>
+    <div class="ph">
+      <svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="20" y="68" width="150" height="62" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="20" y="46" width="150" height="26" rx="5" fill="#B8A88F"/><rect x="190" y="92" width="95" height="38" rx="8" fill="#7C9A8B"/><rect x="190" y="80" width="95" height="16" rx="6" fill="#6A877A"/><rect x="225" y="20" width="55" height="45" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/></svg>
+      <div class="cap">תמונה 3: סוויטה, מיטת קינג ופינת ישיבה עם ספה</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Page 3: Task 1 channel screen ===================== -->
+<div class="page">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">משימה 1 · מה שמוצג היום בערוץ</span></div>
+  <h1>מלון א׳: עמוד הנכס בערוץ, כפי שהוא מוצג היום</h1>
+  <p class="note">צילומי מסך מעמוד הנכס בערוץ מכירה. השווה/השווי לחומר מהלקוח, ורשום/רשמי כל פער בלשונית "משימה 1" בגיליון.</p>
+  <div class="screen"><div class="bar"><span>ערוץ מכירה · עמוד הנכס</span><span>מלון א׳</span></div><div class="body">
+    <span class="shot-label">תיאור הנכס</span>
+    <p style="font-size:10.5pt">מלון בוטיק בן 24 חדרים בלב העיר, 5 דקות הליכה מהים. ארוחת בוקר ישראלית בכל בוקר, וגג עם מרפסת שמש פתוח לאורחים.</p>
+    <span class="shot-label">מסך א׳: חדרים</span>
+    <div class="roomcard">
+      <div class="img"><svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="70" y="70" width="160" height="60" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="70" y="50" width="160" height="26" rx="5" fill="#B8A88F"/><rect x="85" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="160" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="235" y="20" width="45" height="55" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/></svg></div>
+      <div class="info"><b>חדר זוגי סטנדרט</b><br>גודל: 18 מ״ר · מיטות: שתי מיטות נפרדות · עד 2 אורחים<br>חלון לרחוב</div>
+    </div>
+    <div class="roomcard">
+      <div class="img"><svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="40" y="75" width="150" height="55" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="40" y="55" width="150" height="24" rx="5" fill="#B8A88F"/><rect x="55" y="82" width="50" height="16" rx="6" fill="#EDE6DA"/><rect x="125" y="82" width="50" height="16" rx="6" fill="#EDE6DA"/><rect x="215" y="15" width="70" height="105" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/><line x1="250" y1="15" x2="250" y2="120" stroke="#8A7B66" stroke-width="2"/><rect x="205" y="112" width="90" height="8" fill="#8A7B66"/></svg></div>
+      <div class="info"><b>חדר דלוקס</b><br>גודל: 42 מ״ר · מיטות: מיטה זוגית או שתי מיטות נפרדות · עד 2 אורחים<br>מרפסת</div>
+    </div>
+    <div class="roomcard">
+      <div class="img"><svg viewBox="0 0 300 170" aria-hidden="true"><rect x="0" y="120" width="300" height="50" fill="#D9CFBF"/><rect x="70" y="70" width="160" height="60" rx="6" fill="#fff" stroke="#8A7B66" stroke-width="3"/><rect x="70" y="50" width="160" height="26" rx="5" fill="#B8A88F"/><rect x="85" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="160" y="78" width="55" height="18" rx="6" fill="#EDE6DA"/><rect x="235" y="20" width="45" height="55" fill="#BFD7EA" stroke="#8A7B66" stroke-width="2"/></svg></div>
+      <div class="info"><b>סוויטה</b><br>גודל: 38 מ״ר · מיטות: מיטת קינג וספה נפתחת · עד 4 אורחים (2 מבוגרים ו-2 ילדים)<br>מרפסת ופינת ישיבה</div>
+    </div>
+    <span class="shot-label">מסך ב׳: מתקנים</span>
+    <div class="fac"><span>Wi-Fi חינם</span><span>מיזוג אוויר</span><span>מעלית</span><span>ארוחת בוקר</span><span>קבלה 24 שעות</span><span>גג עם מרפסת שמש</span><span>חניה פרטית במקום</span></div>
+    <span class="shot-label" style="margin-top:10px">מסך ג׳: מדיניות</span>
+    <table><tr><th>צ׳ק־אין</th><td>מ-14:00</td></tr><tr><th>צ׳ק־אאוט</th><td>עד 11:00</td></tr><tr><th>חיות מחמד</th><td>לא מתקבלות</td></tr><tr><th>תשלום</th><td>כרטיסי אשראי ומזומן</td></tr></table>
+  </div></div>
+</div>
+
+<!-- ===================== Page 4: Task 2 ===================== -->
+<div class="page">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">משימה 2 · בניית מבצע</span></div>
+  <h1>מלון א׳: בניית מבצע לפי הנחיה</h1>
+  <h3>ההנחיה, כפי שהתקבלה במייל</h3>
+  <div class="box">
+    "צריך להקים במלון א׳ מבצע הזמנה מוקדמת: 15% הנחה, לשהיות בין 1.11 ל-20.12, להזמנות שמתבצעות לפחות 30 יום לפני ההגעה, על התעריף הגמיש בלבד. לא על הסוויטה."
+  </div>
+  <h3>תוכניות המחיר במלון</h3>
+  <table><tr><th>תוכנית מחיר</th><th>תנאים</th></tr><tr><td>תעריף גמיש</td><td>ארוחת בוקר כלולה, ביטול חינם עד 3 ימים לפני ההגעה</td></tr><tr><td>ללא החזר</td><td>ארוחת בוקר כלולה, תשלום מלא בהזמנה, ללא ביטול</td></tr></table>
+  <h3>המבצעים שכבר פעילים במלון א׳</h3>
+  <table><tr><th>שם המבצע</th><th>הנחה</th><th>תאריכי שהייה</th><th>סוגי חדרים</th><th>תוכניות מחיר</th><th>מצטבר עם מבצעים אחרים</th></tr>
+    <tr><td>מבצע חורף</td><td>10%</td><td>1.12-31.12</td><td>כל סוגי החדרים</td><td>כל התוכניות</td><td>כן</td></tr>
+  </table>
+  <p><b>המשימה:</b> מלא/י את טופס המבצע בלשונית "משימה 2" בגיליון. אם משהו בהנחיה לא ברור, או מתנגש במשהו שכבר קיים, כתוב/כתבי את השאלות בעמודת השאלות לפני שאת/ה ממלא/ת את השדות.</p>
+</div>
+
+<!-- ===================== Page 5: Task 3 ===================== -->
+<div class="page">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">משימה 3 · בניית נכס בערוץ</span></div>
+  <h1>מלון ב׳</h1>
+  <p>מלון ב׳ עומד להיפתח למכירה בערוץ חדש. זה דף הנתונים שהלקוח מילא:</p>
+  <p><b>מספר החדרים במלון: 18</b></p>
+  <table><tr><th>סוג חדר</th><th>מספר חדרים</th><th>מספר אורחים מרבי</th><th>מיטות</th></tr>
+    <tr><td>חדר קלאסי</td><td>6</td><td>2</td><td>מיטה זוגית או שתי מיטות נפרדות</td></tr>
+    <tr><td>חדר סופריור</td><td>5</td><td>2</td><td>מיטה זוגית</td></tr>
+    <tr><td>חדר משפחתי</td><td>4</td><td>4</td><td>מיטה זוגית ושתי מיטות יחיד</td></tr>
+    <tr><td>סוויטה</td><td>2</td><td>3</td><td>מיטת קינג וספה נפתחת</td></tr>
+  </table>
+  <p>תוכניות מחיר למכירה בערוץ: <b>תעריף גמיש עם ארוחת בוקר</b>, ו<b>ללא החזר</b>.</p>
+  <h3>הקודים במערכת הניהול של המלון (PMS)</h3>
+  <table><tr><th>קוד חדר</th><th>תיאור במערכת</th><th>מספר חדרים במערכת</th></tr>
+    <tr><td>CLDB</td><td>Classic Double</td><td>3</td></tr>
+    <tr><td>CLTW</td><td>Classic Twin</td><td>3</td></tr>
+    <tr><td>SUP</td><td>Superior</td><td>5</td></tr>
+    <tr><td>FAM</td><td>Family</td><td>4</td></tr>
+    <tr><td>STE</td><td>Suite</td><td>2</td></tr>
+  </table>
+  <table><tr><th>קוד תוכנית מחיר</th><th>תיאור במערכת</th></tr>
+    <tr><td>BAR-BB</td><td>Flexible, breakfast included</td></tr>
+    <tr><td>NRF-BB</td><td>Non-refundable, breakfast included</td></tr>
+    <tr><td>HB</td><td>Half board</td></tr>
+  </table>
+  <p><b>המשימה:</b> בנה/בני בלשונית "משימה 3" בגיליון את הטבלה שלפיה המלון ייפתח בערוץ: כל סוג חדר, כמה חדרים ממנו, כמה אורחים, אילו תוכניות מחיר, ולאיזה קוד ב-PMS כל שורה מחוברת. כל דבר שלא מסתדר, רשום/רשמי כשאלה ללקוח.</p>
+</div>
+
+<!-- ===================== Page 6: Task 4 ===================== -->
+<div class="page compact">
+  <div class="head"><img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting"><span class="tag">משימה 4 · בדיקה מצד האורח</span></div>
+  <h1>מלון א׳: המבצע ממשימה 2 "הוזן"</h1>
+  <p>"היום" הוא 10 באוקטובר. המבצע ממשימה 2 הוזן בערוץ. לפני שמדווחים ללקוח שהוא פעיל, נכנסו כאורחים וחיפשו שלושה תאריכים. אלה התוצאות:</p>
+
+  <span class="shot-label">צילום 1</span>
+  <div class="screen"><div class="body">
+    <div class="search">חיפוש: מלון א׳ · <span class="nw">15.11-17.11</span> · 2 לילות · 2 מבוגרים</div>
+    <table class="res"><tr><th>חדר</th><th>תוכנית מחיר</th><th>מחיר ללילה</th></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>תעריף גמיש</td><td><span class="old">600 ₪</span> 510 ₪ <span class="deal">הזמנה מוקדמת: 15% הנחה</span></td></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>ללא החזר</td><td>540 ₪</td></tr>
+      <tr><td>חדר דלוקס</td><td>תעריף גמיש</td><td><span class="old">700 ₪</span> 595 ₪ <span class="deal">הזמנה מוקדמת: 15% הנחה</span></td></tr>
+      <tr><td>חדר דלוקס</td><td>ללא החזר</td><td>630 ₪</td></tr>
+      <tr><td>סוויטה</td><td>תעריף גמיש</td><td><span class="old">1,200 ₪</span> 1,020 ₪ <span class="deal">הזמנה מוקדמת: 15% הנחה</span></td></tr>
+      <tr><td>סוויטה</td><td>ללא החזר</td><td>1,080 ₪</td></tr>
+    </table>
+  </div></div>
+
+  <span class="shot-label">צילום 2</span>
+  <div class="screen"><div class="body">
+    <div class="search">חיפוש: מלון א׳ · <span class="nw">24.11-26.11</span> · 2 לילות · 2 מבוגרים</div>
+    <table class="res"><tr><th>חדר</th><th>תוכנית מחיר</th><th>מחיר ללילה</th></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>תעריף גמיש</td><td>600 ₪</td></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>ללא החזר</td><td>540 ₪</td></tr>
+      <tr><td>חדר דלוקס</td><td>תעריף גמיש</td><td>700 ₪</td></tr>
+      <tr><td>חדר דלוקס</td><td>ללא החזר</td><td>630 ₪</td></tr>
+      <tr><td>סוויטה</td><td>תעריף גמיש</td><td>1,200 ₪</td></tr>
+      <tr><td>סוויטה</td><td>ללא החזר</td><td>1,080 ₪</td></tr>
+    </table>
+  </div></div>
+
+  <span class="shot-label">צילום 3</span>
+  <div class="screen"><div class="body">
+    <div class="search">חיפוש: מלון א׳ · <span class="nw">5.11-7.11</span> · 2 לילות · 2 מבוגרים</div>
+    <table class="res"><tr><th>חדר</th><th>תוכנית מחיר</th><th>מחיר ללילה</th></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>תעריף גמיש</td><td>600 ₪</td></tr>
+      <tr><td>חדר זוגי סטנדרט</td><td>ללא החזר</td><td>540 ₪</td></tr>
+      <tr><td>חדר דלוקס</td><td>תעריף גמיש</td><td>700 ₪</td></tr>
+      <tr><td>חדר דלוקס</td><td>ללא החזר</td><td>630 ₪</td></tr>
+      <tr><td>סוויטה</td><td>תעריף גמיש</td><td>1,200 ₪</td></tr>
+      <tr><td>סוויטה</td><td>ללא החזר</td><td>1,080 ₪</td></tr>
+    </table>
+  </div></div>
+  <p><b>המשימה:</b> האם המבצע עובד כמו שצריך? בלשונית "משימה 4" בגיליון, כתוב/כתבי לגבי כל צילום אם הוא תקין, ואם לא, מה בדיוק לא תקין. בסוף, כתוב/כתבי לי בשתי שורות מה היית מדווח/ת.</p>
+</div>
+
+</body>
+</html>
