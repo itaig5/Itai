@@ -7,7 +7,8 @@
    יראה איך הוא נראה. בקוד עצמו הלוגו נטען מהאתר שלך (dconsult.me), ולכן הוא יופיע גם בתצוגה.
 3. מעתיקים את **פרומפט 1** כמו שהוא ושולחים.
 4. מתקנים מול ג'מיני עד שהעיצוב מוכן. רק אז שולחים באותה שיחה את **פרומפט 2ב** (התמונה
-   ללינקדאין). התמונה לפייסבוק ולוואטסאפ (2א) כבר מוכנה.
+   ללינקדאין), ומצרפים אליו את התמונה `ad-facebook-1080-v2.png` כדי שג'מיני יבנה תמונה תואמת.
+   התמונה לפייסבוק ולוואטסאפ (2א) כבר מוכנה.
 5. כשכל שלושת העיצובים מוכנים, מעתיקים מכל Canvas את קוד ה-HTML ושולחים לי. אני בודק שהטקסט
    לא השתנה, ומפיק את התמונות לפייסבוק וללינקדאין בגודל המדויק.
 
@@ -179,71 +180,52 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 ## פרומפט 2ב: תמונה לפוסט בלינקדאין
 
 ```
-עכשיו המודעה השלישית והאחרונה, כמודעה נפרדת: באותה שפה עיצובית, צור ב-Canvas חדש תמונה לפוסט
-בלינקדאין, באנגלית, משמאל לימין. אל תשנה את שתי המודעות הקודמות.
+עכשיו המודעה השלישית והאחרונה, כמודעה נפרדת: תמונה לפוסט בלינקדאין, באנגלית, משמאל לימין,
+ב-Canvas חדש. אל תשנה את המודעות הקודמות.
 
-הפוסט עצמו יתפרסם כטקסט (הנוסח באנגלית שלמטה), והתמונה מלווה אותו. בתמונה מופיעים רק: הלוגו,
-הכותרת "Revenue & Distribution Analyst, Hotels", שורת התגיות באנגלית (מתפצלת לתגיות לפי
-הסימן |, ו-"Booking · Expedia · Airbnb" היא תגית אחת), ו-itai@dconsult.me.
+צירפתי את התמונה הסופית לפייסבוק ולוואטסאפ (ad-facebook-1080-v2.png). התמונה ללינקדאין צריכה
+להיראות כמו תמונה אחות שלה, מאותה משפחה עיצובית: אותם צבעים, אותו לוגו, אותם כרטיסי יתרונות
+(עיגול כחול עם סימן וי בשלושה כרטיסים, ובכרטיס הראשון עיגול זהב עם ₪), ואותו פס כחול בתחתית
+עם כתובת המייל. רק בפריסה רחבה ובאנגלית.
 
-מידות: אלמנט ראשי אחד בגודל קבוע של 1200 על 627 פיקסלים, body בלי שוליים, בלי עיצוב
-רספונסיבי. אל תשים overflow:hidden על ה-body, כדי שאפשר יהיה לגלול ולראות את כל התמונה גם
-בחלון התצוגה של Canvas, שצר יותר מ-1200 פיקסלים. גופן הטקסט לפחות 26 פיקסלים. אותם גופנים כמו בדף הראשי, עם גיבוי serif
-ו-sans-serif. הלוגו נטען כמו בדף הראשי, מאותה כתובת.
+מה מופיע בתמונה, בסדר הזה:
+1. למעלה: הלוגו (מצד שמאל) ותגית "We're hiring" (מצד ימין)
+2. הכותרת: Revenue & Distribution Analyst, Hotels
+3. מתחתיה שורה אחת: Work on the digital side of hospitality, with Booking, Expedia and Airbnb
+4. ארבעה כרטיסי יתרונות, בשורה אחת או בשתי שורות של שניים:
+   High pay for the right candidates
+   15-25 hrs/week
+   Mostly remote (Israel-based)
+   Full paid training
+5. פס כחול בתחתית: "Send your CV" ו-itai@dconsult.me
+6. שורת חתימה בצבע עמום יותר, בגופן של 20 פיקסלים לפחות: Itai Gal, D Consulting · dconsult.me
 
-כללים, כמו קודם: כל מילה בתמונה לקוחה מהנוסח שלמטה, בלי שינוי ובלי תוספות; בלי מקף ארוך או
-בינוני; בלי תאריכים; בלי טלפון ובלי רשתות חברתיות.
+מידות: אלמנט ראשי אחד בגודל קבוע של 1200 על 627 פיקסלים, body בלי שוליים, בלי עיצוב רספונסיבי.
+אל תשים overflow:hidden על ה-body, כדי שאפשר יהיה לגלול ולראות את כל התמונה בחלון התצוגה של
+Canvas, שצר יותר מ-1200 פיקסלים. גופן הטקסט לפחות 24 פיקסלים (חוץ משורת החתימה), הכותרת לפחות 46. אותם גופנים כמו
+בדף הראשי (Frank Ruhl Libre לכותרת, Heebo לשאר), עם גיבוי serif ו-sans-serif. הלוגו נטען מהכתובת
+הזאת: https://dconsult.me/assets/logo-light.png
 
-הנוסח באנגלית:
+כללים: כל מילה בתמונה לקוחה מהרשימה שלמעלה, בלי שינוי ובלי תוספות; בלי מקף ארוך או בינוני; בלי
+תאריכים; בלי טלפון ובלי רשתות חברתיות; הלוגו כמו שהוא. את טקסט הפוסט עצמו (למטה) לא שמים בתמונה:
+הוא מתפרסם כטקסט מעליה, והוא כאן רק כדי שתבין את ההקשר.
 
-**Revenue & Distribution Analyst, Hotels (entry level)**
-Booking · Expedia · Airbnb | 15-25 hrs/week | Mostly remote, Israel | No experience needed | Paid training
+טקסט הפוסט:
 
-D Consulting advises boutique hotels in Israel and across Europe on pricing, online distribution
-and revenue growth. You start on the practical side, what the guest sees on Booking, Expedia,
-Airbnb and the booking engines, and move on to the analytical side: rates, reports and analyses.
-We work with AI tools and with internal tools we build ourselves, so the work is more precise and
-faster and leaves time for thinking.
-No experience needed: we teach everything, and training is paid from the first hour.
+**Revenue & Distribution Analyst, Hotels** 🏨
+High pay for the right candidates | 15-25 hrs/week | Mostly remote (Israel-based) | Full paid training
 
-**What you'll do**
-- Content: loading property and room descriptions, photos, facilities and policies onto Booking,
-  Expedia, Airbnb and the booking engines. Materials arrive ready from the client; you make sure they
-  display correctly and consistently on every channel
-- Promotions: setting up promotions and discounts agreed with the client on every channel and in
-  the booking engine, then checking as a guest that each one shows, at the right rate and on the
-  right dates
-- Channel setup: setting a hotel up on a channel where it is not yet sold (room types, rate
-  plans, cancellation policies) and connecting it to the channel manager that feeds it rates and
-  inventory, then checking that rates and inventory arrive correctly
+Work on the digital side of hospitality, with Booking, Expedia and Airbnb, for boutique hotels in
+Israel and across Europe.
 
-**What you'll learn with us**
-- Rates and inventory: loading rates, inventory and restrictions (such as minimum stay) into the
-  hotel's PMS, which feeds every channel
-- Rate checks: making sure the rate is the same on every channel and on the hotel's website, and
-  reviewing competitor rates
-- Performance reports: updating clients' weekly reports (occupancy, average daily rate and
-  revenue against target) and flagging dates that drift from target
-- Analyses: analysing the channel mix and building events and demand calendars
-- Advanced tools: working with AI tools and our own internal tools, and suggesting new and better
-  ways to do the work
+**What you'll do:** upload hotel content, set up promotions and set hotels up on new channels.
+**Later on:** rates, performance reports and analyses, working with AI tools.
 
-You move to each new area after training and supervised work, and the hourly rate rises once you
-meet targets agreed in advance.
+**What matters to us:** an eye for detail and good English. Hospitality, distribution or GDS
+experience is a plus, not a must.
 
-**Good to know:** the channel work is routine and demands precision, and a promotion set up wrong
-costs the client money. It is also how you learn how each channel works from the inside.
+Freelance, paid hourly on invoice.
 
-**What matters to us:** an eye for detail; good English, reading and writing; Excel or Google
-Sheets, and comfort with web admin systems; availability for part of the day, Sunday to Thursday.
-**Nice to have:** extranet or channel manager experience; hotel front desk or reservations;
-experience with and curiosity about AI tools;
-**GDS and consortia rates: a significant advantage**.
-
-**What you get:** high pay for the right candidates; 15-25 hours a week, hours set together; mostly remote, with meetings in central
-Israel; hands-on work with operating hotels. Freelance, paid by the hour against invoice (you
-need a registered business).
-
-**Apply:** CV and 2-3 lines about yourself to itai@dconsult.me, subject "Revenue & Distribution
-Analyst - full name". Itai Gal, D Consulting. We reply to every applicant.
+📩 CV to itai@dconsult.me
+Itai Gal, D Consulting | dconsult.me
 ```

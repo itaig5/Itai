@@ -107,7 +107,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 > עבודה בצד הדיגיטלי של המלונאות, עם Booking, Expedia ו-Airbnb, במלונות בוטיק בישראל ובאירופה.
 >
 > **מה עושים:** מעלים תכנים, מגדירים מבצעים ומקימים מלונות בערוצים חדשים.
-> **מה לומדים:** מחירים, דוחות ביצועים, ניתוחים ועבודה עם כלי AI.
+> **ובהמשך:** תעברו גם למחירים, לדוחות ביצועים ולניתוחים, ותעבדו עם כלי AI.
 >
 > **חשוב לנו:** עין לפרטים ואנגלית טובה. ניסיון במלונאות, בערוצי הפצה או ב-GDS הוא יתרון, אבל לא חובה.
 >
@@ -121,53 +121,19 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 ## גרסה 3: לינקדאין
 
-**Revenue & Distribution Analyst, Hotels (entry level)**
-Booking · Expedia · Airbnb | 15-25 hrs/week | Mostly remote, Israel | No experience needed | Paid training
+**Revenue & Distribution Analyst, Hotels** 🏨
+High pay for the right candidates | 15-25 hrs/week | Mostly remote (Israel-based) | Full paid training
 
-D Consulting advises boutique hotels in Israel and across Europe on pricing, online distribution
-and revenue growth. You start on the practical side, what the guest sees on Booking, Expedia,
-Airbnb and the booking engines, and move on to the analytical side: rates, reports and analyses.
-We work with AI tools and with internal tools we build ourselves, so the work is more precise and
-faster and leaves time for thinking.
-No experience needed: we teach everything, and training is paid from the first hour.
+Work on the digital side of hospitality, with Booking, Expedia and Airbnb, for boutique hotels in
+Israel and across Europe.
 
-**What you'll do**
-- Content: loading property and room descriptions, photos, facilities and policies onto Booking,
-  Expedia, Airbnb and the booking engines. Materials arrive ready from the client; you make sure they
-  display correctly and consistently on every channel
-- Promotions: setting up promotions and discounts agreed with the client on every channel and in
-  the booking engine, then checking as a guest that each one shows, at the right rate and on the
-  right dates
-- Channel setup: setting a hotel up on a channel where it is not yet sold (room types, rate
-  plans, cancellation policies) and connecting it to the channel manager that feeds it rates and
-  inventory, then checking that rates and inventory arrive correctly
+**What you'll do:** upload hotel content, set up promotions and set hotels up on new channels.
+**Later on:** rates, performance reports and analyses, working with AI tools.
 
-**What you'll learn with us**
-- Rates and inventory: loading rates, inventory and restrictions (such as minimum stay) into the
-  hotel's PMS, which feeds every channel
-- Rate checks: making sure the rate is the same on every channel and on the hotel's website, and
-  reviewing competitor rates
-- Performance reports: updating clients' weekly reports (occupancy, average daily rate and
-  revenue against target) and flagging dates that drift from target
-- Analyses: analysing the channel mix and building events and demand calendars
-- Advanced tools: working with AI tools and our own internal tools, and suggesting new and better
-  ways to do the work
+**What matters to us:** an eye for detail and good English. Hospitality, distribution or GDS
+experience is a plus, not a must.
 
-You move to each new area after training and supervised work, and the hourly rate rises once you
-meet targets agreed in advance.
+Freelance, paid hourly on invoice.
 
-**Good to know:** the channel work is routine and demands precision, and a promotion set up wrong
-costs the client money. It is also how you learn how each channel works from the inside.
-
-**What matters to us:** an eye for detail; good English, reading and writing; Excel or Google
-Sheets, and comfort with web admin systems; availability for part of the day, Sunday to Thursday.
-**Nice to have:** extranet or channel manager experience; hotel front desk or reservations;
-experience with and curiosity about AI tools;
-**GDS and consortia rates: a significant advantage**.
-
-**What you get:** high pay for the right candidates; 15-25 hours a week, hours set together; mostly remote, with meetings in central
-Israel; hands-on work with operating hotels. Freelance, paid by the hour against invoice (you
-need a registered business).
-
-**Apply:** CV and 2-3 lines about yourself to itai@dconsult.me, subject "Revenue & Distribution
-Analyst - full name". Itai Gal, D Consulting. We reply to every applicant.
+📩 CV to itai@dconsult.me
+Itai Gal, D Consulting | dconsult.me
