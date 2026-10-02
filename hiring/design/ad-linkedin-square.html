@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Square LinkedIn image | D Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2C6CC5;
+      --text: #131D2F;
+      --bg: #FFFFFF;
+      --bg-soft: #F7F9FB;
+      --border: #DDE4EC;
+      --gold: #D7B254;
+      --blue-soft: #F1F6FD;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 1080px; height: 1080px; margin: 0; background: var(--bg); color: var(--text);
+           font-family: 'Heebo', sans-serif; direction: ltr; -webkit-font-smoothing: antialiased; }
+    .nw { white-space: nowrap; }
+    .post { width: 1080px; height: 1080px; padding: 60px 64px 52px; display: flex; flex-direction: column; gap: 30px; }
+
+    .top { display: flex; justify-content: space-between; align-items: center; }
+    .logo { width: 250px; height: auto; display: block; }
+    .hiring { font-size: 28px; font-weight: 700; color: var(--primary); background: var(--blue-soft);
+              border: 1px solid #D5E3F7; border-radius: 40px; padding: 8px 26px; }
+
+    h1 { font-family: 'Frank Ruhl Libre', serif; font-size: 58px; line-height: 1.15; font-weight: 700; letter-spacing: -0.5px; }
+    .hook { font-size: 30px; line-height: 1.45; font-weight: 500; color: #34415a; margin-top: -12px; }
+    .hook b { color: var(--primary); font-weight: 700; }
+
+    .perks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .perk { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 600;
+            background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; }
+    .perk .ic { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: #fff;
+                font-size: 22px; font-weight: 800; display: grid; place-items: center; }
+    .perk.gold .ic { background: var(--gold); color: var(--text); }
+
+    .do { background: var(--bg-soft); border: 1px solid var(--border); border-left: 6px solid var(--primary);
+          border-radius: 0 12px 12px 0; padding: 20px 28px; }
+    .do h2 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+    .do ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .do li { font-size: 28px; line-height: 1.45; position: relative; padding-left: 24px; }
+    .do li::before { content: ""; position: absolute; left: 0; top: 17px; width: 9px; height: 9px; border-radius: 50%; background: var(--primary); }
+    .do li.next::before { background: var(--gold); }
+
+    .cta { margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+           background: var(--primary); color: #fff; border-radius: 14px; padding: 22px 32px; }
+    .cta .send { font-size: 32px; font-weight: 700; }
+    .cta .mail { direction: ltr; font-size: 34px; font-weight: 800; }
+    .sign { text-align: center; font-size: 22px; color: #4a566e; margin-top: -14px; }
+
+    /* English is longer than Hebrew: tighter type so the square holds the same content */
+    .post { gap: 28px; padding: 58px 62px 50px; }
+    h1 { font-size: 58px; }
+    .hook { font-size: 29px; margin-top: -8px; }
+    .perk { font-size: 27px; padding: 16px 18px; gap: 12px; }
+    .perk .ic { width: 32px; height: 32px; font-size: 20px; }
+    .do li { font-size: 27px; }
+    .do li::before { top: 15px; }
+    .do h2 { font-size: 29px; }
+    .cta .send, .cta .mail { font-size: 30px; }
+    .sign { font-size: 20px; }
+  </style>
+</head>
+<body>
+  <div class="post">
+    <div class="top">
+      <img class="logo" src="https://dconsult.me/assets/logo-light.png" alt="D Consulting">
+      <span class="hiring">We're hiring</span>
+    </div>
+
+    <h1>Revenue &amp; Distribution Analyst, Hotels</h1>
+    <p class="hook">Work on the digital side of hospitality, with Booking, Expedia and Airbnb</p>
+
+    <div class="perks">
+      <div class="perk gold"><span class="ic">₪</span>High pay for the right candidates</div>
+      <div class="perk"><span class="ic">✓</span>15-25 hrs/week</div>
+      <div class="perk"><span class="ic">✓</span>Mostly remote (Israel-based)</div>
+      <div class="perk"><span class="ic">✓</span>Full paid training</div>
+      <div class="perk"><span class="ic">✓</span>Working with AI tools</div>
+      <div class="perk"><span class="ic">✓</span>Hotels in Israel and Europe</div>
+    </div>
+
+    <div class="do">
+      <h2>What the role includes</h2>
+      <ul>
+        <li>Uploading hotel content and photos to the sales channels</li>
+        <li>Setting up promotions, and setting hotels up on new channels</li>
+        <li class="next">Later on: rates, performance reports and analyses</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <span class="send">Send your CV</span>
+      <span class="mail">itai@dconsult.me</span>
+    </div>
+    <div class="sign">Itai Gal, D Consulting · dconsult.me/jobs/analyst/en.html · Open to all genders</div>
+  </div>
+</body>
+</html>

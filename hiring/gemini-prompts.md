@@ -6,9 +6,8 @@
 2. מצרפים לשיחה את קובץ הלוגו `logo-dconsult.png` (באותה תיקייה עם הקובץ הזה), כדי שג'מיני
    יראה איך הוא נראה. בקוד עצמו הלוגו נטען מהאתר שלך (dconsult.me), ולכן הוא יופיע גם בתצוגה.
 3. מעתיקים את **פרומפט 1** כמו שהוא ושולחים.
-4. מתקנים מול ג'מיני עד שהעיצוב מוכן. רק אז שולחים באותה שיחה את **פרומפט 2ב** (התמונה
-   ללינקדאין), ומצרפים אליו את התמונה `ad-facebook-1080-v2.png` כדי שג'מיני יבנה תמונה תואמת.
-   התמונה לפייסבוק ולוואטסאפ (2א) כבר מוכנה.
+4. שתי התמונות לרשתות כבר מוכנות: `ad-facebook-1080-v2.png` לפייסבוק ולוואטסאפ, ו-`ad-linkedin-1080-en.png`
+   ללינקדאין. פרומפט 1 נשאר כאן לתיעוד ולשינויים עתידיים בדף המשרה.
 5. כשכל שלושת העיצובים מוכנים, מעתיקים מכל Canvas את קוד ה-HTML ושולחים לי. אני בודק שהטקסט
    לא השתנה, ומפיק את התמונות לפייסבוק וללינקדאין בגודל המדויק.
 
@@ -177,56 +176,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 ---
 
-## פרומפט 2ב: תמונה לפוסט בלינקדאין
+## פרומפט 2ב: התמונה ללינקדאין (בוצע)
 
-```
-עכשיו המודעה השלישית והאחרונה, כמודעה נפרדת: תמונה לפוסט בלינקדאין, באנגלית, משמאל לימין,
-ב-Canvas חדש. אל תשנה את המודעות הקודמות.
-
-צירפתי את התמונה הסופית לפייסבוק ולוואטסאפ (ad-facebook-1080-v2.png). התמונה ללינקדאין צריכה
-להיראות כמו תמונה אחות שלה, מאותה משפחה עיצובית: אותם צבעים, אותו לוגו, אותם כרטיסי יתרונות
-(עיגול כחול עם סימן וי בשלושה כרטיסים, ובכרטיס הראשון עיגול זהב עם ₪), ואותו פס כחול בתחתית
-עם כתובת המייל. רק בפריסה רחבה ובאנגלית.
-
-מה מופיע בתמונה, בסדר הזה:
-1. למעלה: הלוגו (מצד שמאל) ותגית "We're hiring" (מצד ימין)
-2. הכותרת: Revenue & Distribution Analyst, Hotels
-3. מתחתיה שורה אחת: Work on the digital side of hospitality, with Booking, Expedia and Airbnb
-4. ארבעה כרטיסי יתרונות, בשורה אחת או בשתי שורות של שניים:
-   High pay for the right candidates
-   15-25 hrs/week
-   Mostly remote (Israel-based)
-   Full paid training
-5. פס כחול בתחתית: "Send your CV" ו-itai@dconsult.me
-6. שורת חתימה בצבע עמום יותר, בגופן של 20 פיקסלים לפחות: Itai Gal, D Consulting · dconsult.me
-
-מידות: אלמנט ראשי אחד בגודל קבוע של 1200 על 627 פיקסלים, body בלי שוליים, בלי עיצוב רספונסיבי.
-אל תשים overflow:hidden על ה-body, כדי שאפשר יהיה לגלול ולראות את כל התמונה בחלון התצוגה של
-Canvas, שצר יותר מ-1200 פיקסלים. גופן הטקסט לפחות 24 פיקסלים (חוץ משורת החתימה), הכותרת לפחות 46. אותם גופנים כמו
-בדף הראשי (Frank Ruhl Libre לכותרת, Heebo לשאר), עם גיבוי serif ו-sans-serif. הלוגו נטען מהכתובת
-הזאת: https://dconsult.me/assets/logo-light.png
-
-כללים: כל מילה בתמונה לקוחה מהרשימה שלמעלה, בלי שינוי ובלי תוספות; בלי מקף ארוך או בינוני; בלי
-תאריכים; בלי טלפון ובלי רשתות חברתיות; הלוגו כמו שהוא. את טקסט הפוסט עצמו (למטה) לא שמים בתמונה:
-הוא מתפרסם כטקסט מעליה, והוא כאן רק כדי שתבין את ההקשר.
-
-טקסט הפוסט:
-
-**Revenue & Distribution Analyst, Hotels** 🏨
-High pay for the right candidates | 15-25 hrs/week | Mostly remote (Israel-based) | Full paid training
-
-Work on the digital side of hospitality, with Booking, Expedia and Airbnb, for boutique hotels in
-Israel and across Europe.
-
-**What you'll do:** upload hotel content, set up promotions and set hotels up on new channels.
-**Later on:** rates, performance reports and analyses, working with AI tools.
-
-**What matters to us:** an eye for detail and good English. Hospitality, distribution or GDS
-experience is a plus, not a must.
-
-Freelance, paid hourly on invoice.
-
-👉 Full details and how to apply: https://dconsult.me/jobs/analyst/en.html
-📩 Or email your CV to itai@dconsult.me
-Itai Gal, D Consulting | dconsult.me
-```
+ללינקדאין נבחרה התמונה המרובעת של פייסבוק, בגרסה אנגלית: `ad-linkedin-1080-en.png` בתיקייה הזו.
+אין צורך לשלוח את הפרומפט הזה.
