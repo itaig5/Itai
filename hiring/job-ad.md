@@ -144,6 +144,8 @@ Freelance, paid hourly on invoice.
 📩 Or email your CV to itai@dconsult.me
 Itai Gal, D Consulting | dconsult.me
 
+#RevenueManagement #HotelJobs #Hiring
+
 ---
 
 ## גרסה 4: וואטסאפ
