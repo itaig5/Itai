@@ -59,7 +59,7 @@
 2. כותרת המשרה, ומתחתיה שורת התגיות
 3. פסקת הפתיחה, ואחריה הפסקה "לא נדרש ניסיון קודם בתחום..." כולה, בולטת יותר
 4. "מה תעשו": שלושה פריטים, לכל אחד כותרת מודגשת והסבר. אפשר ככרטיסים
-5. "מה תלמדו אצלנו": ארבעה פריטים ומשפט הסיום שאחריהם. זה החלק שמראה למועמד שהתפקיד צומח
+5. "מה תלמדו אצלנו": חמישה פריטים ומשפט הסיום שאחריהם. זה החלק שמראה למועמד שהתפקיד צומח
    איתו. עצב אותו כך שירגיש כמו התקדמות, אבל בלי ציר זמן, בלי מספור ובלי שמות לשלבים
 6. "כדאי לדעת": תיבה שקטה, לא אזהרה צועקת
 7. "מה חשוב לנו" ו"יתרון": זה לצד זה במסך רחב, זה מתחת לזה בטלפון. השורה האחרונה ב"יתרון"
@@ -101,7 +101,8 @@
 
 D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל ובאירופה בתמחור, בניהול ערוצי המכירה
 ובהגדלת ההכנסות. בהתחלה תעבדו על הצד המעשי: מה שהאורח רואה ב-Booking, ב-Expedia, ב-Airbnb
-ובמנועי ההזמנות. בהמשך תעברו גם לצד האנליטי: מחירים, דוחות וניתוחים.
+ובמנועי ההזמנות. בהמשך תעברו גם לצד האנליטי: מחירים, דוחות וניתוחים. אנחנו עובדים עם כלי AI ועם
+כלים פנימיים שאנחנו מפתחים בעצמנו, כדי שהעבודה תהיה מדויקת ומהירה יותר ותשאיר זמן לחשיבה.
 
 לא נדרש ניסיון קודם בתחום. אנחנו מלמדים הכול מההתחלה, וההכשרה בשכר מהשעה הראשונה.
 
@@ -123,6 +124,8 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 - **דוחות ביצועים:** עדכון הדוחות השבועיים של הלקוחות (תפוסה, מחיר ממוצע לחדר ללילה והכנסות מול
   היעד), וסימון תאריכים שסוטים מהיעד
 - **ניתוחים:** ניתוח תמהיל ערוצי המכירה ובניית לוחות אירועים וביקושים
+- **כלים מתקדמים:** עבודה עם כלי AI ועם הכלים הפנימיים שלנו, והצעת רעיונות לדרכים חדשות וטובות
+  יותר לעשות את העבודה
 
 תעברו לכל תחום חדש אחרי הכשרה ועבודה בליווי, והתעריף השעתי יעלה כשתעמדו ביעדים שסיכמנו מראש.
 
@@ -142,6 +145,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 - ניסיון ב-Booking Extranet, ב-Expedia Partner Central, ב-Airbnb או ב-Channel Manager
 - ניסיון בקבלה או בהזמנות במלון, או היכרות עם מיני הוטל או אופטימה
+- ניסיון וסקרנות בעבודה עם כלי AI
 - **ידע ב-GDS ובתעריפי Consortia: יתרון משמעותי**
 
 ### מה מקבלים
@@ -187,11 +191,12 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 **דרוש/ה אנליסט/ית ניהול תשואה והפצה למלונות**
 Booking · Expedia · Airbnb | 15-25 שעות בשבוע | רוב העבודה מהבית | בלי ניסיון קודם | הכשרה בשכר
 
-D Consulting מלווה מלונות בוטיק בישראל ובאירופה בתמחור ובניהול ערוצי המכירה.
+D Consulting מלווה מלונות בוטיק בישראל ובאירופה בתמחור ובניהול ערוצי המכירה. אנחנו עובדים עם
+כלי AI ועם כלים פנימיים שאנחנו מפתחים בעצמנו.
 
 **מה התפקיד כולל:** הזנת תכנים ותמונות ובניית מבצעים ב-Booking, ב-Expedia, ב-Airbnb ובמנועי
 ההזמנות, והקמת מלונות בערוצים חדשים.
-**מה תלמדו אצלנו:** הזנת מחירים ומלאי במערכת הניהול של המלון, עדכון דוחות הביצועים של הלקוחות וניתוח ערוצי המכירה.
+**מה תלמדו אצלנו:** הזנת מחירים ומלאי במערכת הניהול של המלון, עדכון דוחות הביצועים של הלקוחות, ניתוח ערוצי המכירה ועבודה עם כלי AI.
 
 **מה חשוב לנו:** עין לפרטים, אנגלית טובה בקריאה ובכתיבה, שליטה ב-Excel ונוחות בעבודה עם מערכות ניהול באינטרנט.
 **יתרון משמעותי:** ידע ב-GDS ובתעריפי Consortia.
@@ -227,6 +232,8 @@ Booking · Expedia · Airbnb | 15-25 hrs/week | Mostly remote, Israel | No exper
 D Consulting advises boutique hotels in Israel and across Europe on pricing, online distribution
 and revenue growth. You start on the practical side, what the guest sees on Booking, Expedia,
 Airbnb and the booking engines, and move on to the analytical side: rates, reports and analyses.
+We work with AI tools and with internal tools we build ourselves, so the work is more precise and
+faster and leaves time for thinking.
 No experience needed: we teach everything, and training is paid from the first hour.
 
 **What you'll do**
@@ -248,6 +255,8 @@ No experience needed: we teach everything, and training is paid from the first h
 - Performance reports: updating clients' weekly reports (occupancy, average daily rate and
   revenue against target) and flagging dates that drift from target
 - Analyses: analysing the channel mix and building events and demand calendars
+- Advanced tools: working with AI tools and our own internal tools, and suggesting new and better
+  ways to do the work
 
 You move to each new area after training and supervised work, and the hourly rate rises once you
 meet targets agreed in advance.
@@ -258,6 +267,7 @@ costs the client money. It is also how you learn how each channel works from the
 **What matters to us:** an eye for detail; good English, reading and writing; Excel or Google
 Sheets, and comfort with web admin systems; availability for part of the day, Sunday to Thursday.
 **Nice to have:** extranet or channel manager experience; hotel front desk or reservations;
+experience with and curiosity about AI tools;
 **GDS and consortia rates: a significant advantage**.
 
 **What you get:** high pay for the right candidates; 15-25 hours a week, hours set together; mostly remote, with meetings in central
