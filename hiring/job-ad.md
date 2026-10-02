@@ -30,7 +30,7 @@
 
 **כותרת:** אנליסט/ית ניהול תשואה והפצה למלונות
 
-**שורת פתיחה:** Booking · Expedia · Airbnb | 15-30 שעות בשבוע | רוב העבודה מהבית | בלי ניסיון קודם | הכשרה בשכר
+**שורת פתיחה:** Booking · Expedia · Airbnb | 15-25 שעות בשבוע | רוב העבודה מהבית | בלי ניסיון קודם | הכשרה בשכר
 
 D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל ובאירופה בתמחור, בניהול ערוצי המכירה
 ובהגדלת ההכנסות. בהתחלה תעבדו על הצד המעשי: מה שהאורח רואה ב-Booking, ב-Expedia, ב-Airbnb
@@ -79,7 +79,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 ### מה מקבלים
 
-- 15-30 שעות בשבוע, ואת השעות קובעים יחד
+- 15-25 שעות בשבוע, ואת השעות קובעים יחד
 - רוב העבודה מהבית, עם מפגשי עבודה באזור המרכז
 - הכשרה מלאה, בשכר מהשעה הראשונה
 - ניסיון מעשי עם מלונות פעילים בישראל ובאירופה, ובמערכות שכל הענף עובד איתן
@@ -97,7 +97,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 ## גרסה 2: קצרה (קבוצות פייסבוק / וואטסאפ)
 
 > **דרוש/ה אנליסט/ית ניהול תשואה והפצה למלונות**
-> Booking · Expedia · Airbnb | 15-30 שעות בשבוע | רוב העבודה מהבית | בלי ניסיון קודם | הכשרה בשכר
+> Booking · Expedia · Airbnb | 15-25 שעות בשבוע | רוב העבודה מהבית | בלי ניסיון קודם | הכשרה בשכר
 >
 > D Consulting מלווה מלונות בוטיק בישראל ובאירופה בתמחור ובניהול ערוצי המכירה.
 >
@@ -116,7 +116,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 ## גרסה 3: לינקדאין
 
 **Revenue & Distribution Analyst, Hotels (entry level)**
-Booking · Expedia · Airbnb | 15-30 hrs/week | Mostly remote, Israel | No experience needed | Paid training
+Booking · Expedia · Airbnb | 15-25 hrs/week | Mostly remote, Israel | No experience needed | Paid training
 
 D Consulting advises boutique hotels in Israel and across Europe on pricing, online distribution
 and revenue growth. You start on the practical side, what the guest sees on Booking, Expedia,
@@ -154,7 +154,7 @@ Sheets, and comfort with web admin systems; availability for part of the day, Su
 **Nice to have:** extranet or channel manager experience; hotel front desk or reservations;
 **GDS and consortia rates: a significant advantage**.
 
-**What you get:** 15-30 hours a week, hours set together; mostly remote, with meetings in central
+**What you get:** 15-25 hours a week, hours set together; mostly remote, with meetings in central
 Israel; hands-on work with operating hotels. Freelance, paid by the hour against invoice (you
 need a registered business).
 
