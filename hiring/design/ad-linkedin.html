@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>LinkedIn Post Image | D Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2C6CC5;
+      --text: #131D2F;
+      --text-muted: #5E6E82;
+      --bg: #FFFFFF;
+      --bg-soft: #F7F9FB;
+      --border: #DDE4EC;
+      --gold: #D7B254;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* No overflow:hidden on body to allow horizontal scrolling in narrow previews */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #E8EEF5;
+      color: var(--text);
+      font-family: 'Heebo', sans-serif;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Fixed LinkedIn landscape graphic canvas: 1200 x 627 px */
+    .linkedin-canvas {
+      width: 1200px;
+      height: 627px;
+      background: var(--bg);
+      padding: 38px 48px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Header: Logo on left, tag on right */
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      display: block;
+      width: 230px;
+      height: auto;
+    }
+
+    .hiring-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #F1F6FD;
+      color: var(--primary);
+      border: 1.5px solid #C5DBF8;
+      border-radius: 8px;
+      padding: 8px 20px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    /* Main Title & Subtitle */
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    h1 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .subline {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--text);
+      opacity: 0.9;
+    }
+
+    /* Benefits 2x2 Grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 20px;
+    }
+
+    .benefit-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-gold {
+      background: var(--gold);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .icon-blue {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .icon-blue svg {
+      width: 22px;
+      height: 22px;
+      stroke: #FFFFFF;
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .benefit-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* Bottom section: Blue bar & signature */
+    .bottom-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .blue-bar {
+      background: var(--primary);
+      border-radius: 10px;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(44, 108, 197, 0.22);
+    }
+
+    .bar-label {
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .bar-email {
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .signature-line {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="linkedin-canvas">
+
+    <!-- 1. Header: Logo (left) and Tag (right) -->
+    <header class="header-row">
+      <img src="https://dconsult.me/assets/logo-light.png" alt="D Consulting" class="header-logo">
+      <div class="hiring-badge">We're hiring</div>
+    </header>
+
+    <!-- 2 & 3. Title & Subtitle -->
+    <div class="title-section">
+      <h1>Revenue &amp; Distribution Analyst, Hotels</h1>
+      <p class="subline">Work on the digital side of hospitality, with Booking, Expedia and Airbnb</p>
+    </div>
+
+    <!-- 4. Four Benefit Cards (2x2) -->
+    <div class="benefits-grid">
+      <!-- Card 1: Gold circle with ₪ -->
+      <div class="benefit-card">
+        <div class="icon-circle icon-gold">&#8362;</div>
+        <span class="benefit-text">High pay for the right candidates</span>
+      </div>
+
+      <!-- Card 2: Blue circle with checkmark -->
+      <div class="benefit-card">
+        <div class="icon-circle icon-blue">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span class="benefit-text">15-25 hrs/week</span>
+      </div>
+
+      <!-- Card 3: Blue circle with checkmark -->
+      <div class="benefit-card">
+        <div class="icon-circle icon-blue">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span class="benefit-text">Mostly remote (Israel-based)</span>
+      </div>
+
+      <!-- Card 4: Blue circle with checkmark -->
+      <div class="benefit-card">
+        <div class="icon-circle icon-blue">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <span class="benefit-text">Full paid training</span>
+      </div>
+    </div>
+
+    <!-- 5 & 6. Blue Bar and Signature Line -->
+    <div class="bottom-section">
+      <div class="blue-bar">
+        <span class="bar-label">Send your CV</span>
+        <span class="bar-email">itai@dconsult.me</span>
+      </div>
+      <div class="signature-line">
+        Itai Gal, D Consulting · dconsult.me/jobs/analyst
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
