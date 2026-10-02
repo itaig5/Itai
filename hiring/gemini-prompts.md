@@ -131,7 +131,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 - **כלים מתקדמים:** עבודה עם כלי AI ועם הכלים הפנימיים שלנו, והצעת רעיונות לדרכים חדשות וטובות
   יותר לעשות את העבודה
 
-תעברו לכל תחום חדש אחרי הכשרה ועבודה בליווי, והתעריף השעתי יעלה כשתעמדו ביעדים שסיכמנו מראש.
+תעברו לכל תחום חדש אחרי הכשרה ועבודה בליווי.
 
 ### כדאי לדעת
 
@@ -226,6 +226,7 @@ experience is a plus, not a must.
 
 Freelance, paid hourly on invoice.
 
-📩 CV to itai@dconsult.me
+👉 Full details and how to apply: https://dconsult.me/jobs/analyst/en.html
+📩 Or email your CV to itai@dconsult.me
 Itai Gal, D Consulting | dconsult.me
 ```
