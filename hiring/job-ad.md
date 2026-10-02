@@ -136,7 +136,7 @@ experience is a plus, not a must.
 
 Freelance, paid hourly on invoice.
 
-👉 Full details (in Hebrew) and how to apply: https://dconsult.me/jobs/analyst
+👉 Full details and how to apply: https://dconsult.me/jobs/analyst/en.html
 📩 Or email your CV to itai@dconsult.me
 Itai Gal, D Consulting | dconsult.me
 
