@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>מודעה מרובעת לפייסבוק ולוואטסאפ, גרסה 2 | D Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2C6CC5;
+      --text: #131D2F;
+      --bg: #FFFFFF;
+      --bg-soft: #F7F9FB;
+      --border: #DDE4EC;
+      --gold: #D7B254;
+      --blue-soft: #F1F6FD;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { width: 1080px; height: 1080px; margin: 0; background: var(--bg); color: var(--text);
+           font-family: 'Heebo', sans-serif; direction: rtl; -webkit-font-smoothing: antialiased; }
+    .nw { white-space: nowrap; }
+    .post { width: 1080px; height: 1080px; padding: 60px 64px 52px; display: flex; flex-direction: column; gap: 30px; }
+
+    .top { display: flex; justify-content: space-between; align-items: center; }
+    .logo { width: 250px; height: auto; display: block; }
+    .hiring { font-size: 28px; font-weight: 700; color: var(--primary); background: var(--blue-soft);
+              border: 1px solid #D5E3F7; border-radius: 40px; padding: 8px 26px; }
+
+    h1 { font-family: 'Frank Ruhl Libre', serif; font-size: 58px; line-height: 1.15; font-weight: 700; letter-spacing: -0.5px; }
+    .hook { font-size: 30px; line-height: 1.45; font-weight: 500; color: #34415a; margin-top: -12px; }
+    .hook b { color: var(--primary); font-weight: 700; }
+
+    .perks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; }
+    .perk { display: flex; align-items: center; gap: 14px; font-size: 30px; font-weight: 600;
+            background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; }
+    .perk .ic { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: #fff;
+                font-size: 22px; font-weight: 800; display: grid; place-items: center; }
+    .perk.gold .ic { background: var(--gold); color: var(--text); }
+
+    .do { background: var(--bg-soft); border: 1px solid var(--border); border-right: 6px solid var(--primary);
+          border-radius: 12px 0 0 12px; padding: 20px 28px; }
+    .do h2 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+    .do ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .do li { font-size: 28px; line-height: 1.45; position: relative; padding-right: 24px; }
+    .do li::before { content: ""; position: absolute; right: 0; top: 17px; width: 9px; height: 9px; border-radius: 50%; background: var(--primary); }
+    .do li.next::before { background: var(--gold); }
+
+    .cta { margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+           background: var(--primary); color: #fff; border-radius: 14px; padding: 22px 32px; }
+    .cta .send { font-size: 32px; font-weight: 700; }
+    .cta .mail { direction: ltr; font-size: 34px; font-weight: 800; }
+    .sign { text-align: center; font-size: 22px; color: #4a566e; margin-top: -14px; }
+
+    /* wide link-preview version: 1200 x 630 */
+    body { width: 1200px; height: 630px; }
+    .post { width: 1200px; height: 630px; padding: 36px 48px 30px; gap: 22px; }
+    .logo { width: 210px; }
+    .hiring { font-size: 24px; padding: 6px 22px; }
+    h1 { font-size: 52px; }
+    .hook { font-size: 27px; margin-top: -8px; }
+    .perks { grid-template-columns: 1fr 1fr 1fr; gap: 14px 14px; }
+    .perk { font-size: 24px; padding: 18px 14px; gap: 10px; }
+    .perk .ic { width: 30px; height: 30px; font-size: 18px; }
+    .do { display: none; }
+    .cta { padding: 16px 28px; }
+    .cta .send, .cta .mail { font-size: 28px; }
+    .sign { font-size: 18px; margin-top: -8px; }
+  </style>
+</head>
+<body>
+  <div class="post">
+    <div class="top">
+      <img class="logo" src="https://dconsult.me/assets/logo-light.png" alt="D Consulting">
+      <span class="hiring">דרושים</span>
+    </div>
+
+    <h1>אנליסט/ית ניהול תשואה והפצה למלונות</h1>
+    <p class="hook">עבודה בצד הדיגיטלי של המלונאות, עם <span class="nw"><bdi>Booking</bdi></span>, <span class="nw"><bdi>Expedia</bdi></span> <span class="nw">ו-<bdi>Airbnb</bdi></span></p>
+
+    <div class="perks">
+      <div class="perk gold"><span class="ic">₪</span>שכר גבוה למתאימים</div>
+      <div class="perk"><span class="ic">✓</span>15-25 שעות בשבוע</div>
+      <div class="perk"><span class="ic">✓</span>רוב העבודה מהבית</div>
+      <div class="perk"><span class="ic">✓</span>הכשרה מלאה בשכר</div>
+      <div class="perk"><span class="ic">✓</span>עבודה עם כלי AI</div>
+      <div class="perk"><span class="ic">✓</span>מלונות בישראל ובאירופה</div>
+    </div>
+
+    <div class="do">
+      <h2>מה התפקיד כולל</h2>
+      <ul>
+        <li>הזנת תכנים ותמונות של המלונות בערוצי המכירה</li>
+        <li>בניית מבצעים והקמת מלונות בערוצים חדשים</li>
+        <li class="next">תלמדו גם: מחירים, דוחות ביצועים וניתוחים</li>
+      </ul>
+    </div>
+
+    <div class="cta">
+      <span class="send">שלחו קורות חיים</span>
+      <span class="mail">itai@dconsult.me</span>
+    </div>
+    <div class="sign">איתי גל, D Consulting · <bdi>dconsult.me/jobs/analyst</bdi> · המשרה מיועדת לנשים ולגברים כאחד</div>
+  </div>
+</body>
+</html>
