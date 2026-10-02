@@ -79,6 +79,7 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 
 ### מה מקבלים
 
+- שכר גבוה למתאימים
 - 15-25 שעות בשבוע, ואת השעות קובעים יחד
 - רוב העבודה מהבית, עם מפגשי עבודה באזור המרכז
 - הכשרה מלאה, בשכר מהשעה הראשונה
@@ -101,14 +102,14 @@ D Consulting מלווה מלונות בוטיק ובתי אירוח בישראל
 >
 > D Consulting מלווה מלונות בוטיק בישראל ובאירופה בתמחור ובניהול ערוצי המכירה.
 >
-> **בתפקיד:** תכנים, תמונות ומבצעים ב-Booking, ב-Expedia, ב-Airbnb ובמנועי ההזמנות,
-> והקמת מלונות בערוצים חדשים.
-> **מה תלמדו אצלנו:** מחירים ומלאי במערכת הניהול של המלון, דוחות הביצועים של הלקוחות וניתוחי ערוצי מכירה.
+> **מה התפקיד כולל:** הזנת תכנים ותמונות ובניית מבצעים ב-Booking, ב-Expedia, ב-Airbnb ובמנועי
+> ההזמנות, והקמת מלונות בערוצים חדשים.
+> **מה תלמדו אצלנו:** הזנת מחירים ומלאי במערכת הניהול של המלון, עדכון דוחות הביצועים של הלקוחות וניתוח ערוצי המכירה.
 >
 > **מה חשוב לנו:** עין לפרטים, אנגלית טובה בקריאה ובכתיבה, שליטה ב-Excel ונוחות בעבודה עם מערכות ניהול באינטרנט.
 > **יתרון משמעותי:** ידע ב-GDS ובתעריפי Consortia.
 >
-> פרילנס בתשלום שעתי, כנגד חשבונית.
+> שכר גבוה למתאימים. פרילנס בתשלום שעתי, כנגד חשבונית.
 > קורות חיים ל-itai@dconsult.me | איתי גל, D Consulting | המשרה מיועדת לנשים ולגברים כאחד
 
 ---
@@ -124,8 +125,8 @@ Airbnb and the booking engines, and move on to the analytical side: rates, repor
 No experience needed: we teach everything, and training is paid from the first hour.
 
 **What you'll do**
-- Content: property and room descriptions, photos, facilities and policies on Booking, Expedia,
-  Airbnb and the booking engines. Materials arrive ready from the client; you make sure they
+- Content: loading property and room descriptions, photos, facilities and policies onto Booking,
+  Expedia, Airbnb and the booking engines. Materials arrive ready from the client; you make sure they
   display correctly and consistently on every channel
 - Promotions: setting up promotions and discounts agreed with the client on every channel and in
   the booking engine, then checking as a guest that each one shows, at the right rate and on the
@@ -141,7 +142,7 @@ No experience needed: we teach everything, and training is paid from the first h
   reviewing competitor rates
 - Performance reports: updating clients' weekly reports (occupancy, average daily rate and
   revenue against target) and flagging dates that drift from target
-- Analyses: channel mix, and events and demand calendars
+- Analyses: analysing the channel mix and building events and demand calendars
 
 You move to each new area after training and supervised work, and the hourly rate rises once you
 meet targets agreed in advance.
@@ -154,7 +155,7 @@ Sheets, and comfort with web admin systems; availability for part of the day, Su
 **Nice to have:** extranet or channel manager experience; hotel front desk or reservations;
 **GDS and consortia rates: a significant advantage**.
 
-**What you get:** 15-25 hours a week, hours set together; mostly remote, with meetings in central
+**What you get:** high pay for the right candidates; 15-25 hours a week, hours set together; mostly remote, with meetings in central
 Israel; hands-on work with operating hotels. Freelance, paid by the hour against invoice (you
 need a registered business).
 
